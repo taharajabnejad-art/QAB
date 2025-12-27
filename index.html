@@ -119,41 +119,32 @@ body {
 }
 
 /* ================= CARD ================= */
-.card { position: relative; }
-
-.poster {
-  width: 100%;
-  aspect-ratio: 2/3;
-  border-radius: 14px;
-  background-size: cover;
-  background-position: center;
-}
-
-.sound {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.6);
+.suggestions {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
   justify-content: center;
-  font-size: 14px;
+  margin-top: 16px;
 }
 
-.title {
-  margin-top: 8px;
-  font-family: "UIFont", sans-serif;
-  font-size: 13px;
+.suggestion-item {
+  width: 200px;
   text-align: center;
-  opacity: 0.95;
 }
-</style>
-</head>
 
-<body>
+.suggestion-item img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.suggestion-item p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #fff;
+  opacity: 0.9;
+}
 
 <!-- ================= HERO ================= -->
 <section class="hero">
@@ -171,46 +162,31 @@ body {
 
 <!-- ================= CONTENT ================= -->
 <section class="section">
-  <div class="section-title">ویژه</div>
+  <div class="section-title">پیشنهادها</div>
 
-  <div class="grid">
-    <div class="card">
-      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
-      <div class="sound">🔊</div>
-      <div class="title">باب اسفنجی</div>
+  <div class="suggestions">
+    <div class="suggestion-item">
+      <a href="https://raw.githubusercontent.com/username/repo/branch/video1.mp4" target="_blank">
+        <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail1.jpg" alt="ویدئو ۱">
+        <p>عنوان ویدئو ۱</p>
+      </a>
     </div>
 
-    <div class="card">
-      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
-      <div class="sound">🔊</div>
-      <div class="title">گارفیلد</div>
+    <div class="suggestion-item">
+      <a href="https://raw.githubusercontent.com/username/repo/branch/video2.mp4" target="_blank">
+        <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail2.jpg" alt="ویدئو ۲">
+        <p>عنوان ویدئو ۲</p>
+      </a>
     </div>
 
-    <div class="card">
-      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
-      <div class="sound">🔊</div>
-      <div class="title">ماینکرفت</div>
-    </div>
-
-    <div class="card">
-      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
-      <div class="sound">🔊</div>
-      <div class="title">کمپ کورال</div>
-    </div>
-
-    <div class="card">
-      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
-      <div class="sound">🔊</div>
-      <div class="title">بچه‌های بد ۲</div>
-    </div>
-
-    <div class="card">
-      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
-      <div class="sound">🔊</div>
-      <div class="title">نجات بیکینی باتم</div>
+    <div class="suggestion-item">
+      <a href="https://raw.githubusercontent.com/username/repo/branch/video3.mp4" target="_blank">
+        <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail3.jpg" alt="ویدئو ۳">
+        <p>عنوان ویدئو ۳</p>
+      </a>
     </div>
   </div>
 </section>
-
+  
 </body>
 </html>
