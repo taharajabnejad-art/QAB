@@ -1,51 +1,70 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>۴۰۴ — صفحه پیدا نشد — آپادانا</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- لینک به فایل CSS محلی (در صورت نیاز باقی می‌ذاریم) -->
-<link rel="stylesheet" href="CSS/app.css">
-  
+<title>قاب — جهان ویدئو</title>
+
 <style>
+/* ================= FONT MAIN ================= */
 @font-face {
-  font-family: Vazirmatn;
-  src: url("css & font/style.css");
+  font-family: "MainFont";
+  src: url("fonts/FontMain-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: "MainFont";
+  src: url("fonts/FontMain-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ================= FONT UI ================= */
+@font-face {
+  font-family: "UIFont";
+  src: url("fonts/FontUI-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ================= RESET ================= */
 * {
   box-sizing: border-box;
 }
 
+/* ================= BODY ================= */
 body {
   margin: 0;
-  font-family: Vazirmatn;
+  font-family: "MainFont", sans-serif;
   background: #0d0d0d;
-  color: #fff;
+  color: #ffffff;
 }
 
-/* ===== HERO ===== */
+/* ================= HERO ================= */
 .hero {
-  height: 100vh;
-  background:
-    linear-gradient(120deg, #d4a12b 0%, transparent 45%),
-    #0d0d0d;
+  min-height: 100vh;
   padding: 32px 20px;
+  background:
+    linear-gradient(120deg, #7c6cff 0%, transparent 45%),
+    #0d0d0d;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-size: 36px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .logo-box {
-  width: 52px;
-  height: 34px;
-  border: 5px solid #d4a12b;
+  width: 54px;
+  height: 36px;
+  border: 5px solid #7c6cff;
+  border-radius: 10px;
 }
 
 .hero-text {
@@ -53,33 +72,36 @@ body {
 }
 
 .hero-text h1 {
-  font-size: 36px;
   margin: 0;
+  font-size: 36px;
+  font-weight: 700;
 }
 
 .hero-text p {
   margin-top: 12px;
   font-size: 16px;
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
-/* ===== SECTION ===== */
+/* ================= SECTION ================= */
 .section {
-  padding: 16px 12px 32px;
+  padding: 16px 14px 32px;
 }
 
 .section-title {
+  margin: 16px 6px;
   font-size: 18px;
-  margin: 16px 8px;
+  font-weight: 600;
 }
 
-/* ===== GRID ===== */
+/* ================= GRID ================= */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 
+/* ================= CARD ================= */
 .card {
   position: relative;
 }
@@ -87,7 +109,7 @@ body {
 .poster {
   width: 100%;
   aspect-ratio: 2 / 3;
-  border-radius: 12px;
+  border-radius: 14px;
   background-size: cover;
   background-position: center;
 }
@@ -96,18 +118,20 @@ body {
   position: absolute;
   top: 8px;
   left: 8px;
-  background: rgba(0,0,0,0.6);
-  border-radius: 50%;
   width: 26px;
   height: 26px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
 }
 
+/* ================= CARD TITLE ================= */
 .title {
-  margin-top: 6px;
+  margin-top: 8px;
+  font-family: "UIFont", sans-serif;
   font-size: 13px;
   text-align: center;
   opacity: 0.95;
@@ -117,35 +141,29 @@ body {
 
 <body>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="hero">
   <div class="logo">
-    <span>فیلیمو</span>
+    <span>قاب</span>
     <div class="logo-box"></div>
   </div>
 
   <div class="hero-text">
-    <h1>ما دنبال داستانیم</h1>
-    <p>به جهان تماشایی فیلیمو خوش اومدید!</p>
+    <h1>داستانت رو پیدا کن</h1>
+    <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
   </div>
 </section>
 
-<!-- SCROLL SECTION -->
+<!-- ================= CONTENT ================= -->
 <section class="section">
   <div class="section-title">ویژه</div>
 
   <div class="grid">
-    <!-- CARD -->
-    <div class="card">
-      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
-      <div class="sound">🔊</div>
-      <div class="title">باب اسفنجی</div>
-    </div>
 
     <div class="card">
       <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
       <div class="sound">🔊</div>
-      <div class="title">نجات بیکینی باتم</div>
+      <div class="title">باب اسفنجی</div>
     </div>
 
     <div class="card">
@@ -163,14 +181,21 @@ body {
     <div class="card">
       <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
       <div class="sound">🔊</div>
+      <div class="title">کمپ کورال</div>
+    </div>
+
+    <div class="card">
+      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
+      <div class="sound">🔊</div>
       <div class="title">بچه‌های بد ۲</div>
     </div>
 
     <div class="card">
       <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
       <div class="sound">🔊</div>
-      <div class="title">کمپ کورال</div>
+      <div class="title">نجات بیکینی باتم</div>
     </div>
+
   </div>
 </section>
 
