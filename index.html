@@ -33,7 +33,7 @@ body {
 
 /* ================= HERO ================= */
 .hero {
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 32px 20px;
   background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
   display: flex;
@@ -61,7 +61,7 @@ body {
 }
 
 .hero-text {
-  margin-top: 140px;
+  margin-top: 100px;
   text-align: center;
 }
 
@@ -97,42 +97,78 @@ body {
   box-shadow: 0 6px 12px rgba(255, 190, 0, 0.4);
 }
 
-/* ================= SUGGESTIONS ================= */
+/* ================= SECTIONS ================= */
 .section {
-  padding: 16px 14px 32px;
+  padding: 24px 16px;
 }
 
 .section-title {
-  margin: 16px 6px;
-  font-size: 18px;
+  margin-bottom: 16px;
+  font-size: 20px;
   font-weight: 600;
 }
 
-.suggestions {
+/* ================= HORIZONTAL SCROLL GRID ================= */
+.horizontal-scroll {
   display: flex;
-  flex-wrap: wrap;
   gap: 16px;
-  justify-content: center;
-  margin-top: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
 }
 
-.suggestion-item {
-  width: 200px;
-  text-align: center;
+.horizontal-scroll::-webkit-scrollbar {
+  height: 8px;
 }
 
-.suggestion-item img {
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background-color: #FFBE00;
+  border-radius: 4px;
+}
+
+.video-card {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.video-card .thumbnail {
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 8px;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.2s;
 }
 
-.suggestion-item p {
-  margin-top: 6px;
+.video-card .thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.video-card .video-title {
+  margin-top: 8px;
   font-size: 14px;
   color: #fff;
+  text-align: center;
   opacity: 0.9;
+}
+
+.video-card .video-duration {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ================= MULTI SECTION RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .video-card { flex: 0 0 150px; }
+  .hero-text h1 { font-size: 28px; }
+  .hero-text p { font-size: 14px; }
 }
 </style>
 </head>
@@ -153,30 +189,50 @@ body {
   </div>
 </section>
 
-<!-- ================= SUGGESTIONS ================= -->
+<!-- ================= SUGGESTION SECTIONS ================= -->
 <section class="section">
-  <div class="section-title">پیشنهادها</div>
-
-  <div class="suggestions">
-    <div class="suggestion-item">
-      <a href="https://raw.githubusercontent.com/username/repo/branch/video1.mp4" target="_blank">
-        <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail1.jpg" alt="ویدئو ۱">
-        <p>عنوان ویدئو ۱</p>
-      </a>
+  <div class="section-title">ویژه</div>
+  <div class="horizontal-scroll">
+    <div class="video-card">
+      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail1.jpg');"></div>
+      <span class="video-duration">5:20</span>
+      <p class="video-title">عنوان ویدئو ۱</p>
     </div>
-
-    <div class="suggestion-item">
-      <a href="https://raw.githubusercontent.com/username/repo/branch/video2.mp4" target="_blank">
-        <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail2.jpg" alt="ویدئو ۲">
-        <p>عنوان ویدئو ۲</p>
-      </a>
+    <div class="video-card">
+      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail2.jpg');"></div>
+      <span class="video-duration">3:45</span>
+      <p class="video-title">عنوان ویدئو ۲</p>
     </div>
+    <div class="video-card">
+      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail3.jpg');"></div>
+      <span class="video-duration">7:10</span>
+      <p class="video-title">عنوان ویدئو ۳</p>
+    </div>
+    <div class="video-card">
+      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail4.jpg');"></div>
+      <span class="video-duration">2:30</span>
+      <p class="video-title">عنوان ویدئو ۴</p>
+    </div>
+  </div>
+</section>
 
-    <div class="suggestion-item">
-      <a href="https://raw.githubusercontent.com/username/repo/branch/video3.mp4" target="_blank">
-        <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail3.jpg" alt="ویدئو ۳">
-        <p>عنوان ویدئو ۳</p>
-      </a>
+<section class="section">
+  <div class="section-title">پرطرفدار</div>
+  <div class="horizontal-scroll">
+    <div class="video-card">
+      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail5.jpg');"></div>
+      <span class="video-duration">4:50</span>
+      <p class="video-title">عنوان ویدئو ۵</p>
+    </div>
+    <div class="video-card">
+      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail6.jpg');"></div>
+      <span class="video-duration">6:15</span>
+      <p class="video-title">عنوان ویدئو ۶</p>
+    </div>
+    <div class="video-card">
+      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail7.jpg');"></div>
+      <span class="video-duration">3:05</span>
+      <p class="video-title">عنوان ویدئو ۷</p>
     </div>
   </div>
 </section>
