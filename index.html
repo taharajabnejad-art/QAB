@@ -48,17 +48,18 @@ body {
   gap: 12px;
   font-size: 36px;
   font-weight: 700;
-  color: #FFBE00; /* رنگ سایه متن لوگو */
+  color: #FFFFFF; /* متن لوگو سفید */
 }
 
 .logo-box-img {
-  width: 54px;      /* اندازه واقعی لوگو */
+  width: 54px;       /* اندازه واقعی لوگو */
   height: 36px;
-  border-radius: 0; /* گوشه‌های تیز */
-  background-image: url('Logo.png');
+  border-radius: 0;  /* گوشه‌ها تیز */
+  background-image: url('Logo.png'); /* لوگو PNG */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  filter: drop-shadow(0 0 5px #FFBE00); /* سایه زرد روی لوگو */
 }
 
 .hero-text {
@@ -134,8 +135,8 @@ body {
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="logo">
-    <span>قاب</span>
-    <div class="logo-box-img"></div>
+    <span>قاب</span> <!-- متن لوگو سفید -->
+    <div class="logo-box-img"></div> <!-- PNG لوگو با سایه زرد -->
   </div>
 
   <div class="hero-text">
