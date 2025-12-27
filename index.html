@@ -3,12 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Filimo</title>
+<title>Filimo UI</title>
+
+<link href="https://cdn.jsdelivr.net/npm/vazirmatn@33.003/fonts/webfonts/Vazirmatn-Regular.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
 
 <style>
 @font-face {
   font-family: Vazirmatn;
   src: url("https://cdn.jsdelivr.net/npm/vazirmatn@33.003/fonts/webfonts/Vazirmatn-Regular.woff2");
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -18,55 +24,152 @@ body {
   color: #fff;
 }
 
+/* ===== HERO ===== */
 .hero {
   height: 100vh;
   background:
-    linear-gradient(120deg, #d4a12b 0%, transparent 40%),
+    linear-gradient(120deg, #d4a12b 0%, transparent 45%),
     #0d0d0d;
-  padding: 40px 24px;
+  padding: 32px 20px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 42px;
+  gap: 10px;
+  font-size: 36px;
   font-weight: 800;
 }
 
 .logo-box {
-  width: 60px;
-  height: 40px;
-  border: 6px solid #d4a12b;
+  width: 52px;
+  height: 34px;
+  border: 5px solid #d4a12b;
 }
 
-.text {
+.hero-text {
   margin-top: 140px;
 }
 
-.text h1 {
-  font-size: 44px;
+.hero-text h1 {
+  font-size: 36px;
   margin: 0;
 }
 
-.text p {
-  margin-top: 16px;
-  font-size: 18px;
+.hero-text p {
+  margin-top: 12px;
+  font-size: 16px;
   opacity: 0.9;
+}
+
+/* ===== SECTION ===== */
+.section {
+  padding: 16px 12px 32px;
+}
+
+.section-title {
+  font-size: 18px;
+  margin: 16px 8px;
+}
+
+/* ===== GRID ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.card {
+  position: relative;
+}
+
+.poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+}
+
+.sound {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.title {
+  margin-top: 6px;
+  font-size: 13px;
+  text-align: center;
+  opacity: 0.95;
 }
 </style>
 </head>
+
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <div class="logo">
     <span>فیلیمو</span>
     <div class="logo-box"></div>
   </div>
 
-  <div class="text">
+  <div class="hero-text">
     <h1>ما دنبال داستانیم</h1>
     <p>به جهان تماشایی فیلیمو خوش اومدید!</p>
+  </div>
+</section>
+
+<!-- SCROLL SECTION -->
+<section class="section">
+  <div class="section-title">ویژه</div>
+
+  <div class="grid">
+    <!-- CARD -->
+    <div class="card">
+      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
+      <div class="sound">🔊</div>
+      <div class="title">باب اسفنجی</div>
+    </div>
+
+    <div class="card">
+      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
+      <div class="sound">🔊</div>
+      <div class="title">نجات بیکینی باتم</div>
+    </div>
+
+    <div class="card">
+      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
+      <div class="sound">🔊</div>
+      <div class="title">گارفیلد</div>
+    </div>
+
+    <div class="card">
+      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
+      <div class="sound">🔊</div>
+      <div class="title">ماینکرفت</div>
+    </div>
+
+    <div class="card">
+      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
+      <div class="sound">🔊</div>
+      <div class="title">بچه‌های بد ۲</div>
+    </div>
+
+    <div class="card">
+      <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
+      <div class="sound">🔊</div>
+      <div class="title">کمپ کورال</div>
+    </div>
   </div>
 </section>
 
