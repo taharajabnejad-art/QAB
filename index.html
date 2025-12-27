@@ -3,11 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>قاب — جهان ویدئو</title>
 
 <style>
-/* ================= FONT MAIN ================= */
+/* ================= FONT ================= */
 @font-face {
   font-family: "MainFont";
   src: url("fonts/Ravi-Bold.woff2") format("woff2");
@@ -16,14 +15,6 @@
 }
 
 @font-face {
-  font-family: "MainFont";
-  src: url("fonts/Ravi-Black.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-}
-
-/* ================= FONT UI ================= */
-@font-face {
   font-family: "UIFont";
   src: url("fonts/Ravi-Regular.woff2") format("woff2");
   font-weight: 400;
@@ -31,13 +22,10 @@
 }
 
 /* ================= RESET ================= */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; margin:0; padding:0; }
 
 /* ================= BODY ================= */
 body {
-  margin: 0;
   font-family: "MainFont", sans-serif;
   background: #0d0d0d;
   color: #ffffff;
@@ -48,34 +36,36 @@ body {
   min-height: 100vh;
   padding: 32px 20px;
   background:
-    linear-gradient(120deg, #ffbe00 0%, transparent 45%),
+    linear-gradient(120deg, #7c6cff 0%, transparent 45%),
     #0d0d0d;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ================= LOGO ================= */
 .logo {
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 36px;
   font-weight: 700;
-  font-family: "MainFont", sans-serif;
-  color: #ffffff;
+  color: #FFBE00; /* رنگ سایه متن لوگو */
 }
 
 .logo-box-img {
-  width: 54px;
+  width: 54px;      /* اندازه واقعی لوگو */
   height: 36px;
-  border-radius: 10px;
+  border-radius: 0; /* گوشه‌های تیز */
+  background-image: url('Logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-/* ================= HERO TEXT ================= */
 .hero-text {
   margin-top: 140px;
 }
 
 .hero-text h1 {
-  margin: 0;
   font-size: 36px;
   font-weight: 700;
 }
@@ -105,13 +95,11 @@ body {
 }
 
 /* ================= CARD ================= */
-.card {
-  position: relative;
-}
+.card { position: relative; }
 
 .poster {
   width: 100%;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 2/3;
   border-radius: 14px;
   background-size: cover;
   background-position: center;
@@ -131,7 +119,6 @@ body {
   font-size: 14px;
 }
 
-/* ================= CARD TITLE ================= */
 .title {
   margin-top: 8px;
   font-family: "UIFont", sans-serif;
@@ -148,7 +135,7 @@ body {
 <section class="hero">
   <div class="logo">
     <span>قاب</span>
-    <img src="image/logo.png" alt="لوگو" class="logo-box-img">
+    <div class="logo-box-img"></div>
   </div>
 
   <div class="hero-text">
@@ -162,7 +149,6 @@ body {
   <div class="section-title">ویژه</div>
 
   <div class="grid">
-
     <div class="card">
       <div class="poster" style="background-image:url('https://via.placeholder.com/300x450')"></div>
       <div class="sound">🔊</div>
@@ -198,20 +184,8 @@ body {
       <div class="sound">🔊</div>
       <div class="title">نجات بیکینی باتم</div>
     </div>
-
   </div>
 </section>
-
-<!-- ================= APARAT PLAYER ================= -->
-<style>
-.h_iframe-aparat_embed_frame{position:relative;}
-.h_iframe-aparat_embed_frame .ratio{display:block;width:100%;height:auto;}
-.h_iframe-aparat_embed_frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;}
-</style>
-<div class="h_iframe-aparat_embed_frame">
-  <span style="display: block;padding-top: 57%"></span>
-  <iframe src="https://www.aparat.com/video/video/embed/videohash/zbjxsto/vt/frame" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
-</div>
 
 </body>
 </html>
