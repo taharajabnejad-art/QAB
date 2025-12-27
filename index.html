@@ -1,53 +1,74 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>قاب | QAB</title>
-  
-  <!-- Favicon -->
-  <link rel="icon" href="image/InShot_20251227_122451032.png" type="image/x-icon">
-  <!-- اگر PNG داری -->
-  <!-- <link rel="icon" href="assets/icons/favicon.png" type="image/png"> -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filimo</title>
 
-  <link rel="stylesheet" href="style.css">
+<style>
+@font-face {
+  font-family: Vazirmatn;
+  src: url("https://cdn.jsdelivr.net/npm/vazirmatn@33.003/fonts/webfonts/Vazirmatn-Regular.woff2");
+}
+
+body {
+  margin: 0;
+  font-family: Vazirmatn;
+  background: #0d0d0d;
+  color: #fff;
+}
+
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(120deg, #d4a12b 0%, transparent 40%),
+    #0d0d0d;
+  padding: 40px 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.logo-box {
+  width: 60px;
+  height: 40px;
+  border: 6px solid #d4a12b;
+}
+
+.text {
+  margin-top: 140px;
+}
+
+.text h1 {
+  font-size: 44px;
+  margin: 0;
+}
+
+.text p {
+  margin-top: 16px;
+  font-size: 18px;
+  opacity: 0.9;
+}
+</style>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <img src="assets/logo.png" alt="قاب" class="logo">
-    <nav>
-      <a href="#"><img src="assets/icons/home.svg" class="icon"> خانه</a>
-      <a href="#"><img src="assets/icons/channels.svg" class="icon"> کانال‌ها</a>
-      <a href="#"><img src="assets/icons/docs.svg" class="icon"> مستندها</a>
-      <a href="#"><img src="assets/icons/about.svg" class="icon"> درباره ما</a>
-      <a href="#"><img src="assets/icons/login.svg" class="icon"> ورود</a>
-    </nav>
-  </div>
-</header>
-
 <section class="hero">
-  <div class="hero-content">
-    <h1>ویدئو، با فکر</h1>
-    <p>قاب؛ تجربه ویدئویی متفاوت و هوشمند برای هر فرد</p>
-    <a href="#" class="btn-primary">شروع کنید</a>
+  <div class="logo">
+    <span>فیلیمو</span>
+    <div class="logo-box"></div>
+  </div>
+
+  <div class="text">
+    <h1>ما دنبال داستانیم</h1>
+    <p>به جهان تماشایی فیلیمو خوش اومدید!</p>
   </div>
 </section>
-
-<section class="featured">
-  <h2>کانال‌های منتخب</h2>
-  <div class="cards">
-    <div class="card">کانال ۱</div>
-    <div class="card">کانال ۲</div>
-    <div class="card">کانال ۳</div>
-    <div class="card">کانال ۴</div>
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 قاب | همه حقوق محفوظ است.</p>
-</footer>
 
 </body>
 </html>
