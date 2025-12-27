@@ -1,0 +1,318 @@
+/* ===== فونت ===== */
+@font-face {
+  font-family: 'RaviBold';
+  src: url('RaviFaNum-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --accent: #FF5E00;
+  --bg: #FFF8F0;
+  --card: #FFFFFF;
+  --muted: #666666;
+  --radius: 14px;
+  --maxw: 980px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'RaviBold', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: #1b1b1b;
+  -webkit-font-smoothing: antialiased;
+  direction: rtl;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, label {
+  font-family: 'RaviBold', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* لینک‌ها */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* کارت‌ها و باکس‌ها */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.container {
+  max-width: var(--maxw);
+  margin: 8px auto 40px;
+  padding: 0 14px;
+}
+
+/* اسلایدر */
+.slider {
+  width: 100%;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  margin-bottom: 18px;
+}
+
+.slides {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  animation: slideAnim 12s linear infinite;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  flex: 0 0 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes slideAnim {
+  0% { transform: translateX(0%); }
+  33% { transform: translateX(-100%); }
+  66% { transform: translateX(-200%); }
+  100% { transform: translateX(0%); }
+}
+
+/* فوتر */
+.footer {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  height: 64px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px 12px;
+  z-index: 999;
+}
+
+.footer .fbtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: #333;
+  font-size: 12px;
+}
+
+.footer .fbtn .fi {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: #FFF6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===============================
+   Custom Video Player CSS
+   =============================== */
+
+/* کانتینر پلیر */
+.custom-player{
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;               /* قفل نسبت تصویر */
+  background: #000 url('IMAGES/bag.png') center/cover no-repeat;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+/* سازگاری با WebView های قدیمی */
+.custom-player::before{
+  content: "";
+  display: block;
+  padding-top: 56.25%; /* 16:9 */
+}
+.custom-player > *{
+  position: absolute;
+  inset: 0;
+}
+
+/* ویدیو */
+.custom-player video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: transparent;
+}
+
+/* ===============================
+   دکمه پلی وسط (Fade)
+   =============================== */
+.center-play{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 88px;
+  height: 88px;
+  border: none;
+  border-radius: 50%;
+  background: url('IMAGES/bag.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 1;
+  transition: opacity .35s ease;
+}
+
+.custom-player.playing .center-play{
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===============================
+   کنترل‌ها (Slide)
+   =============================== */
+.controls{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 56px;                 /* خیلی مهم */
+  padding: 8px 10px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 4;
+
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform .35s ease, opacity .35s ease;
+}
+
+/* نمایش کنترل‌ها */
+.custom-player.show-controls .controls{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ===============================
+   دکمه‌های کنترل
+   =============================== */
+.ctrl-btn{
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 14px;
+  background: url('IMAGES/bag.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ===============================
+   تایمر
+   =============================== */
+.time{
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 110px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ===============================
+   نوار Seek
+   =============================== */
+.controls input[type="range"]{
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  appearance: none;
+  background: rgba(255,255,255,0.4);
+  outline: none;
+}
+
+.controls input[type="range"]::-webkit-slider-thumb{
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* ===============================
+   موبایل
+   =============================== */
+@media (max-width: 768px){
+  .controls{
+    height: 52px;
+  }
+
+  .ctrl-btn{
+    width: 38px;
+    height: 38px;
+  }
+
+  .time{
+    font-size: 13px;
+    min-width: 96px;
+  }
+}
+
+/* جلوگیری از فول‌اسکرین ناخواسته موبایل */
+video{
+  max-height: 100%;
+  touch-action: manipulation;
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+  .card .thumb {
+    width: 100px;
+    height: 100px;
+  }
+  .footer {
+    height: 72px;
+    padding: 10px;
+  }
+}
