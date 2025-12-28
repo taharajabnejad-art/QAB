@@ -16,107 +16,143 @@
   src: url("fonts/Ravi-Regular.woff2") format("woff2");
   font-weight: 400;
 }
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: "MainFont", sans-serif; background:#0d0d0d; color:#fff; overflow-x:hidden; }
+
+* { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+  font-family:"MainFont", sans-serif;
+  background:#0d0d0d;
+  color:#fff;
+  overflow-x:hidden;
+}
 
 /* ================= LOADING ================= */
 #loading {
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
+  position:fixed;
+  inset:0;
   background:#0d0d0d;
-  display:flex; justify-content:center; align-items:center;
-  flex-direction:column; z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  transition: opacity 1.2s ease;
 }
 
-#bag-logo {
-  width:120px; height:120px;
-  background:url('image/Bag_logo.svg') no-repeat center/contain;
-  margin-bottom:20px;
+.loader {
+  width:64px;
+  height:64px;
+  border:4px solid rgba(255,255,255,0.15);
+  border-top-color:#FFBE00;
+  border-radius:50%;
+  animation: spin 1.1s linear infinite;
 }
 
-#qa-logo {
-  width:80px; height:80px;
-  background:url('image/Qa_logo.svg') no-repeat center/contain;
-  animation: rotate-logo 1.2s infinite;
-}
-
-@keyframes rotate-logo {
-  0%   { transform: rotate(0deg); }
-  10%  { transform: rotate(12deg); }
-  20%  { transform: rotate(-8deg); }
-  35%  { transform: rotate(10deg); }
-  50%  { transform: rotate(-6deg); }
-  65%  { transform: rotate(8deg); }
-  80%  { transform: rotate(-4deg); }
-  90%  { transform: rotate(4deg); }
-  100% { transform: rotate(0deg); }
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 /* ================= HERO ================= */
 .hero {
-  min-height: 80vh;
-  padding: 32px 20px;
-  background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
-  display: flex; flex-direction: column;
-  position: relative; transition: opacity 0.5s; opacity:0;
+  min-height:80vh;
+  padding:32px 20px;
+  background:
+    linear-gradient(120deg, #FFBE00 0%, transparent 45%),
+    #0d0d0d;
+  display:flex;
+  flex-direction:column;
+  position:relative;
 }
 
 .hero-header-bg {
-  position: fixed; top:0; left:0; width:100%; height:80px;
-  background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
-  pointer-events: none; z-index:1;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:80px;
+  background:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  pointer-events:none;
+  z-index:1;
 }
 
 .hero-header-fixed {
-  position: fixed; top:0; left:0; width:100%;
-  display:flex; justify-content:flex-start; align-items:center;
-  padding:10px 20px; z-index:2;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  z-index:2;
 }
 
 .logo {
-  display:flex; align-items:center; gap:12px;
-  font-size:36px; font-weight:700; color:#fff;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:36px;
+  font-weight:700;
 }
 
 .logo-box-img {
-  width:54px; height:36px; border-radius:0;
-  background-image:url('image/logo.png');
-  background-size:contain; background-repeat:no-repeat; background-position:center;
-  filter: drop-shadow(0 0 5px #FFBE00);
+  width:54px;
+  height:36px;
+  background:url('image/logo.png') no-repeat center/contain;
+  filter:drop-shadow(0 0 5px #FFBE00);
 }
 
-.hero-text { margin-top:140px; text-align:center; position:relative; z-index:0; }
-.hero-text h1 { font-size:36px; font-weight:700; }
-.hero-text p { margin-top:12px; font-size:16px; opacity:0.85; }
-.cta-button {
-  background-color:#FFBE00; color:#0d0d0d; font-size:16px; font-weight:700;
-  padding:12px 28px; border:none; border-radius:6px; cursor:pointer;
-  transition:transform 0.2s, box-shadow 0.2s; text-decoration:none;
-  display:inline-block; margin-top:24px;
+.hero-text {
+  margin-top:140px;
+  text-align:center;
 }
-.cta-button:hover { transform:translateY(-2px); box-shadow:0 6px 12px rgba(255,190,0,0.4); }
+
+.hero-text h1 {
+  font-size:36px;
+  font-weight:700;
+}
+
+.hero-text p {
+  margin-top:12px;
+  font-size:16px;
+  opacity:0.85;
+}
+
+.cta-button {
+  background:#FFBE00;
+  color:#0d0d0d;
+  font-size:16px;
+  font-weight:700;
+  padding:12px 28px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  margin-top:24px;
+  display:inline-block;
+  text-decoration:none;
+}
 
 /* ================= SUGGESTIONS ================= */
 .section { padding:16px 14px 32px; }
 .section-title { margin:16px 6px; font-size:18px; font-weight:600; }
-.suggestions { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:16px; }
-.suggestion-item { width:200px; text-align:center; }
-.suggestion-item img { width:100%; aspect-ratio:16/9; border-radius:8px; object-fit:cover; }
-.suggestion-item p { margin-top:6px; font-size:14px; color:#fff; opacity:0.9; }
+
 </style>
 </head>
 
 <body>
+
+<!-- LOADING -->
 <div id="loading">
-  <div id="bag-logo"></div>
-  <div id="qa-logo"></div>
+  <div class="loader"></div>
 </div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-header-bg"></div>
+
   <div class="hero-header-fixed">
-    <div class="logo"><span>قاب</span><div class="logo-box-img"></div></div>
+    <div class="logo">
+      <span>قاب</span>
+      <div class="logo-box-img"></div>
+    </div>
   </div>
 
   <div class="hero-text">
@@ -126,29 +162,16 @@ body { font-family: "MainFont", sans-serif; background:#0d0d0d; color:#fff; over
   </div>
 </section>
 
-<section class="section">
-  <div class="section-title">پیشنهادها</div>
-  <div class="suggestions">
-    <div class="suggestion-item">
-      <a href="#"><img src="#" alt="ویدئو ۱"><p>عنوان ویدئو ۱</p></a>
-    </div>
-    <div class="suggestion-item">
-      <a href="#"><img src="#" alt="ویدئو ۲"><p>عنوان ویدئو ۲</p></a>
-    </div>
-    <div class="suggestion-item">
-      <a href="#"><img src="#" alt="ویدئو ۳"><p>عنوان ویدئو ۳</p></a>
-    </div>
-  </div>
-</section>
-
 <script>
-window.addEventListener('load', function() {
+window.addEventListener('load', () => {
   const loading = document.getElementById('loading');
-  const hero = document.querySelector('.hero');
-  loading.style.transition = 'opacity 0.5s';
-  loading.style.opacity = 0;
-  setTimeout(()=>{ loading.style.display='none'; hero.style.opacity=1; },500);
+
+  setTimeout(() => {
+    loading.style.opacity = '0';
+    setTimeout(() => loading.remove(), 1200);
+  }, 1800); // ⏱️ مدت نمایش لودینگ
 });
 </script>
+
 </body>
 </html>
