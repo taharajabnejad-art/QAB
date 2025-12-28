@@ -9,26 +9,21 @@
 /* ================= FONT ================= */
 @font-face {
   font-family: "MainFont";
-  src: url("fonts/Ravi-Black.woff2") format("woff2");
+  src: url("fonts/Ravi-Bold.woff2") format("woff2");
   font-weight: 700;
-  font-style: normal;
 }
-
 @font-face {
   font-family: "MainFont";
-  src: url("fonts/Ravi-Bold.woff2") format("woff2");
+  src: url("fonts/Ravi-Regular.woff2") format("woff2");
   font-weight: 400;
-  font-style: normal;
 }
 
 /* ================= RESET ================= */
 * { box-sizing: border-box; margin:0; padding:0; }
-
-/* ================= BODY ================= */
 body {
   font-family: "MainFont", sans-serif;
   background: #0d0d0d;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* ================= HERO ================= */
@@ -41,26 +36,29 @@ body {
   position: relative;
 }
 
+/* پس‌زمینه سیاه تدریجی پشت لوگو */
 .hero-header-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  animation: fadeBackground 3s forwards;
-  z-index: 0;
-}
-
-@keyframes fadeBackground {
-  0% { background: rgba(0,0,0,0.6); }
-  100% { background: rgba(0,0,0,0); }
-}
-
-.hero .logo,
-.hero .hero-text {
-  position: relative;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  pointer-events: none;
   z-index: 1;
+}
+
+/* لوگو و متن ثابت روی پس‌زمینه */
+.hero-header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 2;
 }
 
 .logo {
@@ -69,7 +67,7 @@ body {
   gap: 12px;
   font-size: 36px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #fff;
 }
 
 .logo-box-img {
@@ -83,9 +81,12 @@ body {
   filter: drop-shadow(0 0 5px #FFBE00);
 }
 
+/* ================= HERO TEXT ================= */
 .hero-text {
   margin-top: 140px;
   text-align: center;
+  position: relative;
+  z-index: 0;
 }
 
 .hero-text h1 {
@@ -164,11 +165,13 @@ body {
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="hero-header-bg"></div> <!-- پس‌زمینه سیاه تدریجی -->
+  <div class="hero-header-bg"></div>
 
-  <div class="logo">
-    <span>قاب</span>
-    <div class="logo-box-img"></div>
+  <div class="hero-header-fixed">
+    <div class="logo">
+      <span>قاب</span>
+      <div class="logo-box-img"></div>
+    </div>
   </div>
 
   <div class="hero-text">
