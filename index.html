@@ -1,49 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>قاب — جهان ویدئو</title>
 
 <style>
 /* ================= FONT ================= */
 @font-face {
   font-family: "MainFont";
-  src: url("fonts/Ravi-Bold.woff2") format("woff2");
+  src: url("fonts/Ravi-Black.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
-
 @font-face {
-  font-family: "UIFont";
-  src: url("fonts/Ravi-Regular.woff2") format("woff2");
+  font-family: "MainFont";
+  src: url("fonts/Ravi-Bold.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 /* ================= RESET ================= */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin:0; padding:0; }
 
 /* ================= BODY ================= */
 body {
-  font-family: "UIFont", sans-serif;
+  font-family: "MainFont", sans-serif;
   background: #0d0d0d;
-  color: #fff;
+  color: #ffffff;
+  padding-top: 80vh; /* برای محتوا زیر هدر */
 }
 
 /* ================= HERO ================= */
 .hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   min-height: 80vh;
   padding: 32px 20px;
   background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
 }
 
 .logo {
@@ -52,35 +65,29 @@ body {
   gap: 12px;
   font-size: 36px;
   font-weight: 700;
-  color: #fff;
+  color: #FFFFFF;
+  justify-content: center;
 }
 
 .logo-box-img {
   width: 54px;
   height: 36px;
   border-radius: 0;
-  background-image: url('image/Logo.png');
+  background-image: url('image/logo.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   filter: drop-shadow(0 0 5px #FFBE00);
 }
 
-.hero-text {
-  margin-top: 24px;
-  text-align: center;
-}
-
 .hero-text h1 {
-  font-family: "MainFont", sans-serif;
-  font-weight: 700;
   font-size: 36px;
+  font-weight: 700;
+  margin-top: 24px;
 }
 
 .hero-text p {
   margin-top: 12px;
-  font-family: "UIFont", sans-serif;
-  font-weight: 400;
   font-size: 16px;
   opacity: 0.85;
 }
@@ -95,10 +102,10 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
   text-decoration: none;
   display: inline-block;
   margin-top: 24px;
-  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .cta-button:hover {
@@ -112,9 +119,9 @@ body {
 }
 
 .section-title {
+  margin: 16px 6px;
   font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-weight: 600;
 }
 
 .suggestions {
@@ -122,6 +129,7 @@ body {
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
+  margin-top: 16px;
 }
 
 .suggestion-item {
@@ -138,8 +146,6 @@ body {
 
 .suggestion-item p {
   margin-top: 6px;
-  font-family: "UIFont", sans-serif;
-  font-weight: 400;
   font-size: 14px;
   color: #fff;
   opacity: 0.9;
@@ -151,15 +157,18 @@ body {
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="logo">
-    <span>قاب</span>
-    <div class="logo-box-img"></div>
-  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="logo">
+      <span>قاب</span>
+      <div class="logo-box-img"></div>
+    </div>
 
-  <div class="hero-text">
-    <h1>داستانت رو پیدا کن</h1>
-    <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
-    <a href="#" class="cta-button">داستان خودتو بنویس</a>
+    <div class="hero-text">
+      <h1>داستانت رو پیدا کن</h1>
+      <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
+      <a href="#" class="cta-button">داستان خودتو بنویس</a>
+    </div>
   </div>
 </section>
 
@@ -170,29 +179,22 @@ body {
   <div class="suggestions">
     <div class="suggestion-item">
       <a href="#">
-        <img src="https://via.placeholder.com/300x170" alt="ویدئو ۱">
+        <img src="https://via.placeholder.com/300x169" alt="ویدئو ۱">
         <p>عنوان ویدئو ۱</p>
       </a>
     </div>
 
     <div class="suggestion-item">
       <a href="#">
-        <img src="https://via.placeholder.com/300x170" alt="ویدئو ۲">
+        <img src="https://via.placeholder.com/300x169" alt="ویدئو ۲">
         <p>عنوان ویدئو ۲</p>
       </a>
     </div>
 
     <div class="suggestion-item">
       <a href="#">
-        <img src="https://via.placeholder.com/300x170" alt="ویدئو ۳">
+        <img src="https://via.placeholder.com/300x169" alt="ویدئو ۳">
         <p>عنوان ویدئو ۳</p>
-      </a>
-    </div>
-
-    <div class="suggestion-item">
-      <a href="#">
-        <img src="https://via.placeholder.com/300x170" alt="ویدئو ۴">
-        <p>عنوان ویدئو ۴</p>
       </a>
     </div>
   </div>
