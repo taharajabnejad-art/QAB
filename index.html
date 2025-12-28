@@ -1,37 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>قاب — جهان ویدئو</title>
 
 <style>
-/* ================= FONT ================= */
-@font-face {
-  font-family: "MainFont";
-  src: url("fonts/Ravi-Black.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-}
+/* ================= FONTS ================= */
 @font-face {
   font-family: "MainFont";
   src: url("fonts/Ravi-Bold.woff2") format("woff2");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "MainFont";
+  src: url("fonts/Ravi-Regular.woff2") format("woff2");
   font-weight: 400;
-  font-style: normal;
 }
 
 /* ================= RESET ================= */
 * { box-sizing: border-box; margin:0; padding:0; }
+body { font-family:"MainFont",sans-serif; background:#0d0d0d; color:#fff; overflow-x:hidden; }
 
-/* ================= BODY ================= */
-body {
-  font-family: "MainFont", sans-serif;
-  background: #0d0d0d;
-  color: #ffffff;
-  padding-top: 80vh; /* برای محتوا زیر هدر */
-}
-
-/* ================= HERO ================= */
+/* ================= HERO / HEADER ================= */
 .hero {
   position: fixed;
   top: 0;
@@ -39,24 +30,12 @@ body {
   width: 100%;
   min-height: 80vh;
   padding: 32px 20px;
-  background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
+  background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), rgba(0,0,0,0.95);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  z-index: 999;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .logo {
@@ -66,7 +45,6 @@ body {
   font-size: 36px;
   font-weight: 700;
   color: #FFFFFF;
-  justify-content: center;
 }
 
 .logo-box-img {
@@ -78,19 +56,18 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   filter: drop-shadow(0 0 5px #FFBE00);
+  animation: rotateLogo 3s linear infinite;
 }
 
-.hero-text h1 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-top: 24px;
+@keyframes rotateLogo {
+  0% { transform: rotate(0deg);}
+  50% { transform: rotate(10deg);}
+  100% { transform: rotate(0deg);}
 }
 
-.hero-text p {
-  margin-top: 12px;
-  font-size: 16px;
-  opacity: 0.85;
-}
+.hero-text { text-align:center; margin-top:24px; }
+.hero-text h1 { font-size:36px; font-weight:700; }
+.hero-text p { margin-top:12px; font-size:16px; opacity:0.85; }
 
 /* ================= CTA BUTTON ================= */
 .cta-button {
@@ -102,27 +79,22 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
   margin-top: 24px;
 }
-
 .cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(255, 190, 0, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(255,190,0,0.4);
 }
 
-/* ================= SUGGESTIONS ================= */
-.section {
-  padding: 16px 14px 32px;
-}
+/* ================= CONTENT ================= */
+.content { padding-top: 85vh; }
 
-.section-title {
-  margin: 16px 6px;
-  font-size: 18px;
-  font-weight: 600;
-}
+/* ================= SUGGESTIONS / VIDEOS ================= */
+.section { padding:16px 14px 32px; }
+.section-title { margin:16px 6px; font-size:18px; font-weight:600; }
 
 .suggestions {
   display: flex;
@@ -133,8 +105,13 @@ body {
 }
 
 .suggestion-item {
-  width: 200px;
+  width: 220px;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.suggestion-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(255,255,255,0.2);
 }
 
 .suggestion-item img {
@@ -150,55 +127,96 @@ body {
   color: #fff;
   opacity: 0.9;
 }
+
+/* ================= LOADING ================= */
+#loading {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background:#0d0d0d;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+}
+#loading .spinner {
+  width:50px; height:50px;
+  border:5px solid rgba(255,190,0,0.2);
+  border-top-color:#FFBE00;
+  border-radius:50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform:rotate(0deg);}
+  100% { transform:rotate(360deg);}
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:768px){
+  .hero-text h1 { font-size:28px; }
+  .hero-text p { font-size:14px; }
+  .suggestion-item { width:45%; }
+}
+@media (max-width:480px){
+  .hero-text h1 { font-size:22px; }
+  .hero-text p { font-size:12px; }
+  .suggestion-item { width:100%; }
+}
 </style>
 </head>
 
 <body>
 
+<!-- LOADING -->
+<div id="loading"><div class="spinner"></div></div>
+
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="logo">
-      <span>قاب</span>
-      <div class="logo-box-img"></div>
-    </div>
+  <div class="logo">
+    <span>قاب</span>
+    <div class="logo-box-img"></div>
+  </div>
 
-    <div class="hero-text">
-      <h1>داستانت رو پیدا کن</h1>
-      <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
-      <a href="#" class="cta-button">داستان خودتو بنویس</a>
-    </div>
+  <div class="hero-text">
+    <h1>داستانت رو پیدا کن</h1>
+    <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
+    <a href="#" class="cta-button">داستان خودتو بنویس</a>
   </div>
 </section>
 
-<!-- ================= SUGGESTIONS ================= -->
-<section class="section">
-  <div class="section-title">پیشنهادها</div>
-
-  <div class="suggestions">
-    <div class="suggestion-item">
-      <a href="#">
-        <img src="https://via.placeholder.com/300x169" alt="ویدئو ۱">
-        <p>عنوان ویدئو ۱</p>
-      </a>
+<!-- ================= CONTENT ================= -->
+<div class="content">
+  <section class="section">
+    <div class="section-title">پیشنهادها</div>
+    <div class="suggestions">
+      <div class="suggestion-item">
+        <a href="https://raw.githubusercontent.com/username/repo/branch/video1.mp4" target="_blank">
+          <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail1.jpg" alt="ویدئو ۱">
+          <p>عنوان ویدئو ۱</p>
+        </a>
+      </div>
+      <div class="suggestion-item">
+        <a href="https://raw.githubusercontent.com/username/repo/branch/video2.mp4" target="_blank">
+          <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail2.jpg" alt="ویدئو ۲">
+          <p>عنوان ویدئو ۲</p>
+        </a>
+      </div>
+      <div class="suggestion-item">
+        <a href="https://raw.githubusercontent.com/username/repo/branch/video3.mp4" target="_blank">
+          <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail3.jpg" alt="ویدئو ۳">
+          <p>عنوان ویدئو ۳</p>
+        </a>
+      </div>
     </div>
+  </section>
+</div>
 
-    <div class="suggestion-item">
-      <a href="#">
-        <img src="https://via.placeholder.com/300x169" alt="ویدئو ۲">
-        <p>عنوان ویدئو ۲</p>
-      </a>
-    </div>
-
-    <div class="suggestion-item">
-      <a href="#">
-        <img src="https://via.placeholder.com/300x169" alt="ویدئو ۳">
-        <p>عنوان ویدئو ۳</p>
-      </a>
-    </div>
-  </div>
-</section>
+<script>
+// Hide loading after content is ready
+window.addEventListener("load", function(){
+  const loading = document.getElementById("loading");
+  loading.style.display = "none";
+});
+</script>
 
 </body>
 </html>
