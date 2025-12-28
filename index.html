@@ -6,7 +6,6 @@
 <title>قاب — جهان ویدئو</title>
 
 <style>
-/* ================= FONTS ================= */
 @font-face {
   font-family: "MainFont";
   src: url("fonts/Ravi-Bold.woff2") format("woff2");
@@ -18,14 +17,8 @@
   font-weight: 400;
 }
 
-/* ================= RESET ================= */
 * { box-sizing:border-box; margin:0; padding:0; }
-body {
-  font-family:"MainFont", sans-serif;
-  background:#0d0d0d;
-  color:#fff;
-  overflow-x:hidden;
-}
+body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; overflow-x:hidden; }
 
 /* ================= MODERN LOADING ================= */
 #loading {
@@ -39,67 +32,32 @@ body {
   overflow: hidden;
 }
 
-.loading-container {
-  width: 90%;
-  max-width: 1000px;
-}
-
-.loading-banner {
-  width: 100%;
-  height: 180px;
-  background: #1a1a1a;
+.loader-bg {
+  width: 300px;
+  height: 150px;
+  background: #1a1a1a; /* شبیه بلوک سایت */
   border-radius: 12px;
-  margin-bottom: 24px;
   position: relative;
   overflow: hidden;
-}
-
-.loading-hero-text-line {
-  width: 60%;
-  height: 36px;
-  background: #1a1a1a;
-  margin: 0 auto 12px auto;
-  border-radius: 6px;
-  position: relative;
-  overflow: hidden;
-}
-.loading-hero-text-line.short { width: 40%; }
-
-.loading-cta {
-  width: 180px;
-  height: 36px;
-  background: #1a1a1a;
-  margin: 0 auto 40px auto;
-  border-radius: 6px;
-  position: relative;
-  overflow: hidden;
-}
-
-.loading-cards {
   display: flex;
-  gap: 16px;
-  justify-content: center;
-}
-.card {
-  width: 200px;
-  height: 112px;
-  background: #1a1a1a;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
 }
 
-.loading-banner::before,
-.loading-hero-text-line::before,
-.loading-cta::before,
-.card::before {
-  content: '';
+.loader-block {
+  height: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+}
+
+.loader-shine {
   position: absolute;
   top: -50%;
   left: -50%;
   width: 50%;
   height: 200%;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.15);
   transform: rotate(25deg);
   animation: shine 1.5s infinite;
 }
@@ -110,111 +68,70 @@ body {
   100% { transform: translateX(-150%) rotate(25deg); }
 }
 
-#loading.hide {
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  pointer-events: none;
-}
-
 /* ================= HERO ================= */
 .hero {
-  min-height:80vh;
-  padding:32px 20px;
-  background:
-    linear-gradient(120deg, #FFBE00 0%, transparent 45%),
-    #0d0d0d;
-  display:flex;
-  flex-direction:column;
-  position:relative;
-  opacity:0;
+  min-height: 80vh;
+  padding: 32px 20px;
+  background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   transition: opacity 0.5s;
+  opacity: 0;
 }
 
 .hero-header-bg {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:80px;
-  background:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
-  pointer-events:none;
-  z-index:1;
+  position: fixed; top: 0; left: 0; width: 100%; height: 80px;
+  background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  pointer-events: none; z-index: 1;
 }
 
 .hero-header-fixed {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  padding:10px 20px;
-  display:flex;
-  align-items:center;
-  z-index:2;
+  position: fixed; top: 0; left: 0; width: 100%;
+  display:flex; justify-content:flex-start; align-items:center;
+  padding:10px 20px; z-index: 2;
 }
 
 .logo {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:36px;
-  font-weight:700;
+  display:flex; align-items:center; gap:12px;
+  font-size:36px; font-weight:700;
 }
 
 .logo-box-img {
-  width:54px;
-  height:36px;
+  width:54px; height:36px;
   background:url('image/logo.png') no-repeat center/contain;
-  filter:drop-shadow(0 0 5px #FFBE00);
+  filter: drop-shadow(0 0 5px #FFBE00);
 }
 
-.hero-text {
-  margin-top:140px;
-  text-align:center;
-}
-
+.hero-text { margin-top:140px; text-align:center; position: relative; z-index:0; }
 .hero-text h1 { font-size:36px; font-weight:700; }
 .hero-text p { margin-top:12px; font-size:16px; opacity:0.85; }
-
 .cta-button {
-  background:#FFBE00;
-  color:#0d0d0d;
-  font-size:16px;
-  font-weight:700;
-  padding:12px 28px;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-  margin-top:24px;
-  display:inline-block;
-  text-decoration:none;
+  background:#FFBE00; color:#0d0d0d; font-size:16px; font-weight:700;
+  padding:12px 28px; border:none; border-radius:6px;
+  cursor:pointer; margin-top:24px; display:inline-block; text-decoration:none;
 }
 
 /* ================= SUGGESTIONS ================= */
 .section { padding:16px 14px 32px; }
 .section-title { margin:16px 6px; font-size:18px; font-weight:600; }
-.suggestions {
-  display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:16px;
-}
+.suggestions { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:16px; }
 .suggestion-item { width:200px; text-align:center; }
 .suggestion-item img { width:100%; aspect-ratio:16/9; border-radius:8px; object-fit:cover; }
 .suggestion-item p { margin-top:6px; font-size:14px; color:#fff; opacity:0.9; }
+
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOADING ================= -->
+<!-- ================= MODERN LOADING ================= -->
 <div id="loading">
-  <div class="loading-container">
-    <div class="loading-banner"></div>
-    <div class="loading-hero-text-line"></div>
-    <div class="loading-hero-text-line short"></div>
-    <div class="loading-cta"></div>
-    <div class="loading-cards">
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-    </div>
+  <div class="loader-bg">
+    <div class="loader-block" style="width:80%;"></div>
+    <div class="loader-block" style="width:60%;"></div>
+    <div class="loader-block" style="width:90%;"></div>
+    <div class="loader-shine"></div>
   </div>
 </div>
 
@@ -224,6 +141,7 @@ body {
   <div class="hero-header-fixed">
     <div class="logo"><span>قاب</span><div class="logo-box-img"></div></div>
   </div>
+
   <div class="hero-text">
     <h1>داستانت رو پیدا کن</h1>
     <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
@@ -253,9 +171,12 @@ window.addEventListener('load', () => {
   const hero = document.querySelector('.hero');
 
   setTimeout(() => {
-    loading.classList.add('hide');
-    hero.style.opacity = 1;
-  }, 2200); // مدت زمان نمایش لودینگ
+    loading.style.opacity = '0';
+    setTimeout(() => {
+      loading.remove();
+      hero.style.opacity = 1;
+    }, 800);
+  }, 2000); // مدت زمان نمایش لودینگ
 });
 </script>
 
