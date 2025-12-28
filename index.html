@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>قاب — جهان ویدئو</title>
 
 <style>
@@ -10,7 +10,7 @@
 @font-face {
   font-family: "MainFont";
   src: url("fonts/Ravi-Bold.woff2") format("woff2");
-  font-weight: 400;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -22,24 +22,28 @@
 }
 
 /* ================= RESET ================= */
-* { box-sizing: border-box; margin:0; padding:0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 /* ================= BODY ================= */
 body {
-  font-family: "MainFont", sans-serif;
+  font-family: "UIFont", sans-serif;
   background: #0d0d0d;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* ================= HERO ================= */
 .hero {
-  height: 100vh; /* مثل نسخه اولیه */
+  min-height: 80vh;
   padding: 32px 20px;
-  background:
-    linear-gradient(120deg, #FFBE00 0%, transparent 45%),
-    #0d0d0d; /* گرادیان و بک‌گراند */
+  background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
@@ -48,14 +52,14 @@ body {
   gap: 12px;
   font-size: 36px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #fff;
 }
 
 .logo-box-img {
   width: 54px;
   height: 36px;
   border-radius: 0;
-  background-image: url('image/logo.png');
+  background-image: url('image/Logo.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -63,17 +67,20 @@ body {
 }
 
 .hero-text {
-  margin-top: 100px;
+  margin-top: 24px;
   text-align: center;
 }
 
 .hero-text h1 {
-  font-size: 36px;
+  font-family: "MainFont", sans-serif;
   font-weight: 700;
+  font-size: 36px;
 }
 
 .hero-text p {
   margin-top: 12px;
+  font-family: "UIFont", sans-serif;
+  font-weight: 400;
   font-size: 16px;
   opacity: 0.85;
 }
@@ -88,10 +95,10 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
   text-decoration: none;
   display: inline-block;
   margin-top: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .cta-button:hover {
@@ -99,78 +106,43 @@ body {
   box-shadow: 0 6px 12px rgba(255, 190, 0, 0.4);
 }
 
-/* ================= SECTIONS ================= */
+/* ================= SUGGESTIONS ================= */
 .section {
-  padding: 24px 16px;
+  padding: 16px 14px 32px;
 }
 
 .section-title {
+  font-size: 18px;
+  font-weight: 700;
   margin-bottom: 16px;
-  font-size: 20px;
-  font-weight: 600;
 }
 
-/* ================= HORIZONTAL SCROLL GRID ================= */
-.horizontal-scroll {
+.suggestions {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
-  overflow-x: auto;
-  padding-bottom: 8px;
+  justify-content: center;
 }
 
-.horizontal-scroll::-webkit-scrollbar {
-  height: 8px;
+.suggestion-item {
+  width: 200px;
+  text-align: center;
 }
 
-.horizontal-scroll::-webkit-scrollbar-thumb {
-  background-color: #FFBE00;
-  border-radius: 4px;
-}
-
-.video-card {
-  flex: 0 0 220px;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.video-card .thumbnail {
+.suggestion-item img {
   width: 100%;
   aspect-ratio: 16/9;
   border-radius: 8px;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.2s;
+  object-fit: cover;
 }
 
-.video-card .thumbnail:hover {
-  transform: scale(1.05);
-}
-
-.video-card .video-title {
-  margin-top: 8px;
+.suggestion-item p {
+  margin-top: 6px;
+  font-family: "UIFont", sans-serif;
+  font-weight: 400;
   font-size: 14px;
   color: #fff;
-  text-align: center;
   opacity: 0.9;
-}
-
-.video-card .video-duration {
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-/* ================= MULTI SECTION RESPONSIVE ================= */
-@media (max-width: 768px) {
-  .video-card { flex: 0 0 150px; }
-  .hero-text h1 { font-size: 28px; }
-  .hero-text p { font-size: 14px; }
 }
 </style>
 </head>
@@ -191,50 +163,37 @@ body {
   </div>
 </section>
 
-<!-- ================= SUGGESTION SECTIONS ================= -->
+<!-- ================= SUGGESTIONS ================= -->
 <section class="section">
-  <div class="section-title">ویژه</div>
-  <div class="horizontal-scroll">
-    <div class="video-card">
-      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail1.jpg');"></div>
-      <span class="video-duration"></span>
-      <p class="video-title">عنوان ویدئو ۱</p>
-    </div>
-    <div class="video-card">
-      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail2.jpg');"></div>
-      <span class="video-duration"></span>
-      <p class="video-title">عنوان ویدئو ۲</p>
-    </div>
-    <div class="video-card">
-      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail3.jpg');"></div>
-      <span class="video-duration"></span>
-      <p class="video-title">عنوان ویدئو ۳</p>
-    </div>
-    <div class="video-card">
-      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail4.jpg');"></div>
-      <span class="video-duration"></span>
-      <p class="video-title">عنوان ویدئو ۴</p>
-    </div>
-  </div>
-</section>
+  <div class="section-title">پیشنهادها</div>
 
-<section class="section">
-  <div class="section-title">پرطرفدار</div>
-  <div class="horizontal-scroll">
-    <div class="video-card">
-      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail5.jpg');"></div>
-      <span class="video-duration"></span>
-      <p class="video-title">عنوان ویدئو ۵</p>
+  <div class="suggestions">
+    <div class="suggestion-item">
+      <a href="#">
+        <img src="https://via.placeholder.com/300x170" alt="ویدئو ۱">
+        <p>عنوان ویدئو ۱</p>
+      </a>
     </div>
-    <div class="video-card">
-      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail6.jpg');"></div>
-      <span class="video-duration"></span>
-      <p class="video-title">عنوان ویدئو ۶</p>
+
+    <div class="suggestion-item">
+      <a href="#">
+        <img src="https://via.placeholder.com/300x170" alt="ویدئو ۲">
+        <p>عنوان ویدئو ۲</p>
+      </a>
     </div>
-    <div class="video-card">
-      <div class="thumbnail" style="background-image:url('https://raw.githubusercontent.com/username/repo/branch/thumbnail7.jpg');"></div>
-      <span class="video-duration"></span>
-      <p class="video-title">عنوان ویدئو ۷</p>
+
+    <div class="suggestion-item">
+      <a href="#">
+        <img src="https://via.placeholder.com/300x170" alt="ویدئو ۳">
+        <p>عنوان ویدئو ۳</p>
+      </a>
+    </div>
+
+    <div class="suggestion-item">
+      <a href="#">
+        <img src="https://via.placeholder.com/300x170" alt="ویدئو ۴">
+        <p>عنوان ویدئو ۴</p>
+      </a>
     </div>
   </div>
 </section>
