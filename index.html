@@ -19,18 +19,15 @@
 }
 
 /* ================= RESET ================= */
-* { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; overflow-x:hidden; }
+* { box-sizing: border-box; margin:0; padding:0; }
+body {
+  font-family:"MainFont", sans-serif;
+  background:#0d0d0d;
+  color:#fff;
+  overflow-x:hidden;
+}
 
-<!-- ================= LOADING VIDEO ================= -->
-<div id="loading">
-  <video id="loading-video" autoplay muted loop playsinline>
-    <source src="image/loading.mp4" type="video/mp4">
-  </video>
-  <p id="loading-text">در حال بارگذاری…</p>
-</div>
-
-<style>
+/* ================= LOADING VIDEO ================= */
 #loading {
   position: fixed;
   top:0; left:0;
@@ -44,9 +41,9 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; overf
 }
 
 #loading video {
-  width: 80px; /* اندازه دلخواه */
-  height: auto;
-  object-fit: contain;
+  width:200px; /* اندازه دلخواه */
+  height:auto;
+  object-fit:contain;
 }
 
 #loading-text {
@@ -61,52 +58,40 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; overf
   opacity:0;
   pointer-events:none;
 }
-</style>
 
-<script>
-window.addEventListener('load', () => {
-  const loading = document.getElementById('loading');
-  const hero = document.querySelector('.hero');
-
-  setTimeout(() => {
-    loading.classList.add('hide');
-    hero.style.opacity = 1;
-  }, 2200); // مدت نمایش لودینگ
-});
-</script>
-  
-  /* ================= HERO ================= */
+/* ================= HERO ================= */
 .hero {
-  min-height: 80vh;
-  padding: 32px 20px;
-  background: linear-gradient(120deg, #FFBE00 0%, #0d0d0d 45%), #0d0d0d;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  min-height:80vh;
+  padding:32px 20px;
+  background:
+    linear-gradient(120deg, #FFBE00 0%, transparent 45%),
+    #0d0d0d;
+  display:flex;
+  flex-direction:column;
+  position:relative;
   transition: opacity 0.5s;
   opacity:0;
 }
 
 .hero-header-bg {
-  position: fixed;
+  position:fixed;
   top:0;
   left:0;
   width:100%;
   height:80px;
-  background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  background:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
   pointer-events:none;
   z-index:1;
 }
 
 .hero-header-fixed {
-  position: fixed;
+  position:fixed;
   top:0;
   left:0;
   width:100%;
-  display:flex;
-  justify-content:flex-start;
-  align-items:center;
   padding:10px 20px;
+  display:flex;
+  align-items:center;
   z-index:2;
 }
 
@@ -116,32 +101,33 @@ window.addEventListener('load', () => {
   gap:12px;
   font-size:36px;
   font-weight:700;
-  color:#fff;
 }
 
 .logo-box-img {
   width:54px;
   height:36px;
-  border-radius:0;
-  background-image:url('image/logo.png');
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
-  filter: drop-shadow(0 0 5px #FFBE00);
+  background:url('image/logo.png') no-repeat center/contain;
+  filter:drop-shadow(0 0 5px #FFBE00);
 }
 
 .hero-text {
   margin-top:140px;
   text-align:center;
-  position:relative;
-  z-index:0;
 }
 
-.hero-text h1 { font-size:36px; font-weight:700; }
-.hero-text p { margin-top:12px; font-size:16px; opacity:0.85; }
+.hero-text h1 {
+  font-size:36px;
+  font-weight:700;
+}
+
+.hero-text p {
+  margin-top:12px;
+  font-size:16px;
+  opacity:0.85;
+}
 
 .cta-button {
-  background-color:#FFBE00;
+  background:#FFBE00;
   color:#0d0d0d;
   font-size:16px;
   font-weight:700;
@@ -149,15 +135,9 @@ window.addEventListener('load', () => {
   border:none;
   border-radius:6px;
   cursor:pointer;
-  transition:transform 0.2s, box-shadow 0.2s;
-  text-decoration:none;
-  display:inline-block;
   margin-top:24px;
-}
-
-.cta-button:hover {
-  transform:translateY(-2px);
-  box-shadow:0 6px 12px rgba(255,190,0,0.4);
+  display:inline-block;
+  text-decoration:none;
 }
 
 /* ================= SUGGESTIONS ================= */
@@ -172,7 +152,10 @@ window.addEventListener('load', () => {
   margin-top:16px;
 }
 
-.suggestion-item { width:200px; text-align:center; }
+.suggestion-item {
+  width:200px;
+  text-align:center;
+}
 
 .suggestion-item img {
   width:100%;
@@ -205,7 +188,10 @@ window.addEventListener('load', () => {
   <div class="hero-header-bg"></div>
 
   <div class="hero-header-fixed">
-    <div class="logo"><span>قاب</span><div class="logo-box-img"></div></div>
+    <div class="logo">
+      <span>قاب</span>
+      <div class="logo-box-img"></div>
+    </div>
   </div>
 
   <div class="hero-text">
@@ -236,7 +222,7 @@ window.addEventListener('load', () => {
   const loading = document.getElementById('loading');
   const hero = document.querySelector('.hero');
 
-  // مدت زمان دلخواه قبل از محو شدن لودینگ
+  // مدت زمان نمایش لودینگ
   setTimeout(() => {
     loading.classList.add('hide');
     hero.style.opacity = 1;
