@@ -16,44 +16,28 @@
   src: url("fonts/Ravi-Regular.woff2") format("woff2");
   font-weight: 400;
 }
-
 * { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; overflow-x:hidden; }
 
-body {
-  font-family:"MainFont", sans-serif;
-  background:#0d0d0d;
-  color:#fff;
-  overflow-x:hidden;
-}
-
-<!-- ================= LOADING VIDEO ================= -->
-<div id="loading">
-  <video id="loading-video" autoplay muted loop playsinline>
-    <source src="image/loading.mp4" type="video/mp4">
-  </video>
-  <p id="loading-text">در حال بارگذاری…</p>
-</div>
-
-<style>
+/* ================= LOADING VIDEO ================= */
 #loading {
   position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
+  inset:0;
   background:#0d0d0d;
-  display:flex; flex-direction:column;
-  justify-content:center; align-items:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   z-index:9999;
   opacity:1;
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-
 #loading video {
-  width: 200px; /* اندازه دلخواه */
-  height: auto;
-  object-fit: contain;
+  width:200px;
+  height:auto;
+  object-fit:contain;
   animation: pulse 1.2s infinite;
 }
-
 #loading-text {
   color:#fff;
   font-size:16px;
@@ -61,55 +45,35 @@ body {
   opacity:0.85;
   animation: blink 1.5s infinite;
 }
-
-/* افکت تکان ملایم ویدیو */
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
+  0%,100% { transform: scale(1); }
   50% { transform: scale(1.05); }
 }
-
-/* افکت متن در حال چشمک زدن */
 @keyframes blink {
-  0%, 50%, 100% { opacity:0.85; }
-  25%, 75% { opacity:0.4; }
+  0%,50%,100% { opacity:0.85; }
+  25%,75% { opacity:0.4; }
 }
-
-/* وقتی لود تموم شد */
 #loading.hide {
   opacity:0;
   transform: scale(0.95);
   pointer-events:none;
 }
-</style>
 
-<script>
-window.addEventListener('load', () => {
-  const loading = document.getElementById('loading');
-  const hero = document.querySelector('.hero');
-
-  // مدت زمان دلخواه قبل از محو شدن لودینگ
-  setTimeout(() => {
-    loading.classList.add('hide');
-    hero.style.opacity = 1;
-  }, 2200); // یا هر مقدار دلخواه
-});
-</script>
 /* ================= HERO ================= */
 .hero {
   min-height:80vh;
   padding:32px 20px;
-  background:
-    linear-gradient(120deg, #FFBE00 0%, transparent 45%),
-    #0d0d0d;
+  background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
   display:flex;
   flex-direction:column;
   position:relative;
+  opacity:0;
+  transition: opacity 0.5s;
 }
 
 .hero-header-bg {
   position:fixed;
-  top:0;
-  left:0;
+  top:0; left:0;
   width:100%;
   height:80px;
   background:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
@@ -119,12 +83,9 @@ window.addEventListener('load', () => {
 
 .hero-header-fixed {
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
+  top:0; left:0; width:100%;
+  display:flex; align-items:center;
   padding:10px 20px;
-  display:flex;
-  align-items:center;
   z-index:2;
 }
 
@@ -148,16 +109,8 @@ window.addEventListener('load', () => {
   text-align:center;
 }
 
-.hero-text h1 {
-  font-size:36px;
-  font-weight:700;
-}
-
-.hero-text p {
-  margin-top:12px;
-  font-size:16px;
-  opacity:0.85;
-}
+.hero-text h1 { font-size:36px; font-weight:700; }
+.hero-text p { margin-top:12px; font-size:16px; opacity:0.85; }
 
 .cta-button {
   background:#FFBE00;
@@ -176,26 +129,30 @@ window.addEventListener('load', () => {
 /* ================= SUGGESTIONS ================= */
 .section { padding:16px 14px 32px; }
 .section-title { margin:16px 6px; font-size:18px; font-weight:600; }
+.suggestions { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:16px; }
+.suggestion-item { width:200px; text-align:center; }
+.suggestion-item img { width:100%; aspect-ratio:16/9; border-radius:8px; object-fit:cover; }
+.suggestion-item p { margin-top:6px; font-size:14px; color:#fff; opacity:0.9; }
 
 </style>
 </head>
 
 <body>
 
-<!-- LOADING -->
+<!-- ================= LOADING VIDEO ================= -->
 <div id="loading">
-  <div class="loader"></div>
+  <video id="loading-video" autoplay muted loop playsinline>
+    <source src="image/loading.mp4" type="video/mp4">
+  </video>
+  <p id="loading-text">در حال بارگذاری…</p>
 </div>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero-header-bg"></div>
 
   <div class="hero-header-fixed">
-    <div class="logo">
-      <span>قاب</span>
-      <div class="logo-box-img"></div>
-    </div>
+    <div class="logo"><span>قاب</span><div class="logo-box-img"></div></div>
   </div>
 
   <div class="hero-text">
@@ -205,14 +162,32 @@ window.addEventListener('load', () => {
   </div>
 </section>
 
+<!-- ================= SUGGESTIONS ================= -->
+<section class="section">
+  <div class="section-title">پیشنهادها</div>
+  <div class="suggestions">
+    <div class="suggestion-item">
+      <a href="#"><img src="#" alt="ویدئو ۱"><p>عنوان ویدئو ۱</p></a>
+    </div>
+    <div class="suggestion-item">
+      <a href="#"><img src="#" alt="ویدئو ۲"><p>عنوان ویدئو ۲</p></a>
+    </div>
+    <div class="suggestion-item">
+      <a href="#"><img src="#" alt="ویدئو ۳"><p>عنوان ویدئو ۳</p></a>
+    </div>
+  </div>
+</section>
+
 <script>
 window.addEventListener('load', () => {
   const loading = document.getElementById('loading');
+  const hero = document.querySelector('.hero');
 
+  // محو شدن لودینگ و نمایش hero
   setTimeout(() => {
-    loading.style.opacity = '0';
-    setTimeout(() => loading.remove(), 1200);
-  }, 1800); // ⏱️ مدت نمایش لودینگ
+    loading.classList.add('hide');
+    hero.style.opacity = 1;
+  }, 2200);
 });
 </script>
 
