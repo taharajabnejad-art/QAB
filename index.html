@@ -22,7 +22,29 @@
 * { box-sizing:border-box; margin:0; padding:0; }
 body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; overflow-x:hidden; }
 
-/* ================= MODERN LOADING ================= */
+<!-- ================= ADVANCED 2025 LOADING ================= -->
+<div id="loading">
+  <div class="loading-container">
+    <!-- بنر -->
+    <div class="loading-banner"></div>
+
+    <!-- متن هدر -->
+    <div class="loading-hero-text-line"></div>
+    <div class="loading-hero-text-line short"></div>
+
+    <!-- دکمه CTA -->
+    <div class="loading-cta"></div>
+
+    <!-- کارت‌های ویدیو -->
+    <div class="loading-cards">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+    </div>
+  </div>
+</div>
+
+<style>
 #loading {
   position: fixed;
   inset: 0;
@@ -34,22 +56,72 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; overf
   overflow: hidden;
 }
 
-.loader-bg {
-  width: 150px;
-  height: 150px;
-  background: #1a1a1a; /* پایه لوگو یا قاب */
+.loading-container {
+  width: 90%;
+  max-width: 1000px;
+}
+
+/* بنر */
+.loading-banner {
+  width: 100%;
+  height: 180px;
+  background: #1a1a1a;
   border-radius: 12px;
+  margin-bottom: 24px;
   position: relative;
   overflow: hidden;
 }
 
-.loader-shine {
+/* خطوط متن */
+.loading-hero-text-line {
+  width: 60%;
+  height: 36px;
+  background: #1a1a1a;
+  margin: 0 auto 12px auto;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.loading-hero-text-line.short { width: 40%; }
+
+/* دکمه CTA */
+.loading-cta {
+  width: 180px;
+  height: 36px;
+  background: #1a1a1a;
+  margin: 0 auto 40px auto;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* کارت‌های ویدیو */
+.loading-cards {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+.card {
+  width: 200px;
+  height: 112px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* افکت نور مورب */
+.loading-banner::before,
+.loading-hero-text-line::before,
+.loading-cta::before,
+.card::before {
+  content: '';
   position: absolute;
   top: -50%;
   left: -50%;
   width: 50%;
   height: 200%;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
   transform: rotate(25deg);
   animation: shine 1.5s infinite;
 }
@@ -60,7 +132,27 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; overf
   100% { transform: translateX(-150%) rotate(25deg); }
 }
 
-/* ================= HERO ================= */
+/* محو شدن لودینگ */
+#loading.hide {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+</style>
+
+<script>
+window.addEventListener('load', () => {
+  const loading = document.getElementById('loading');
+  const hero = document.querySelector('.hero');
+
+  setTimeout(() => {
+    loading.classList.add('hide');
+    hero.style.opacity = 1;
+  }, 2200); // مدت زمان نمایش لودینگ
+});
+</script>
+  
+  /* ================= HERO ================= */
 .hero {
   min-height: 80vh;
   padding: 32px 20px;
