@@ -6,16 +6,19 @@
 <title>قاب — جهان ویدئو</title>
 
 <style>
-/* ================= FONTS ================= */
+/* ================= FONT ================= */
+@font-face {
+  font-family: "MainFont";
+  src: url("fonts/Ravi-Black.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
 @font-face {
   font-family: "MainFont";
   src: url("fonts/Ravi-Bold.woff2") format("woff2");
-  font-weight: 700;
-}
-@font-face {
-  font-family: "MainFont";
-  src: url("fonts/Ravi-Regular.woff2") format("woff2");
   font-weight: 400;
+  font-style: normal;
 }
 
 /* ================= RESET ================= */
@@ -38,18 +41,35 @@ body {
   position: relative;
 }
 
-/* ===== FIXED HEADER LOGO ===== */
-.hero-fixed {
-  position: fixed;
+.hero-header-bg {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  animation: fadeBackground 3s forwards;
+  z-index: 0;
+}
+
+@keyframes fadeBackground {
+  0% { background: rgba(0,0,0,0.6); }
+  100% { background: rgba(0,0,0,0); }
+}
+
+.hero .logo,
+.hero .hero-text {
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 20px;
-  background: rgba(0,0,0,0.6); /* سیاه شفاف */
-  z-index: 1000;
+  font-size: 36px;
+  font-weight: 700;
+  color: #FFFFFF;
 }
 
 .logo-box-img {
@@ -63,9 +83,8 @@ body {
   filter: drop-shadow(0 0 5px #FFBE00);
 }
 
-/* ===== HERO TEXT & BUTTON ===== */
 .hero-text {
-  margin-top: 120px; /* فاصله از بالای صفحه */
+  margin-top: 140px;
   text-align: center;
 }
 
@@ -80,6 +99,7 @@ body {
   opacity: 0.85;
 }
 
+/* ================= CTA BUTTON ================= */
 .cta-button {
   background-color: #FFBE00;
   color: #0d0d0d;
@@ -142,14 +162,15 @@ body {
 
 <body>
 
-<!-- ================= FIXED HERO LOGO ================= -->
-<div class="hero-fixed">
-  <span>قاب</span>
-  <div class="logo-box-img"></div>
-</div>
-
-<!-- ================= HERO TEXT ================= -->
+<!-- ================= HERO ================= -->
 <section class="hero">
+  <div class="hero-header-bg"></div> <!-- پس‌زمینه سیاه تدریجی -->
+
+  <div class="logo">
+    <span>قاب</span>
+    <div class="logo-box-img"></div>
+  </div>
+
   <div class="hero-text">
     <h1>داستانت رو پیدا کن</h1>
     <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
@@ -163,22 +184,22 @@ body {
 
   <div class="suggestions">
     <div class="suggestion-item">
-      <a href="#">
-        <img src="https://via.placeholder.com/300x170" alt="ویدئو ۱">
+      <a href="https://raw.githubusercontent.com/username/repo/branch/video1.mp4" target="_blank">
+        <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail1.jpg" alt="ویدئو ۱">
         <p>عنوان ویدئو ۱</p>
       </a>
     </div>
 
     <div class="suggestion-item">
-      <a href="#">
-        <img src="https://via.placeholder.com/300x170" alt="ویدئو ۲">
+      <a href="https://raw.githubusercontent.com/username/repo/branch/video2.mp4" target="_blank">
+        <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail2.jpg" alt="ویدئو ۲">
         <p>عنوان ویدئو ۲</p>
       </a>
     </div>
 
     <div class="suggestion-item">
-      <a href="#">
-        <img src="https://via.placeholder.com/300x170" alt="ویدئو ۳">
+      <a href="https://raw.githubusercontent.com/username/repo/branch/video3.mp4" target="_blank">
+        <img src="https://raw.githubusercontent.com/username/repo/branch/thumbnail3.jpg" alt="ویدئو ۳">
         <p>عنوان ویدئو ۳</p>
       </a>
     </div>
