@@ -18,7 +18,6 @@
   font-weight: 400;
 }
 
-/* ================= RESET ================= */
 * { box-sizing:border-box; margin:0; padding:0; }
 body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
 
@@ -27,15 +26,15 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
   position: relative;
   background: #1a1a1a;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .skeleton::after {
-  content: "";
-  position: absolute;
-  top: 0; left: -140%;
-  width: 55%;
-  height: 100%;
+  content:"";
+  position:absolute;
+  top:0; left:-140%;
+  width:55%;
+  height:100%;
   background: linear-gradient(
     110deg,
     transparent 0%,
@@ -44,13 +43,12 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
     rgba(255,255,255,.18) 55%,
     transparent 100%
   );
-  animation: skeleton-shine 1.2s linear infinite;
+  animation: skeleton-shine 1.2s linear 3;
 }
 
-@keyframes skeleton-shine { to { left: 140%; } }
-
-.skeleton.loaded { background: transparent; }
-.skeleton.loaded::after { display:none; }
+@keyframes skeleton-shine {
+  to { left: 140%; }
+}
 
 /* ================= HERO ================= */
 .hero {
@@ -61,18 +59,30 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
 }
 
 .hero-header-bg {
-  position:fixed; top:0; left:0; width:100%; height:80px;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:80px;
   background:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
-  pointer-events:none; z-index:1;
+  pointer-events:none;
+  z-index:1;
 }
 
 .hero-header-fixed {
-  position:fixed; top:0; left:0; width:100%; padding:10px 20px;
-  display:flex; align-items:center; z-index:2;
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  z-index:2;
 }
 
 .logo {
-  display:flex; align-items:center; gap:12px; font-size:36px; font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:36px;
+  font-weight:700;
 }
 
 .logo-box-img {
@@ -81,27 +91,59 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
   filter:drop-shadow(0 0 5px #FFBE00);
 }
 
-.hero-text { margin-top:140px; text-align:center; }
-.hero-title { width:70%; height:42px; margin:0 auto 16px; }
-.hero-desc { width:55%; height:18px; margin:0 auto; }
+.hero-text {
+  margin-top:140px;
+  text-align:center;
+}
+
+/* Skeleton Wrapper برای Hero */
+.hero-title-skel {
+  width:70%;
+  height:42px;
+  margin:0 auto 16px;
+  border-radius:6px;
+}
+
+.hero-desc-skel {
+  width:55%;
+  height:18px;
+  margin:0 auto;
+  border-radius:4px;
+}
+
+/* محتوا واقعی */
+.hero-text h1 {
+  font-size:36px; font-weight:700;
+}
+
+.hero-text p {
+  margin-top:12px; font-size:16px; opacity:0.85;
+}
+
 .cta-button {
-  background:#FFBE00; color:#0d0d0d; font-size:16px; font-weight:700;
-  padding:12px 28px; border-radius:6px; margin-top:32px;
-  display:inline-block; text-decoration:none;
+  background:#FFBE00; color:#0d0d0d;
+  font-size:16px; font-weight:700;
+  padding:12px 28px; border-radius:6px;
+  margin-top:32px; display:inline-block; text-decoration:none;
 }
 
 /* ================= SUGGESTIONS ================= */
-.section { padding:24px 16px; }
-.section-title { font-size:18px; font-weight:600; margin-bottom:16px; }
-.suggestions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
-.video-card { width:200px; }
-.thumb { width:100%; aspect-ratio:16/9; border-radius:8px; }
-.meta { margin-top:8px; }
-.line { height:14px; margin-bottom:6px; }
-.line.small { width:60%; }
+.section {
+  padding:24px 16px;
+}
 
-/* ================= HIDDEN CONTENT ================= */
-.hidden { visibility:hidden; }
+.section-title {
+  font-size:18px; font-weight:600; margin-bottom:16px;
+}
+
+/* Skeleton Wrapper برای ویدیوها */
+.video-card { width:200px; }
+.thumb-skel { width:100%; aspect-ratio:16/9; border-radius:8px; }
+.line-skel { height:14px; margin-top:6px; border-radius:4px; }
+.line-skel.small { width:60%; }
+
+.suggestions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
 </style>
 </head>
 
@@ -111,106 +153,68 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
 <section class="hero">
   <div class="hero-header-bg"></div>
   <div class="hero-header-fixed">
-    <div class="logo">
-      <span>قاب</span>
-      <div class="logo-box-img"></div>
-    </div>
+    <div class="logo"><span>قاب</span><div class="logo-box-img"></div></div>
   </div>
 
+  <!-- Skeleton -->
+  <div class="skeleton hero-title-skel"></div>
+  <div class="skeleton hero-desc-skel"></div>
+
+  <!-- محتوا واقعی -->
   <div class="hero-text">
-    <div class="skeleton hero-title"></div>
-    <div class="skeleton hero-desc"></div>
-    <a class="cta-button">داستان خودتو بنویس</a>
+    <h1>داستانت رو پیدا کن</h1>
+    <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
+    <a href="#" class="cta-button">داستان خودتو بنویس</a>
   </div>
 </section>
 
 <!-- ================= SUGGESTIONS ================= -->
 <section class="section">
   <div class="section-title">پیشنهادها</div>
-  <div class="suggestions">
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ================= DYNAMIC SECTIONS ================= -->
-<section class="section" id="section-4">
-  <div class="section-title">بخش جدید ۴</div>
   <div class="suggestions">
     <div class="video-card">
-      <div class="thumb skeleton"></div>
+      <div class="thumb-skel skeleton"></div>
+      <div class="line-skel skeleton"></div>
+      <div class="line-skel small skeleton"></div>
+
+      <img class="thumb" src="https://via.placeholder.com/200x112" alt="ویدئو ۱">
       <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
+        <div>عنوان ویدئو ۱</div>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="section" id="section-5">
-  <div class="section-title">بخش جدید ۵</div>
-  <div class="suggestions">
     <div class="video-card">
-      <div class="thumb skeleton"></div>
+      <div class="thumb-skel skeleton"></div>
+      <div class="line-skel skeleton"></div>
+      <div class="line-skel small skeleton"></div>
+
+      <img class="thumb" src="https://via.placeholder.com/200x112" alt="ویدئو ۲">
       <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
+        <div>عنوان ویدئو ۲</div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="thumb-skel skeleton"></div>
+      <div class="line-skel skeleton"></div>
+      <div class="line-skel small skeleton"></div>
+
+      <img class="thumb" src="https://via.placeholder.com/200x112" alt="ویدئو ۳">
+      <div class="meta">
+        <div>عنوان ویدئو ۳</div>
       </div>
     </div>
   </div>
 </section>
 
 <script>
-function loadSectionSkeleton(section) {
-  const skeletons = section.querySelectorAll('.skeleton');
-  let count = 0;
-  const interval = setInterval(() => {
-    count++;
-    if(count >= 3){
-      skeletons.forEach(s => s.classList.add('loaded'));
-      clearInterval(interval);
-    }
-  }, 400); // هر حرکت ~0.4s × 3
-}
-
-// ================= INITIAL LOAD =================
 window.addEventListener('load', () => {
-  loadSectionSkeleton(document.querySelector('.hero'));
-  document.querySelectorAll('.section').forEach((sec, idx) => {
-    if(idx < 3) loadSectionSkeleton(sec); // اولین 3 بخش
+  // وقتی Skeleton تموم شد (۳ بار حرکت) حذف شود
+  document.querySelectorAll('.skeleton').forEach(el => {
+    el.addEventListener('animationend', () => el.remove());
   });
 });
-
-// ================= DYNAMIC SECTIONS =================
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting && !entry.target.dataset.loaded) {
-      loadSectionSkeleton(entry.target);
-      entry.target.dataset.loaded = true;
-    }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 </script>
 
 </body>
