@@ -22,6 +22,28 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; overf
   padding:32px 20px;
   background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
   display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative;
+  $base-color: #ddd
+$shine-color: #e8e8e8
+$animation-duration: 1.6s
+$avatar-offset: 52 + 16
+
+@mixin background-gradient
+  background-image: linear-gradient(90deg, $base-color 0px, $shine-color 40px, $base-color 80px) 
+  background-size: 600px
+  
+body
+  margin: 0
+
+.container
+  height: 100vh
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  
+.post
+  width: 220px
+  height: 80px
 }
 .logo-box-img { width:54px; height:36px; background:url('image/logo.png') no-repeat center/contain; filter:drop-shadow(0 0 5px #FFBE00); margin-left:12px; }
 .skeleton {
@@ -131,6 +153,26 @@ document.querySelectorAll('.skeleton').forEach(el => {
   }, 400); // هر حرکت 400ms
 });
 </script>
+
+  <div class="container">
+  <div class="post">
+    <div class="avatar"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+
+  <div class="post">
+    <div class="avatar"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+
+  <div class="post">
+    <div class="avatar"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</div>
 
 </body>
 </html>
