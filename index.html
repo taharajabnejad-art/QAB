@@ -6,67 +6,59 @@
 <title>قاب — جهان ویدئو</title>
 
 <style>
+@font-face {
+  font-family:"MainFont";
+  src:url("fonts/Ravi-Bold.woff2") format("woff2");
+  font-weight:700;
+}
+@font-face {
+  font-family:"MainFont";
+  src:url("fonts/Ravi-Regular.woff2") format("woff2");
+  font-weight:400;
+}
+
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
+  font-family:"MainFont",sans-serif;
   background:#0d0d0d;
   color:#fff;
-  font-family:sans-serif;
 }
 
-/* ================= SKELETON LOADING ================= */
+/* ================= LOADING OVERLAY ================= */
 #loading{
   position:fixed;
   inset:0;
   background:#0d0d0d;
-  display:flex;
-  justify-content:center;
-  align-items:center;
   z-index:9999;
 }
 
-.skeleton{
-  width:90%;
-  max-width:420px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-
-.block{
-  position:relative;
-  background:#1a1a1a;
-  border-radius:14px;
+/* لایه سایه */
+.shine{
+  position:absolute;
+  inset:0;
   overflow:hidden;
 }
 
-/* اندازه واقعی اجزای سایت */
-.block.banner{height:90px}
-.block.text-sm{height:18px;width:55%}
-.block.text-lg{height:18px;width:90%}
-.block.video{height:170px}
-
-/* شاین مدرن */
-.block::after{
+.shine::after{
   content:'';
   position:absolute;
   top:0;
   left:-140%;
-  width:60%;
+  width:55%;
   height:100%;
   background:linear-gradient(
     110deg,
     transparent 0%,
-    rgba(255,255,255,0.18) 45%,
-    rgba(255,255,255,0.25) 50%,
-    rgba(255,255,255,0.18) 55%,
+    rgba(255,255,255,.18) 45%,
+    rgba(255,255,255,.25) 50%,
+    rgba(255,255,255,.18) 55%,
     transparent 100%
   );
-  filter:blur(1px);
-  animation:skeleton-shine 1.4s linear infinite;
+  animation:shine-move 1.4s linear infinite;
 }
 
-@keyframes skeleton-shine{
+@keyframes shine-move{
   to{ left:140% }
 }
 
@@ -83,49 +75,84 @@ body{
   background:
     linear-gradient(120deg,#FFBE00 0%,transparent 45%),
     #0d0d0d;
-  opacity:0;
-  transition:opacity .5s ease;
+  position:relative;
 }
 
-.hero h1{
+/* Header */
+.hero-header-fixed{
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  z-index:2;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:36px;
+  font-weight:700;
+}
+
+.logo-box-img{
+  width:54px;
+  height:36px;
+  background:url("image/logo.png") no-repeat center/contain;
+  filter:drop-shadow(0 0 5px #FFBE00);
+}
+
+/* محتوا */
+.hero-text{
   margin-top:140px;
   text-align:center;
-  font-size:36px;
 }
-.hero p{
-  text-align:center;
-  margin-top:12px;
-  opacity:.85;
+
+.hero-text h1{font-size:36px}
+.hero-text p{margin-top:12px;opacity:.85}
+
+/* حالت لود */
+.loading-state *{
+  color:transparent !important;
+  background:#1a1a1a;
+  border-radius:10px;
+  position:relative;
+  overflow:hidden;
 }
+.loading-state img{opacity:0}
 </style>
 </head>
 
-<body>
+<body class="loading-state">
 
-<!-- LOADING -->
+<!-- OVERLAY SHINE -->
 <div id="loading">
-  <div class="skeleton">
-    <div class="block banner"></div>
-    <div class="block text-sm"></div>
-    <div class="block text-lg"></div>
-    <div class="block video"></div>
-  </div>
+  <div class="shine"></div>
 </div>
 
-<!-- SITE -->
 <section class="hero">
-  <h1>داستانت رو پیدا کن</h1>
-  <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
+  <div class="hero-header-fixed">
+    <div class="logo">
+      <span>قاب</span>
+      <div class="logo-box-img"></div>
+    </div>
+  </div>
+
+  <div class="hero-text">
+    <h1>داستانت رو پیدا کن</h1>
+    <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
+  </div>
 </section>
 
 <script>
 window.addEventListener('load',()=>{
   const loading=document.getElementById('loading')
-  const hero=document.querySelector('.hero')
 
   setTimeout(()=>{
+    document.body.classList.remove('loading-state')
     loading.classList.add('hide')
-    hero.style.opacity=1
     setTimeout(()=>loading.remove(),700)
   },2000)
 })
