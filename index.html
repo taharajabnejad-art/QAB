@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>قاب — جهان ویدئو</title>
-
 <style>
+/* ================= FONT ================= */
 @font-face {
   font-family: "MainFont";
   src: url("fonts/Ravi-Bold.woff2") format("woff2");
@@ -17,38 +17,47 @@
   font-weight: 400;
 }
 
+/* ================= RESET ================= */
 * { box-sizing:border-box; margin:0; padding:0; }
 
 body {
   font-family:"MainFont", sans-serif;
   background:#0d0d0d;
   color:#fff;
+  overflow-x:hidden;
 }
 
 /* ================= HERO ================= */
 .hero {
   min-height:80vh;
   padding:32px 20px;
-  background:#0d0d0d;
+  background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
   position:relative;
-  text-align:center;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  text-align:center;
+  box-shadow: inset 0 0 40px #FFBE00, inset 0 0 80px #FFBE00; /* نئون از بغل‌ها */
 }
 
-/* ================= HEADER ================= */
 .hero-header-fixed {
   position:fixed;
   top:0; left:0;
   width:100%;
   padding:10px 20px;
-  z-index:2;
   display:flex;
   align-items:center;
-  justify-content:center;
   gap:12px;
+  z-index:2;
+}
+
+.logo {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:36px;
+  font-weight:700;
 }
 
 .logo-box-img {
@@ -58,7 +67,6 @@ body {
   filter:drop-shadow(0 0 5px #FFBE00);
 }
 
-/* ================= HERO TEXT ================= */
 .hero-text {
   margin-top:140px;
 }
@@ -75,7 +83,6 @@ body {
   margin-bottom:32px;
 }
 
-/* ================= CTA ================= */
 .cta-button {
   background:#FFBE00;
   color:#0d0d0d;
@@ -87,65 +94,146 @@ body {
   display:inline-block;
 }
 
-/* ================= SKELETON HERO ================= */
-.hero-skeleton {
-  position:absolute;
-  inset:0;
-  background:#1a1a1a;
-  border-radius:12px;
-  overflow:hidden;
-  z-index:1;
+/* ================= SKELETON ================= */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #ecf0f1;
+  --accent-color: #3498db;
+  --shimmer-color: rgba(255, 255, 255, 0.3);
+  --loading-grey: #e2e5e7;
+  --loading-dark-grey: #c8cdd0;
+  --spacing-unit: 16px;
+  --border-radius: 6px;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero-skeleton::after {
-  content:"";
+.container {
+  max-width:1200px;
+  margin:0 auto;
+  padding:24px;
+}
+
+.skeleton-element {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--loading-grey);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-unit);
+}
+
+.skeleton-element::after {
+  content:'';
   position:absolute;
-  top:0;
-  left:-150%;
-  width:50%;
-  height:100%;
-  background:linear-gradient(110deg, transparent 0%, rgba(255,255,255,.18) 45%, rgba(255,255,255,.28) 50%, rgba(255,255,255,.18) 55%, transparent 100%);
-  animation: shimmer 1.6s linear infinite;
+  top:0; left:0; right:0; bottom:0;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, var(--shimmer-color) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-100%);
+  animation: shimmer 2s infinite;
 }
 
 @keyframes shimmer {
-  to { left:150%; }
+  100% { transform: translateX(100%); }
 }
+
+/* Compact post skeleton */
+.compact-skeleton {
+  display:flex;
+  gap:16px;
+  margin-bottom:16px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--loading-dark-grey);
+}
+
+.compact-image {
+  width:80px;
+  height:80px;
+  background-color: var(--loading-grey);
+  border-radius: var(--border-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+.compact-content {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  justify-content:space-between;
+}
+
+.compact-title, .compact-meta, .compact-excerpt {
+  height:12px;
+  border-radius: var(--border-radius);
+  background-color: var(--loading-grey);
+  position:relative;
+  overflow:hidden;
+}
+
+.compact-title { width:100%; }
+.compact-meta { width:70%; }
+.compact-excerpt { width:100%; }
+.compact-excerpt:last-child { width:90%; }
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:600px){
+  .hero-title { font-size:32px; }
+  .hero-desc { font-size:16px; }
+  .compact-skeleton { flex-direction:column; }
+  .compact-image { width:100%; height:140px; }
+}
+
 </style>
 </head>
-
 <body>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="hero-header-fixed">
+<!-- HEADER FIXED -->
+<div class="hero-header-fixed">
+  <div class="logo">
     <span>قاب</span>
     <div class="logo-box-img"></div>
   </div>
+</div>
 
+<!-- HERO -->
+<section class="hero">
   <div class="hero-text">
     <div class="hero-title">داستان جهان ویدئو</div>
     <div class="hero-desc">جایی برای تجربه و اشتراک ویدئوها</div>
     <a class="cta-button">داستان خودتو بنویس</a>
   </div>
-
-  <!-- Skeleton روی کل Hero -->
-  <div class="hero-skeleton"></div>
 </section>
 
-<script>
-const skeleton = document.querySelector('.hero-skeleton');
-let moves = 0;
+<!-- SKELETON LAYOUT -->
+<div class="container">
+  <div class="compact-skeleton">
+    <div class="compact-image skeleton-element"></div>
+    <div class="compact-content">
+      <div class="compact-title skeleton-element"></div>
+      <div class="compact-meta skeleton-element"></div>
+      <div class="compact-excerpt skeleton-element"></div>
+      <div class="compact-excerpt skeleton-element"></div>
+    </div>
+  </div>
 
-// 3 بار shimmer بعد حذف Skeleton
-const interval = setInterval(() => {
-  moves++;
-  if(moves >= 3){
-    skeleton.remove();
-    clearInterval(interval);
-  }
-}, 1600); // هر بار حرکت 1.6 ثانیه
-</script>
+  <div class="compact-skeleton">
+    <div class="compact-image skeleton-element"></div>
+    <div class="compact-content">
+      <div class="compact-title skeleton-element"></div>
+      <div class="compact-meta skeleton-element"></div>
+      <div class="compact-excerpt skeleton-element"></div>
+      <div class="compact-excerpt skeleton-element"></div>
+    </div>
+  </div>
+
+  <div class="compact-skeleton">
+    <div class="compact-image skeleton-element"></div>
+    <div class="compact-content">
+      <div class="compact-title skeleton-element"></div>
+      <div class="compact-meta skeleton-element"></div>
+      <div class="compact-excerpt skeleton-element"></div>
+      <div class="compact-excerpt skeleton-element"></div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
