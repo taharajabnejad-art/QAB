@@ -18,62 +18,67 @@
   font-weight: 400;
 }
 
-* { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
+body {
+  font-family:"MainFont", sans-serif;
+  background:#0d0d0d;
+  color:#fff;
+  margin:0; padding:0;
+}
 
 /* ================= SKELETON ================= */
 .skeleton {
   position: relative;
-  background: #1a1a1a;
-  overflow: hidden;
+  background: #2a2a2a;
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .skeleton::after {
-  content:"";
-  position:absolute;
-  top:0; left:-140%;
-  width:55%;
+  content: "";
+  position: absolute;
+  top:0;
+  left:-150%;
+  width:50%;
   height:100%;
   background: linear-gradient(
     110deg,
     transparent 0%,
-    rgba(255,255,255,.18) 45%,
-    rgba(255,255,255,.28) 50%,
-    rgba(255,255,255,.18) 55%,
+    rgba(255,255,255,0.15) 45%,
+    rgba(255,255,255,0.25) 50%,
+    rgba(255,255,255,0.15) 55%,
     transparent 100%
   );
-  animation: skeleton-shine 1.2s linear 3;
+  animation: skeleton-shine 0.6s linear 3;
 }
 
 @keyframes skeleton-shine {
-  to { left: 140%; }
+  to { left: 150%; }
+}
+
+.skeleton.loaded {
+  background: transparent;
+}
+.skeleton.loaded::after {
+  display:none;
 }
 
 /* ================= HERO ================= */
 .hero {
   min-height:80vh;
   padding:32px 20px;
-  background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
+  background:
+    linear-gradient(120deg, #FFBE00 0%, transparent 45%),
+    #0d0d0d;
   position:relative;
-}
-
-.hero-header-bg {
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:80px;
-  background:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
-  pointer-events:none;
-  z-index:1;
 }
 
 .hero-header-fixed {
   position:fixed;
   top:0; left:0;
   width:100%;
-  padding:10px 20px;
   display:flex;
   align-items:center;
+  padding:10px 20px;
   z-index:2;
 }
 
@@ -86,45 +91,43 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
 }
 
 .logo-box-img {
-  width:54px; height:36px;
+  width:54px;
+  height:36px;
   background:url('image/logo.png') no-repeat center/contain;
-  filter:drop-shadow(0 0 5px #FFBE00);
+  filter: drop-shadow(0 0 5px #FFBE00);
 }
 
+/* ================= HERO TEXT ================= */
 .hero-text {
   margin-top:140px;
   text-align:center;
 }
 
-/* Skeleton Wrapper برای Hero */
-.hero-title-skel {
+.hero-title {
   width:70%;
   height:42px;
   margin:0 auto 16px;
   border-radius:6px;
 }
 
-.hero-desc-skel {
+.hero-desc {
   width:55%;
   height:18px;
   margin:0 auto;
-  border-radius:4px;
+  border-radius:6px;
 }
 
-/* محتوا واقعی */
-.hero-text h1 {
-  font-size:36px; font-weight:700;
-}
-
-.hero-text p {
-  margin-top:12px; font-size:16px; opacity:0.85;
-}
-
+/* ================= CTA ================= */
 .cta-button {
-  background:#FFBE00; color:#0d0d0d;
-  font-size:16px; font-weight:700;
-  padding:12px 28px; border-radius:6px;
-  margin-top:32px; display:inline-block; text-decoration:none;
+  background:#FFBE00;
+  color:#0d0d0d;
+  font-size:16px;
+  font-weight:700;
+  padding:12px 28px;
+  border-radius:6px;
+  margin-top:32px;
+  display:inline-block;
+  text-decoration:none;
 }
 
 /* ================= SUGGESTIONS ================= */
@@ -133,17 +136,41 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
 }
 
 .section-title {
-  font-size:18px; font-weight:600; margin-bottom:16px;
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:16px;
 }
 
-/* Skeleton Wrapper برای ویدیوها */
-.video-card { width:200px; }
-.thumb-skel { width:100%; aspect-ratio:16/9; border-radius:8px; }
-.line-skel { height:14px; margin-top:6px; border-radius:4px; }
-.line-skel.small { width:60%; }
+.suggestions {
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
 
-.suggestions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.video-card {
+  width:200px;
+}
 
+.thumb {
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:8px;
+}
+
+.meta {
+  margin-top:8px;
+}
+
+.line {
+  height:14px;
+  margin-bottom:6px;
+  border-radius:6px;
+}
+
+.line.small {
+  width:60%;
+}
 </style>
 </head>
 
@@ -151,20 +178,18 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="hero-header-bg"></div>
   <div class="hero-header-fixed">
-    <div class="logo"><span>قاب</span><div class="logo-box-img"></div></div>
+    <div class="logo">
+      <span>قاب</span>
+      <div class="logo-box-img"></div>
+    </div>
   </div>
 
-  <!-- Skeleton -->
-  <div class="skeleton hero-title-skel"></div>
-  <div class="skeleton hero-desc-skel"></div>
-
-  <!-- محتوا واقعی -->
   <div class="hero-text">
-    <h1>داستانت رو پیدا کن</h1>
-    <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
-    <a href="#" class="cta-button">داستان خودتو بنویس</a>
+    <div class="skeleton hero-title"></div>
+    <div class="skeleton hero-desc"></div>
+
+    <a class="cta-button">داستان خودتو بنویس</a>
   </div>
 </section>
 
@@ -174,45 +199,39 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
 
   <div class="suggestions">
     <div class="video-card">
-      <div class="thumb-skel skeleton"></div>
-      <div class="line-skel skeleton"></div>
-      <div class="line-skel small skeleton"></div>
-
-      <img class="thumb" src="https://via.placeholder.com/200x112" alt="ویدئو ۱">
+      <div class="thumb skeleton"></div>
       <div class="meta">
-        <div>عنوان ویدئو ۱</div>
+        <div class="line skeleton"></div>
+        <div class="line skeleton small"></div>
       </div>
     </div>
 
     <div class="video-card">
-      <div class="thumb-skel skeleton"></div>
-      <div class="line-skel skeleton"></div>
-      <div class="line-skel small skeleton"></div>
-
-      <img class="thumb" src="https://via.placeholder.com/200x112" alt="ویدئو ۲">
+      <div class="thumb skeleton"></div>
       <div class="meta">
-        <div>عنوان ویدئو ۲</div>
+        <div class="line skeleton"></div>
+        <div class="line skeleton small"></div>
       </div>
     </div>
 
     <div class="video-card">
-      <div class="thumb-skel skeleton"></div>
-      <div class="line-skel skeleton"></div>
-      <div class="line-skel small skeleton"></div>
-
-      <img class="thumb" src="https://via.placeholder.com/200x112" alt="ویدئو ۳">
+      <div class="thumb skeleton"></div>
       <div class="meta">
-        <div>عنوان ویدئو ۳</div>
+        <div class="line skeleton"></div>
+        <div class="line skeleton small"></div>
       </div>
     </div>
   </div>
 </section>
 
 <script>
+// همه Skeleton ها ۳ بار حرکت می‌کنند بعد حذف می‌شوند
 window.addEventListener('load', () => {
-  // وقتی Skeleton تموم شد (۳ بار حرکت) حذف شود
-  document.querySelectorAll('.skeleton').forEach(el => {
-    el.addEventListener('animationend', () => el.remove());
+  const skeletons = document.querySelectorAll('.skeleton');
+  skeletons.forEach(el => {
+    el.addEventListener('animationend', () => {
+      el.classList.add('loaded');
+    });
   });
 });
 </script>
