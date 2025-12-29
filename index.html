@@ -31,24 +31,33 @@ body {
 .hero {
   min-height:80vh;
   padding:32px 20px;
-  background:
-    linear-gradient(120deg, #FFBE00 0%, transparent 45%),
-    #0d0d0d;
   position:relative;
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 }
 
+/* پس‌زمینه مشکی */
+.hero-bg {
+  position:fixed;
+  inset:0;
+  background:#0d0d0d;
+  z-index:0;
+}
+
+/* هدر با لوگو و منو */
 .hero-header-fixed {
   position:fixed;
-  top:0; left:0;
+  top:0;
+  left:0;
   width:100%;
-  padding:10px 20px;
-  z-index:2;
   display:flex;
+  justify-content:center;
   align-items:center;
+  padding:10px 20px;
+  gap:20px;
+  z-index:2;
 }
 
 .logo {
@@ -66,96 +75,113 @@ body {
   filter:drop-shadow(0 0 5px #FFBE00);
 }
 
+/* دکمه منو */
+.menu-button {
+  padding:10px 16px;
+  background:#FFBE00;
+  border:none;
+  border-radius:6px;
+  font-weight:700;
+  cursor:pointer;
+}
+
 /* ================= HERO TEXT ================= */
 .hero-text {
   text-align:center;
-  margin-top:140px;
+  z-index:1;
+  position:relative;
 }
 
-.hero-text h1 {
-  font-size:36px;
-  font-weight:700;
+.hero-title {
+  width:300px;
+  height:42px;
+  margin:0 auto 16px;
+  border-radius:8px;
+  background: rgba(255,255,255,0.05); /* مستطیل بی‌رنگ روی متن */
+  position:relative;
+  overflow:hidden;
 }
 
-.hero-text p {
-  margin-top:12px;
-  font-size:16px;
-  opacity:0.85;
+.hero-desc {
+  width:220px;
+  height:18px;
+  margin:0 auto;
+  border-radius:6px;
+  background: rgba(255,255,255,0.05);
+  position:relative;
+  overflow:hidden;
 }
 
-/* ================= CTA ================= */
 .cta-button {
-  background:#FFBE00;
-  color:#0d0d0d;
-  font-size:16px;
-  font-weight:700;
+  display:inline-block;
+  margin-top:32px;
   padding:12px 28px;
   border-radius:6px;
-  margin-top:24px;
-  display:inline-block;
+  background:#FFBE00;
+  color:#0d0d0d;
+  font-weight:700;
   text-decoration:none;
 }
 
 /* ================= SKELETON ================= */
-.hero-skeleton {
-  position:absolute;
-  inset:0;
-  background:#1a1a1a;
-  border-radius:12px;
-  overflow:hidden;
-  z-index:10;
-}
-
-.hero-skeleton::after {
-  content:"";
-  position:absolute;
+.skeleton::after {
+  content: "";
+  position: absolute;
   top:0;
   left:-150%;
   width:50%;
   height:100%;
-  background:linear-gradient(110deg, transparent 0%, rgba(255,255,255,.18) 45%, rgba(255,255,255,.28) 50%, rgba(255,255,255,.18) 55%, transparent 100%);
-  animation: skeleton-shine 1.2s linear infinite;
+  background: rgba(255,255,255,0.2);
+  transform:rotate(25deg);
+  animation: shine 1.5s linear infinite;
 }
 
-@keyframes skeleton-shine {
-  to { left:150%; }
+@keyframes shine {
+  0% { transform: translateX(-150%) rotate(25deg); }
+  50% { transform: translateX(150%) rotate(25deg); }
+  100% { transform: translateX(-150%) rotate(25deg); }
+}
+
+.skeleton.loaded::after {
+  display:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HERO ================= -->
 <section class="hero">
+  <div class="hero-bg"></div>
+
   <div class="hero-header-fixed">
     <div class="logo">
-      <span>قاب</span>
       <div class="logo-box-img"></div>
+      <span>قاب</span>
     </div>
+    <button class="menu-button">منو</button>
   </div>
 
   <div class="hero-text">
-    <h1>داستانت رو پیدا کن</h1>
-    <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
-    <a href="#" class="cta-button">داستان خودتو بنویس</a>
+    <div class="hero-title skeleton"></div>
+    <div class="hero-desc skeleton"></div>
+    <a class="cta-button">داستان جهان ویدئو</a>
+    <p style="margin-top:12px;">جایی برای تجربه و اشتراک ویدئوها</p>
   </div>
-
-  <!-- Skeleton روی کل Hero -->
-  <div class="hero-skeleton"></div>
 </section>
 
 <script>
-const skeleton = document.querySelector('.hero-skeleton');
-let moves = 0;
-
-// 3 بار shimmer بعد حذف Skeleton
-const interval = setInterval(() => {
-  moves++;
-  if(moves >= 3){
-    skeleton.remove();
-    clearInterval(interval);
-  }
-}, 1200); // هر بار حرکت 1.2 ثانیه
+window.addEventListener('load', () => {
+  const skeletons = document.querySelectorAll('.skeleton');
+  let count = 0;
+  const maxShines = 3;
+  const interval = setInterval(() => {
+    count++;
+    if(count >= maxShines){
+      skeletons.forEach(el => el.classList.add('loaded'));
+      clearInterval(interval);
+    }
+  }, 700); // کندتر کردن انیمیشن برای 3 بار حرکت
+});
 </script>
 
 </body>
