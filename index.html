@@ -6,43 +6,24 @@
 <title>قاب — جهان ویدئو</title>
 
 <style>
+@font-face {
+  font-family: "MainFont";
+  src: url("fonts/Ravi-Bold.woff2") format("woff2");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "MainFont";
+  src: url("fonts/Ravi-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+
 body {
-  font-family: "MainFont", sans-serif;
-  background: #0d0d0d;
-  color: #fff;
-  margin:0; padding:0;
+  font-family:"MainFont", sans-serif;
+  background:#0d0d0d;
+  color:#fff;
 }
-
-/* ================= SKELETON ================= */
-.skeleton {
-  position: relative;
-  background: #2a2a2a;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.skeleton::after {
-  content: "";
-  position: absolute;
-  top:0; left:-150%;
-  width:50%;
-  height:100%;
-  background: linear-gradient(
-    110deg,
-    transparent 0%,
-    rgba(255,255,255,0.15) 45%,
-    rgba(255,255,255,0.25) 50%,
-    rgba(255,255,255,0.15) 55%,
-    transparent 100%
-  );
-  animation: skeleton-shine 0.6s linear 3;
-}
-
-@keyframes skeleton-shine {
-  to { left: 150%; }
-}
-
-.skeleton.loaded { display:none; }
 
 /* ================= HERO ================= */
 .hero {
@@ -58,9 +39,9 @@ body {
   position:fixed;
   top:0; left:0;
   width:100%;
+  padding:10px 20px;
   display:flex;
   align-items:center;
-  padding:10px 20px;
   z-index:2;
 }
 
@@ -73,20 +54,47 @@ body {
 }
 
 .logo-box-img {
-  width:54px;
-  height:36px;
+  width:54px; height:36px;
   background:url('image/logo.png') no-repeat center/contain;
   filter: drop-shadow(0 0 5px #FFBE00);
 }
 
-/* ================= HERO TEXT ================= */
+/* ================= TEXT ================= */
 .hero-text {
   margin-top:140px;
   text-align:center;
 }
 
-.hero-title, .hero-desc {
+/* Placeholder و Skeleton */
+.placeholder {
+  width:70%;
+  height:42px;
+  margin:0 auto 16px;
+  background: rgba(255,255,255,0.03); /* بی‌رنگ ولی مشخص */
   border-radius:6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton {
+  content:"";
+  position: absolute;
+  top:0; left:-140%;
+  width:55%;
+  height:100%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255,255,255,.18) 45%,
+    rgba(255,255,255,.28) 50%,
+    rgba(255,255,255,.18) 55%,
+    transparent 100%
+  );
+  animation: shine 0.5s linear 3; /* سه بار حرکت */
+}
+
+@keyframes shine {
+  to { left: 140%; }
 }
 
 /* ================= CTA ================= */
@@ -128,19 +136,27 @@ body {
   width:100%;
   aspect-ratio:16/9;
   border-radius:8px;
+  background: rgba(255,255,255,0.03); /* placeholder اولیه */
+  position: relative;
+  overflow: hidden;
 }
 
-.meta {
-  margin-top:8px;
+.thumb .skeleton {
+  position:absolute;
+  top:0; left:-140%;
+  width:55%;
+  height:100%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255,255,255,.18) 45%,
+    rgba(255,255,255,.28) 50%,
+    rgba(255,255,255,.18) 55%,
+    transparent 100%
+  );
+  animation: shine 0.5s linear 3;
+  border-radius:8px;
 }
-
-.line {
-  height:14px;
-  margin-bottom:6px;
-  border-radius:6px;
-}
-
-.line.small { width:60%; }
 </style>
 </head>
 
@@ -155,14 +171,14 @@ body {
     </div>
   </div>
 
-  <!-- Skeleton Hero -->
-  <div class="skeleton hero-title" style="width:70%; height:42px; margin:0 auto 16px;"></div>
-  <div class="skeleton hero-desc" style="width:55%; height:18px; margin:0 auto;"></div>
-
-  <!-- Actual Content -->
   <div class="hero-text">
-    <h1 class="hero-title-text">داستانت رو پیدا کن</h1>
-    <p class="hero-desc-text">قاب، جایی برای دیدن و کشف ویدئوها</p>
+    <div class="placeholder">
+      <div class="skeleton"></div>
+    </div>
+    <div class="placeholder" style="width:55%;">
+      <div class="skeleton"></div>
+    </div>
+
     <a class="cta-button">داستان خودتو بنویس</a>
   </div>
 </section>
@@ -173,65 +189,35 @@ body {
 
   <div class="suggestions">
     <div class="video-card">
-      <div class="skeleton thumb" style="height:112px;"></div>
-      <div class="meta">
-        <div class="skeleton line"></div>
-        <div class="skeleton line small"></div>
-      </div>
-      <div class="video-content" style="display:none;">
-        <div class="thumb" style="background:#444;"></div>
-        <div class="meta">
-          <div class="line" style="background:#555;"></div>
-          <div class="line small" style="background:#555;"></div>
-        </div>
+      <div class="thumb">
+        <div class="skeleton"></div>
       </div>
     </div>
 
     <div class="video-card">
-      <div class="skeleton thumb" style="height:112px;"></div>
-      <div class="meta">
-        <div class="skeleton line"></div>
-        <div class="skeleton line small"></div>
-      </div>
-      <div class="video-content" style="display:none;">
-        <div class="thumb" style="background:#444;"></div>
-        <div class="meta">
-          <div class="line" style="background:#555;"></div>
-          <div class="line small" style="background:#555;"></div>
-        </div>
+      <div class="thumb">
+        <div class="skeleton"></div>
       </div>
     </div>
 
     <div class="video-card">
-      <div class="skeleton thumb" style="height:112px;"></div>
-      <div class="meta">
-        <div class="skeleton line"></div>
-        <div class="skeleton line small"></div>
-      </div>
-      <div class="video-content" style="display:none;">
-        <div class="thumb" style="background:#444;"></div>
-        <div class="meta">
-          <div class="line" style="background:#555;"></div>
-          <div class="line small" style="background:#555;"></div>
-        </div>
+      <div class="thumb">
+        <div class="skeleton"></div>
       </div>
     </div>
   </div>
 </section>
 
 <script>
-// Skeleton ها 3 بار حرکت می‌کنند و بعد حذف می‌شوند، محتوا نمایش داده می‌شود
+// بعد از 3 حرکت Skeleton، آن را حذف می‌کنیم
 window.addEventListener('load', () => {
-  const skeletons = document.querySelectorAll('.skeleton');
-  skeletons.forEach(el => {
-    el.addEventListener('animationend', () => {
-      el.classList.add('loaded');
-      const parentCard = el.closest('.video-card');
-      if(parentCard){
-        const content = parentCard.querySelector('.video-content');
-        if(content) content.style.display='block';
-      }
-    });
+  const allSkeletons = document.querySelectorAll('.skeleton');
+  allSkeletons.forEach(skel => {
+    // مدت زمان سه حرکت 0.5s * 3 = 1.5s
+    setTimeout(() => {
+      skel.parentNode.classList.remove('skeleton');
+      skel.remove();
+    }, 1500);
   });
 });
 </script>
