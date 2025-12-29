@@ -27,43 +27,6 @@ body {
   color:#fff;
 }
 
-/* ================= SKELETON BASE ================= */
-.skeleton {
-  position: relative;
-  background: #1a1a1a;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.skeleton::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -140%;
-  width: 55%;
-  height: 100%;
-  background: linear-gradient(
-    110deg,
-    transparent 0%,
-    rgba(255,255,255,.18) 45%,
-    rgba(255,255,255,.28) 50%,
-    rgba(255,255,255,.18) 55%,
-    transparent 100%
-  );
-  animation: skeleton-shine 1.2s linear infinite;
-}
-
-@keyframes skeleton-shine {
-  to { left: 140%; }
-}
-
-.skeleton.loaded {
-  background: transparent;
-}
-.skeleton.loaded::after {
-  display:none;
-}
-
 /* ================= HERO ================= */
 .hero {
   min-height:80vh;
@@ -71,16 +34,18 @@ body {
   background:
     linear-gradient(120deg, #FFBE00 0%, transparent 45%),
     #0d0d0d;
+  display:flex;
+  flex-direction:column;
   position:relative;
 }
 
+/* هدر ثابت */
 .hero-header-bg {
   position:fixed;
   top:0; left:0;
   width:100%;
   height:80px;
   background:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
-  pointer-events:none;
   z-index:1;
 }
 
@@ -89,6 +54,8 @@ body {
   top:0; left:0;
   width:100%;
   padding:10px 20px;
+  display:flex;
+  align-items:center;
   z-index:2;
 }
 
@@ -103,7 +70,7 @@ body {
 .logo-box-img {
   width:54px;
   height:36px;
-  background:url('image/logo.png') no-repeat center/contain;
+  background:url("image/logo.png") no-repeat center/contain;
   filter:drop-shadow(0 0 5px #FFBE00);
 }
 
@@ -113,16 +80,9 @@ body {
   text-align:center;
 }
 
-.hero-title {
-  width:70%;
-  height:42px;
-  margin:0 auto 16px;
-}
-
-.hero-desc {
-  width:55%;
-  height:18px;
-  margin:0 auto;
+/* ================= REAL CONTENT ================= */
+.real.hidden {
+  display:none;
 }
 
 /* ================= CTA ================= */
@@ -133,50 +93,58 @@ body {
   font-weight:700;
   padding:12px 28px;
   border-radius:6px;
-  margin-top:32px;
   display:inline-block;
+  margin-top:24px;
   text-decoration:none;
 }
 
-/* ================= SUGGESTIONS ================= */
-.section {
-  padding:24px 16px;
+/* ================= SKELETON ================= */
+.skeleton {
+  position:relative;
+  background:#1a1a1a;
+  overflow:hidden;
+  border-radius:6px;
 }
 
-.section-title {
-  font-size:18px;
-  font-weight:600;
-  margin-bottom:16px;
-}
-
-.suggestions {
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.video-card {
-  width:200px;
-}
-
-.thumb {
+.skeleton::after {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
   width:100%;
-  aspect-ratio:16/9;
-  border-radius:8px;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.15),
+    transparent
+  );
+  animation:skeleton-move 1.4s infinite;
 }
 
-.meta {
-  margin-top:8px;
+@keyframes skeleton-move {
+  100% { left:100%; }
 }
 
-.line {
-  height:14px;
-  margin-bottom:6px;
+/* اسکلت بنر */
+.skeleton-banner {
+  width:100%;
+  height:220px;
+  border-radius:12px;
+  margin-top:120px;
 }
 
-.line.small {
-  width:60%;
+/* اسکلت متن */
+.skeleton-title {
+  width:260px;
+  height:34px;
+  margin:32px auto 16px;
+}
+
+.skeleton-desc {
+  width:320px;
+  height:18px;
+  margin:0 auto;
 }
 </style>
 </head>
@@ -185,6 +153,7 @@ body {
 
 <!-- ================= HERO ================= -->
 <section class="hero">
+
   <div class="hero-header-bg"></div>
 
   <div class="hero-header-fixed">
@@ -194,51 +163,31 @@ body {
     </div>
   </div>
 
+  <!-- Skeleton Banner -->
+  <div class="skeleton skeleton-banner"></div>
+
+  <!-- Skeleton Text -->
   <div class="hero-text">
-    <div class="skeleton hero-title"></div>
-    <div class="skeleton hero-desc"></div>
+    <div class="skeleton skeleton-title"></div>
+    <div class="skeleton skeleton-desc"></div>
 
-    <a class="cta-button">داستان خودتو بنویس</a>
+    <!-- متن واقعی -->
+    <h1 class="real hidden">داستانت رو پیدا کن</h1>
+    <p class="real hidden">قاب، جایی برای دیدن و کشف ویدئوها</p>
+    <a href="#" class="cta-button">داستان خودتو بنویس</a>
   </div>
-</section>
 
-<!-- ================= SUGGESTIONS ================= -->
-<section class="section">
-  <div class="section-title">پیشنهادها</div>
-
-  <div class="suggestions">
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <script>
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.querySelectorAll('.skeleton')
-      .forEach(el => el.classList.add('loaded'));
-  }, 1400);
+window.addEventListener("load", () => {
+  // حذف تمام skeleton ها
+  document.querySelectorAll(".skeleton").forEach(el => el.remove());
+
+  // نمایش محتوای واقعی
+  document.querySelectorAll(".real").forEach(el => {
+    el.classList.remove("hidden");
+  });
 });
 </script>
 
