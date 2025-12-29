@@ -31,156 +31,223 @@ body {
 .hero {
   min-height:80vh;
   padding:32px 20px;
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-}
-
-/* پس‌زمینه مشکی */
-.hero-bg {
-  position:fixed;
-  inset:0;
   background:#0d0d0d;
-  z-index:0;
+  position:relative;
+  text-align:center;
 }
 
-/* هدر با لوگو و منو */
 .hero-header-fixed {
   position:fixed;
-  top:0;
-  left:0;
+  top:0; left:0;
   width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
   padding:10px 20px;
-  gap:20px;
   z-index:2;
 }
 
 .logo {
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:12px;
   font-size:36px;
   font-weight:700;
 }
 
-.logo-box-img {
-  width:54px;
-  height:36px;
-  background:url('image/logo.png') no-repeat center/contain;
-  filter:drop-shadow(0 0 5px #FFBE00);
-}
-
-/* دکمه منو */
-.menu-button {
-  padding:10px 16px;
-  background:#FFBE00;
-  border:none;
-  border-radius:6px;
-  font-weight:700;
-  cursor:pointer;
-}
-
 /* ================= HERO TEXT ================= */
 .hero-text {
-  text-align:center;
-  z-index:1;
-  position:relative;
+  margin-top:140px;
 }
 
+/* ================= TEXT SKELETON ================= */
+.skeleton {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* مستطیل shimmer روی متن */
+.skeleton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    #1f1f1f 30%,
+    #2b2b2b 50%,
+    #1f1f1f 70%
+  );
+  background-size: 400%;
+  border-radius: 8px;
+  animation: shimmer 1.6s linear;
+  animation-iteration-count: 3;
+  z-index: 2;
+}
+
+.skeleton.loaded::before {
+  display: none;
+}
+
+@keyframes shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+/* اندازه متن واقعی */
 .hero-title {
-  width:300px;
-  height:42px;
-  margin:0 auto 16px;
-  border-radius:8px;
-  background: rgba(255,255,255,0.05); /* مستطیل بی‌رنگ روی متن */
-  position:relative;
-  overflow:hidden;
+  font-size: 42px;
+  margin-bottom:16px;
 }
 
 .hero-desc {
-  width:220px;
-  height:18px;
-  margin:0 auto;
-  border-radius:6px;
-  background: rgba(255,255,255,0.05);
-  position:relative;
-  overflow:hidden;
+  font-size: 18px;
+  margin-bottom:32px;
 }
 
 .cta-button {
-  display:inline-block;
-  margin-top:32px;
-  padding:12px 28px;
-  border-radius:6px;
   background:#FFBE00;
   color:#0d0d0d;
+  font-size:16px;
   font-weight:700;
+  padding:12px 28px;
+  border-radius:6px;
   text-decoration:none;
+  display:inline-block;
 }
 
-/* ================= SKELETON ================= */
-.skeleton::after {
+/* ================= SUGGESTIONS ================= */
+.section {
+  padding:24px 16px;
+  text-align:center;
+}
+
+.section-title {
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:16px;
+}
+
+.suggestions {
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.video-card {
+  width:200px;
+}
+
+.thumb {
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:8px;
+  position: relative;
+}
+
+.thumb.skeleton::before {
   content: "";
   position: absolute;
-  top:0;
-  left:-150%;
-  width:50%;
-  height:100%;
-  background: rgba(255,255,255,0.2);
-  transform:rotate(25deg);
-  animation: shine 1.5s linear infinite;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    #1f1f1f 30%,
+    #2b2b2b 50%,
+    #1f1f1f 70%
+  );
+  background-size: 400%;
+  border-radius: 8px;
+  animation: shimmer 1.6s linear;
+  animation-iteration-count: 3;
+  z-index: 2;
 }
 
-@keyframes shine {
-  0% { transform: translateX(-150%) rotate(25deg); }
-  50% { transform: translateX(150%) rotate(25deg); }
-  100% { transform: translateX(-150%) rotate(25deg); }
+.meta {
+  margin-top:8px;
 }
 
-.skeleton.loaded::after {
-  display:none;
+.line {
+  height:14px;
+  margin-bottom:6px;
+  position: relative;
+}
+
+.line.skeleton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    #1f1f1f 30%,
+    #2b2b2b 50%,
+    #1f1f1f 70%
+  );
+  background-size: 400%;
+  border-radius: 6px;
+  animation: shimmer 1.6s linear;
+  animation-iteration-count: 3;
+  z-index: 2;
+}
+
+.line.small {
+  width:60%;
 }
 </style>
 </head>
 
 <body>
 
+<!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="hero-bg"></div>
-
   <div class="hero-header-fixed">
-    <div class="logo">
-      <div class="logo-box-img"></div>
-      <span>قاب</span>
-    </div>
-    <button class="menu-button">منو</button>
+    <div class="logo">قاب</div>
   </div>
 
   <div class="hero-text">
-    <div class="hero-title skeleton"></div>
-    <div class="hero-desc skeleton"></div>
-    <a class="cta-button">داستان جهان ویدئو</a>
-    <p style="margin-top:12px;">جایی برای تجربه و اشتراک ویدئوها</p>
+    <div class="hero-title skeleton">داستان جهان ویدئو</div>
+    <div class="hero-desc skeleton">جایی برای تجربه و اشتراک ویدئوها</div>
+    <a class="cta-button">داستان خودتو بنویس</a>
+  </div>
+</section>
+
+<!-- ================= SUGGESTIONS ================= -->
+<section class="section">
+  <div class="section-title">پیشنهادها</div>
+
+  <div class="suggestions">
+    <div class="video-card">
+      <div class="thumb skeleton"></div>
+      <div class="meta">
+        <div class="line skeleton"></div>
+        <div class="line skeleton small"></div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="thumb skeleton"></div>
+      <div class="meta">
+        <div class="line skeleton"></div>
+        <div class="line skeleton small"></div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="thumb skeleton"></div>
+      <div class="meta">
+        <div class="line skeleton"></div>
+        <div class="line skeleton small"></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <script>
-window.addEventListener('load', () => {
-  const skeletons = document.querySelectorAll('.skeleton');
-  let count = 0;
-  const maxShines = 3;
-  const interval = setInterval(() => {
-    count++;
-    if(count >= maxShines){
-      skeletons.forEach(el => el.classList.add('loaded'));
-      clearInterval(interval);
-    }
-  }, 700); // کندتر کردن انیمیشن برای 3 بار حرکت
+document.querySelectorAll('.skeleton').forEach(el => {
+  const duration = 1600 * 3; // ۳ بار انیمیشن
+  setTimeout(() => {
+    el.classList.add('loaded');
+  }, duration);
 });
 </script>
 
