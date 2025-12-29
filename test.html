@@ -1,20 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="utf-8">
-<title>Base64 Video Test</title>
+<meta charset="UTF-8">
+<title>Hero Skeleton Overlay</title>
+
+<style>
+body {
+  margin: 0;
+  background: #0d0d0d;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  padding: 32px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background:
+    linear-gradient(120deg, #FFBE00 0%, transparent 45%),
+    #0d0d0d;
+}
+
+/* محتوای واقعی */
+.hero-content h1 {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* ===== OVERLAY SKELETON ===== */
+.hero-skeleton {
+  position: absolute;
+  inset: 0;
+  border-radius: 0; /* کل بلوک */
+  background: linear-gradient(
+    110deg,
+    #1a1a1a 30%,
+    #2a2a2a 50%,
+    #1a1a1a 70%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.8s linear infinite;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  from { background-position: 100% 0; }
+  to   { background-position: -100% 0; }
+}
+</style>
 </head>
+
 <body>
 
-<h3>تست ویدیو Base64 (خیلی کوتاه)</h3>
+<section class="hero">
+  <div class="hero-content">
+    <h1>به سایت ما خوش آمدید</h1>
+    <p>اینجا همه‌چیز دقیق و بدون بهم‌ریختگی لود می‌شود</p>
+  </div>
 
-<video controls width="320">
-  <source src="data:video/mp4;base64,
-AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAABxtZGF0AAAAAA==
-">
-</video>
+  <!-- مستطیل روی کل بلوک -->
+  <div class="hero-skeleton"></div>
+</section>
 
-<p>این ویدیو فقط چند فریم تستی است.</p>
+<script>
+const skeleton = document.querySelector('.hero-skeleton');
+let count = 0;
+
+const loop = setInterval(() => {
+  count++;
+  if (count === 3) {
+    skeleton.remove();   // هم اسکلتون هم مستطیل حذف
+    clearInterval(loop);
+  }
+}, 1800);
+</script>
 
 </body>
 </html>
