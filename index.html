@@ -6,7 +6,6 @@
 <title>قاب — جهان ویدئو</title>
 
 <style>
-/* ================= FONT ================= */
 @font-face {
   font-family: "MainFont";
   src: url("fonts/Ravi-Bold.woff2") format("woff2");
@@ -17,65 +16,47 @@
   src: url("fonts/Ravi-Regular.woff2") format("woff2");
   font-weight: 400;
 }
-
-/* ================= RESET ================= */
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
 
-/* ================= SKELETON ================= */
-.skeleton-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
-  background-color: rgba(255,255,255,0.05);
-}
-
-.skeleton {
-  position: absolute;
-  top: 0; left: -120%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    110deg,
-    transparent 0%,
-    rgba(255,255,255,0.15) 45%,
-    rgba(255,255,255,0.25) 50%,
-    rgba(255,255,255,0.15) 55%,
-    transparent 100%
-  );
-  animation: skeleton-shine 2s linear infinite;
-}
-
-@keyframes skeleton-shine {
-  to { left: 120%; }
+body {
+  font-family:"MainFont", sans-serif;
+  background:#0d0d0d;
+  color:#fff;
+  overflow-x:hidden;
 }
 
 /* ================= HERO ================= */
 .hero {
   min-height:80vh;
   padding:32px 20px;
-  background:
-    linear-gradient(120deg, #FFBE00 0%, transparent 45%),
-    #0d0d0d;
+  background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
+  display:flex;
+  flex-direction:column;
+  align-items:center; /* وسط‌چین */
   position:relative;
 }
 
-.hero-header-bg {
-  position:fixed; top:0; left:0; width:100%; height:80px;
-  background:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
-  pointer-events:none; z-index:1;
-}
-
 .hero-header-fixed {
-  position:fixed; top:0; left:0; width:100%; padding:10px 20px; display:flex; align-items:center; z-index:2;
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  z-index:2;
 }
 
 .logo {
-  display:flex; align-items:center; gap:12px; font-size:36px; font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:36px;
+  font-weight:700;
 }
 
 .logo-box-img {
-  width:54px; height:36px;
+  width:54px;
+  height:36px;
   background:url('image/logo.png') no-repeat center/contain;
   filter:drop-shadow(0 0 5px #FFBE00);
 }
@@ -84,44 +65,62 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
 .hero-text {
   margin-top:140px;
   text-align:center;
+  position:relative;
 }
 
-.hero-title,
-.hero-desc {
-  display:inline-block;
-  margin:0 auto;
-  border-radius:6px;
+.skeleton-wrapper {
+  position: relative;
+  width: 100%;
+  max-width:600px;
+  height: auto;
+  margin:12px auto;
 }
 
-.hero-title { width:70%; height:42px; }
-.hero-desc  { width:55%; height:18px; margin-top:12px; }
+.skeleton {
+  width: 100%;
+  height: 100%;
+  background:#1a1a1a;
+  border-radius:8px;
+  position:absolute;
+  top:0; left:0;
+  animation: skeleton-shine 0.8s linear 3; /* 3 حرکت کند */
+}
 
+@keyframes skeleton-shine {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.skeleton-wrapper h1,
+.skeleton-wrapper p {
+  position:relative;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  height:100%;
+}
+
+/* ================= CTA ================= */
 .cta-button {
-  background:#FFBE00; color:#0d0d0d; font-size:16px; font-weight:700;
-  padding:12px 28px; border-radius:6px; margin-top:32px;
-  display:inline-block; text-decoration:none;
+  background:#FFBE00;
+  color:#0d0d0d;
+  font-size:16px;
+  font-weight:700;
+  padding:12px 28px;
+  border-radius:6px;
+  margin-top:32px;
+  display:inline-block;
+  text-decoration:none;
 }
-
-/* ================= SUGGESTIONS ================= */
-.section { padding:24px 16px; }
-.section-title { font-size:18px; font-weight:600; margin-bottom:16px; }
-
-.suggestions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
-.video-card { width:200px; }
-.thumb { width:100%; aspect-ratio:16/9; border-radius:8px; }
-
-.meta { margin-top:8px; }
-.line { height:14px; margin-bottom:6px; border-radius:4px; }
-.line.small { width:60%; }
 </style>
 </head>
 
 <body>
-
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <div class="hero-header-bg"></div>
-
   <div class="hero-header-fixed">
     <div class="logo">
       <span>قاب</span>
@@ -130,59 +129,29 @@ body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; }
   </div>
 
   <div class="hero-text">
-    <!-- Skeleton Wrapper -->
-    <div class="skeleton-wrapper hero-title"><div class="skeleton"></div></div>
-    <div class="skeleton-wrapper hero-desc"><div class="skeleton"></div></div>
+    <!-- عنوان -->
+    <div class="skeleton-wrapper" style="height:42px;">
+      <div class="skeleton"></div>
+      <h1>داستانت رو پیدا کن</h1>
+    </div>
+
+    <!-- توضیح -->
+    <div class="skeleton-wrapper" style="height:18px; max-width:400px;">
+      <div class="skeleton"></div>
+      <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
+    </div>
+
     <a class="cta-button">داستان خودتو بنویس</a>
-  </div>
-</section>
-
-<!-- ================= SUGGESTIONS ================= -->
-<section class="section">
-  <div class="section-title">پیشنهادها</div>
-
-  <div class="suggestions">
-    <div class="video-card">
-      <div class="skeleton-wrapper thumb"><div class="skeleton"></div></div>
-      <div class="meta">
-        <div class="skeleton-wrapper line"><div class="skeleton"></div></div>
-        <div class="skeleton-wrapper line small"><div class="skeleton"></div></div>
-      </div>
-    </div>
-
-    <div class="video-card">
-      <div class="skeleton-wrapper thumb"><div class="skeleton"></div></div>
-      <div class="meta">
-        <div class="skeleton-wrapper line"><div class="skeleton"></div></div>
-        <div class="skeleton-wrapper line small"><div class="skeleton"></div></div>
-      </div>
-    </div>
-
-    <div class="video-card">
-      <div class="skeleton-wrapper thumb"><div class="skeleton"></div></div>
-      <div class="meta">
-        <div class="skeleton-wrapper line"><div class="skeleton"></div></div>
-        <div class="skeleton-wrapper line small"><div class="skeleton"></div></div>
-      </div>
-    </div>
   </div>
 </section>
 
 <script>
 window.addEventListener('load', () => {
-  // تمام skeleton ها
-  const skeletons = document.querySelectorAll('.skeleton-wrapper');
-  
-  skeletons.forEach(wrapper => {
-    let count = 0;
-    const skeleton = wrapper.querySelector('.skeleton');
-    const interval = setInterval(() => {
-      count++;
-      if(count >= 3){
-        clearInterval(interval);
-        wrapper.style.display = 'none'; // مستطیل و skeleton حذف میشه
-      }
-    }, 700); // سرعت کندتر برای 3 دور
+  // بعد از 3 حرکت Skeleton، آن را حذف و متن نمایش داده شود
+  const skeletons = document.querySelectorAll('.skeleton');
+  skeletons.forEach(skel => {
+    // کل زمان: 3 حرکت × 0.8s
+    setTimeout(() => skel.remove(), 2400);
   });
 });
 </script>
