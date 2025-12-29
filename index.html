@@ -6,22 +6,10 @@
 <title>قاب — جهان ویدئو</title>
 
 <style>
-/* ================= FONT ================= */
-@font-face {
-  font-family: "MainFont";
-  src: url("fonts/Ravi-Bold.woff2") format("woff2");
-  font-weight: 700;
-}
-@font-face {
-  font-family: "MainFont";
-  src: url("fonts/Ravi-Regular.woff2") format("woff2");
-  font-weight: 400;
-}
-
 body {
-  font-family:"MainFont", sans-serif;
-  background:#0d0d0d;
-  color:#fff;
+  font-family: "MainFont", sans-serif;
+  background: #0d0d0d;
+  color: #fff;
   margin:0; padding:0;
 }
 
@@ -36,8 +24,7 @@ body {
 .skeleton::after {
   content: "";
   position: absolute;
-  top:0;
-  left:-150%;
+  top:0; left:-150%;
   width:50%;
   height:100%;
   background: linear-gradient(
@@ -55,12 +42,7 @@ body {
   to { left: 150%; }
 }
 
-.skeleton.loaded {
-  background: transparent;
-}
-.skeleton.loaded::after {
-  display:none;
-}
+.skeleton.loaded { display:none; }
 
 /* ================= HERO ================= */
 .hero {
@@ -103,17 +85,7 @@ body {
   text-align:center;
 }
 
-.hero-title {
-  width:70%;
-  height:42px;
-  margin:0 auto 16px;
-  border-radius:6px;
-}
-
-.hero-desc {
-  width:55%;
-  height:18px;
-  margin:0 auto;
+.hero-title, .hero-desc {
   border-radius:6px;
 }
 
@@ -168,9 +140,7 @@ body {
   border-radius:6px;
 }
 
-.line.small {
-  width:60%;
-}
+.line.small { width:60%; }
 </style>
 </head>
 
@@ -185,10 +155,14 @@ body {
     </div>
   </div>
 
-  <div class="hero-text">
-    <div class="skeleton hero-title"></div>
-    <div class="skeleton hero-desc"></div>
+  <!-- Skeleton Hero -->
+  <div class="skeleton hero-title" style="width:70%; height:42px; margin:0 auto 16px;"></div>
+  <div class="skeleton hero-desc" style="width:55%; height:18px; margin:0 auto;"></div>
 
+  <!-- Actual Content -->
+  <div class="hero-text">
+    <h1 class="hero-title-text">داستانت رو پیدا کن</h1>
+    <p class="hero-desc-text">قاب، جایی برای دیدن و کشف ویدئوها</p>
     <a class="cta-button">داستان خودتو بنویس</a>
   </div>
 </section>
@@ -199,38 +173,64 @@ body {
 
   <div class="suggestions">
     <div class="video-card">
-      <div class="thumb skeleton"></div>
+      <div class="skeleton thumb" style="height:112px;"></div>
       <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
+        <div class="skeleton line"></div>
+        <div class="skeleton line small"></div>
+      </div>
+      <div class="video-content" style="display:none;">
+        <div class="thumb" style="background:#444;"></div>
+        <div class="meta">
+          <div class="line" style="background:#555;"></div>
+          <div class="line small" style="background:#555;"></div>
+        </div>
       </div>
     </div>
 
     <div class="video-card">
-      <div class="thumb skeleton"></div>
+      <div class="skeleton thumb" style="height:112px;"></div>
       <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
+        <div class="skeleton line"></div>
+        <div class="skeleton line small"></div>
+      </div>
+      <div class="video-content" style="display:none;">
+        <div class="thumb" style="background:#444;"></div>
+        <div class="meta">
+          <div class="line" style="background:#555;"></div>
+          <div class="line small" style="background:#555;"></div>
+        </div>
       </div>
     </div>
 
     <div class="video-card">
-      <div class="thumb skeleton"></div>
+      <div class="skeleton thumb" style="height:112px;"></div>
       <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
+        <div class="skeleton line"></div>
+        <div class="skeleton line small"></div>
+      </div>
+      <div class="video-content" style="display:none;">
+        <div class="thumb" style="background:#444;"></div>
+        <div class="meta">
+          <div class="line" style="background:#555;"></div>
+          <div class="line small" style="background:#555;"></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <script>
-// همه Skeleton ها ۳ بار حرکت می‌کنند بعد حذف می‌شوند
+// Skeleton ها 3 بار حرکت می‌کنند و بعد حذف می‌شوند، محتوا نمایش داده می‌شود
 window.addEventListener('load', () => {
   const skeletons = document.querySelectorAll('.skeleton');
   skeletons.forEach(el => {
     el.addEventListener('animationend', () => {
       el.classList.add('loaded');
+      const parentCard = el.closest('.video-card');
+      if(parentCard){
+        const content = parentCard.querySelector('.video-content');
+        if(content) content.style.display='block';
+      }
     });
   });
 });
