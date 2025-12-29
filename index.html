@@ -27,6 +27,39 @@ body {
   color:#fff;
 }
 
+/* ================= SKELETON ================= */
+.skeleton {
+  position: relative;
+  background: #1a1a1a;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.skeleton::after {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-140%;
+  width:60%;
+  height:100%;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255,255,255,.15) 45%,
+    rgba(255,255,255,.25) 50%,
+    rgba(255,255,255,.15) 55%,
+    transparent 100%
+  );
+  animation: shine 1.1s linear infinite;
+}
+
+@keyframes shine {
+  to { left:140%; }
+}
+
+.skeleton.done::after { display:none; }
+.skeleton.done { background:transparent; }
+
 /* ================= HERO ================= */
 .hero {
   min-height:80vh;
@@ -34,18 +67,16 @@ body {
   background:
     linear-gradient(120deg, #FFBE00 0%, transparent 45%),
     #0d0d0d;
-  display:flex;
-  flex-direction:column;
   position:relative;
 }
 
-/* هدر ثابت */
 .hero-header-bg {
   position:fixed;
   top:0; left:0;
   width:100%;
   height:80px;
   background:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  pointer-events:none;
   z-index:1;
 }
 
@@ -54,8 +85,6 @@ body {
   top:0; left:0;
   width:100%;
   padding:10px 20px;
-  display:flex;
-  align-items:center;
   z-index:2;
 }
 
@@ -70,7 +99,7 @@ body {
 .logo-box-img {
   width:54px;
   height:36px;
-  background:url("image/logo.png") no-repeat center/contain;
+  background:url('image/logo.png') no-repeat center/contain;
   filter:drop-shadow(0 0 5px #FFBE00);
 }
 
@@ -80,12 +109,24 @@ body {
   text-align:center;
 }
 
-/* ================= REAL CONTENT ================= */
-.real.hidden {
+/* اسکلت بنر */
+.hero-title-s {
+  width:70%;
+  height:42px;
+  margin:0 auto 16px;
+}
+
+.hero-desc-s {
+  width:55%;
+  height:18px;
+  margin:0 auto 24px;
+}
+
+/* متن واقعی (مخفی اول) */
+.real {
   display:none;
 }
 
-/* ================= CTA ================= */
 .cta-button {
   background:#FFBE00;
   color:#0d0d0d;
@@ -94,58 +135,40 @@ body {
   padding:12px 28px;
   border-radius:6px;
   display:inline-block;
-  margin-top:24px;
   text-decoration:none;
 }
 
-/* ================= SKELETON ================= */
-.skeleton {
-  position:relative;
-  background:#1a1a1a;
-  overflow:hidden;
-  border-radius:6px;
+/* ================= SUGGESTIONS ================= */
+.section {
+  padding:24px 16px;
 }
 
-.skeleton::after {
-  content:"";
-  position:absolute;
-  top:0;
-  left:-100%;
+.section-title {
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:16px;
+}
+
+.suggestions {
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.video-card {
+  width:200px;
+}
+
+.thumb {
   width:100%;
-  height:100%;
-  background:linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.15),
-    transparent
-  );
-  animation:skeleton-move 1.4s infinite;
+  aspect-ratio:16/9;
+  border-radius:8px;
 }
 
-@keyframes skeleton-move {
-  100% { left:100%; }
-}
-
-/* اسکلت بنر */
-.skeleton-banner {
-  width:100%;
-  height:220px;
-  border-radius:12px;
-  margin-top:120px;
-}
-
-/* اسکلت متن */
-.skeleton-title {
-  width:260px;
-  height:34px;
-  margin:32px auto 16px;
-}
-
-.skeleton-desc {
-  width:320px;
-  height:18px;
-  margin:0 auto;
-}
+.meta { margin-top:8px; }
+.line { height:14px; margin-bottom:6px; }
+.line.small { width:60%; }
 </style>
 </head>
 
@@ -153,7 +176,6 @@ body {
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-
   <div class="hero-header-bg"></div>
 
   <div class="hero-header-fixed">
@@ -163,32 +185,66 @@ body {
     </div>
   </div>
 
-  <!-- Skeleton Banner -->
-  <div class="skeleton skeleton-banner"></div>
-
-  <!-- Skeleton Text -->
   <div class="hero-text">
-    <div class="skeleton skeleton-title"></div>
-    <div class="skeleton skeleton-desc"></div>
+    <!-- Skeleton -->
+    <div class="skeleton hero-title-s"></div>
+    <div class="skeleton hero-desc-s"></div>
 
-    <!-- متن واقعی -->
-    <h1 class="real hidden">داستانت رو پیدا کن</h1>
-    <p class="real hidden">قاب، جایی برای دیدن و کشف ویدئوها</p>
-    <a href="#" class="cta-button">داستان خودتو بنویس</a>
+    <!-- Real content -->
+    <h1 class="real">داستانت رو پیدا کن</h1>
+    <p class="real">قاب، جایی برای دیدن و کشف ویدئوها</p>
+    <a class="cta-button real">داستان خودتو بنویس</a>
   </div>
+</section>
 
+<!-- ================= SUGGESTIONS ================= -->
+<section class="section">
+  <div class="section-title">پیشنهادها</div>
+
+  <div class="suggestions">
+    <div class="video-card">
+      <div class="thumb skeleton"></div>
+      <div class="meta">
+        <div class="line skeleton"></div>
+        <div class="line skeleton small"></div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="thumb skeleton"></div>
+      <div class="meta">
+        <div class="line skeleton"></div>
+        <div class="line skeleton small"></div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="thumb skeleton"></div>
+      <div class="meta">
+        <div class="line skeleton"></div>
+        <div class="line skeleton small"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <script>
-window.addEventListener("load", () => {
-  // حذف تمام skeleton ها
-  document.querySelectorAll(".skeleton").forEach(el => el.remove());
+/* ===== اجرای ۵ حرکت کامل Skeleton ===== */
+let cycles = 0;
+const MAX = 5;
 
-  // نمایش محتوای واقعی
-  document.querySelectorAll(".real").forEach(el => {
-    el.classList.remove("hidden");
-  });
-});
+const interval = setInterval(() => {
+  cycles++;
+  if (cycles >= MAX) {
+    clearInterval(interval);
+
+    document.querySelectorAll('.skeleton')
+      .forEach(el => el.classList.add('done'));
+
+    document.querySelectorAll('.real')
+      .forEach(el => el.style.display = 'block');
+  }
+}, 1100); // دقیقاً برابر با زمان انیمیشن
 </script>
 
 </body>
