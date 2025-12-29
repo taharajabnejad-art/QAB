@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>قاب — جهان ویدئو</title>
-
 <style>
 @font-face {
   font-family: "MainFont";
@@ -17,142 +16,119 @@
   font-weight: 400;
 }
 * { box-sizing:border-box; margin:0; padding:0; }
-
-body {
-  font-family:"MainFont", sans-serif;
-  background:#0d0d0d;
-  color:#fff;
-  overflow-x:hidden;
-}
-
-/* ================= HERO ================= */
+body { font-family:"MainFont", sans-serif; background:#0d0d0d; color:#fff; overflow-x:hidden; text-align:center; }
 .hero {
   min-height:80vh;
   padding:32px 20px;
   background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
-  display:flex;
-  flex-direction:column;
-  align-items:center; /* وسط‌چین */
-  position:relative;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative;
 }
-
-.hero-header-fixed {
-  position:fixed;
-  top:0; left:0;
-  width:100%;
-  padding:10px 20px;
-  display:flex;
-  align-items:center;
-  z-index:2;
-}
-
-.logo {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:36px;
-  font-weight:700;
-}
-
-.logo-box-img {
-  width:54px;
-  height:36px;
-  background:url('image/logo.png') no-repeat center/contain;
-  filter:drop-shadow(0 0 5px #FFBE00);
-}
-
-/* ================= HERO TEXT ================= */
-.hero-text {
-  margin-top:140px;
-  text-align:center;
-  position:relative;
-}
-
-.skeleton-wrapper {
-  position: relative;
-  width: 100%;
-  max-width:600px;
-  height: auto;
-  margin:12px auto;
-}
-
+.logo-box-img { width:54px; height:36px; background:url('image/logo.png') no-repeat center/contain; filter:drop-shadow(0 0 5px #FFBE00); margin-left:12px; }
 .skeleton {
-  width: 100%;
-  height: 100%;
   background:#1a1a1a;
-  border-radius:8px;
-  position:absolute;
-  top:0; left:0;
-  animation: skeleton-shine 0.8s linear 3; /* 3 حرکت کند */
-}
-
-@keyframes skeleton-shine {
-  0% { transform: translateX(-100%); }
-  50% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
-.skeleton-wrapper h1,
-.skeleton-wrapper p {
+  border-radius:10px;
   position:relative;
-  margin:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:100%;
+  overflow:hidden;
+  margin-bottom:12px;
+}
+.skeleton::after {
+  content:"";
+  position:absolute;
+  top:0; left:-150%;
+  width:50%;
   height:100%;
+  background:rgba(255,255,255,0.2);
+  transform:rotate(25deg);
+  animation: skeleton-shine 1.5s linear infinite;
 }
-
-/* ================= CTA ================= */
-.cta-button {
-  background:#FFBE00;
-  color:#0d0d0d;
-  font-size:16px;
-  font-weight:700;
-  padding:12px 28px;
-  border-radius:6px;
-  margin-top:32px;
-  display:inline-block;
-  text-decoration:none;
-}
+@keyframes skeleton-shine { to { left:150%; } }
+.skeleton.loaded { background:transparent; }
+.skeleton.loaded::after { display:none; }
 </style>
 </head>
-
 <body>
-<!-- ================= HERO ================= -->
+
 <section class="hero">
-  <div class="hero-header-fixed">
-    <div class="logo">
-      <span>قاب</span>
-      <div class="logo-box-img"></div>
-    </div>
+  <div class="flex items-center justify-center mb-8">
+    <span class="text-3xl font-bold">قاب</span>
+    <div class="logo-box-img"></div>
   </div>
 
-  <div class="hero-text">
-    <!-- عنوان -->
-    <div class="skeleton-wrapper" style="height:42px;">
-      <div class="skeleton"></div>
-      <h1>داستانت رو پیدا کن</h1>
-    </div>
+  <!-- Skeleton بنر -->
+  <div class="skeleton w-[600px] h-[200px]" data-pulse="0"></div>
+  <!-- محتوا واقعی بنر -->
+  <div class="w-[600px] h-[200px] hidden bg-gradient-to-r from-yellow-500 to-transparent"></div>
 
-    <!-- توضیح -->
-    <div class="skeleton-wrapper" style="height:18px; max-width:400px;">
-      <div class="skeleton"></div>
-      <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
-    </div>
+  <!-- Skeleton متن -->
+  <div class="skeleton w-[400px] h-10" data-pulse="0"></div>
+  <div class="skeleton w-[300px] h-6" data-pulse="0"></div>
 
-    <a class="cta-button">داستان خودتو بنویس</a>
+  <!-- متن واقعی -->
+  <h1 class="text-3xl font-bold hidden">داستانت رو پیدا کن</h1>
+  <p class="text-lg hidden mt-2">قاب، جایی برای دیدن و کشف ویدئوها</p>
+
+  <!-- دکمه واقعی -->
+  <a href="#" class="mt-6 px-6 py-3 bg-yellow-500 text-black font-bold rounded-lg">داستان خودتو بنویس</a>
+</section>
+
+<section class="suggestions-section p-8">
+  <h2 class="text-xl font-semibold mb-6">پیشنهادها</h2>
+  <div class="flex gap-6 flex-wrap justify-center">
+    <!-- Skeleton ویدئو کارت -->
+    <div class="video-card w-48">
+      <div class="thumb skeleton h-32 rounded-lg" data-pulse="0"></div>
+      <div class="meta mt-2">
+        <div class="line skeleton h-3 rounded-lg mb-2" data-pulse="0"></div>
+        <div class="line skeleton h-2 rounded-lg w-3/5" data-pulse="0"></div>
+      </div>
+      <!-- محتوا واقعی -->
+      <img src="#" alt="ویدئو" class="thumb hidden rounded-lg">
+      <div class="meta hidden mt-2">
+        <p class="line mb-1">عنوان ویدئو</p>
+        <p class="line w-3/5">توضیحات کوتاه</p>
+      </div>
+    </div>
+    <!-- تکرار کارت‌ها برای پیشنهادها -->
+    <div class="video-card w-48">
+      <div class="thumb skeleton h-32 rounded-lg" data-pulse="0"></div>
+      <div class="meta mt-2">
+        <div class="line skeleton h-3 rounded-lg mb-2" data-pulse="0"></div>
+        <div class="line skeleton h-2 rounded-lg w-3/5" data-pulse="0"></div>
+      </div>
+      <img src="#" alt="ویدئو" class="thumb hidden rounded-lg">
+      <div class="meta hidden mt-2">
+        <p class="line mb-1">عنوان ویدئو</p>
+        <p class="line w-3/5">توضیحات کوتاه</p>
+      </div>
+    </div>
+    <div class="video-card w-48">
+      <div class="thumb skeleton h-32 rounded-lg" data-pulse="0"></div>
+      <div class="meta mt-2">
+        <div class="line skeleton h-3 rounded-lg mb-2" data-pulse="0"></div>
+        <div class="line skeleton h-2 rounded-lg w-3/5" data-pulse="0"></div>
+      </div>
+      <img src="#" alt="ویدئو" class="thumb hidden rounded-lg">
+      <div class="meta hidden mt-2">
+        <p class="line mb-1">عنوان ویدئو</p>
+        <p class="line w-3/5">توضیحات کوتاه</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <script>
-window.addEventListener('load', () => {
-  // بعد از 3 حرکت Skeleton، آن را حذف و متن نمایش داده شود
-  const skeletons = document.querySelectorAll('.skeleton');
-  skeletons.forEach(skel => {
-    // کل زمان: 3 حرکت × 0.8s
-    setTimeout(() => skel.remove(), 2400);
-  });
+// Skeleton سه پالس بعد محتوا واقعی نمایش داده شود
+document.querySelectorAll('.skeleton').forEach(el => {
+  let count = 0;
+  const interval = setInterval(() => {
+    count++;
+    if(count >= 3){
+      el.classList.add('loaded');
+      const next = el.nextElementSibling;
+      if(next) next.classList.remove('hidden');
+      clearInterval(interval);
+    }
+  }, 400); // هر حرکت 400ms
 });
 </script>
 
