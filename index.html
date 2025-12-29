@@ -31,9 +31,14 @@ body {
 .hero {
   min-height:80vh;
   padding:32px 20px;
-  background:#0d0d0d;
+  background:
+    linear-gradient(120deg, #FFBE00 0%, transparent 45%),
+    #0d0d0d;
   position:relative;
-  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 }
 
 .hero-header-fixed {
@@ -42,68 +47,43 @@ body {
   width:100%;
   padding:10px 20px;
   z-index:2;
+  display:flex;
+  align-items:center;
 }
 
 .logo {
   display:flex;
   align-items:center;
-  justify-content:center;
   gap:12px;
   font-size:36px;
   font-weight:700;
 }
 
+.logo-box-img {
+  width:54px;
+  height:36px;
+  background:url('image/logo.png') no-repeat center/contain;
+  filter:drop-shadow(0 0 5px #FFBE00);
+}
+
+/* ================= HERO TEXT ================= */
 .hero-text {
+  text-align:center;
   margin-top:140px;
 }
 
-/* ================= TEXT SKELETON ================= */
-.skeleton {
-  position: relative;
-  display: inline-block;
-  border-radius: 10px;
-  overflow: hidden;
-  z-index: 1;
+.hero-text h1 {
+  font-size:36px;
+  font-weight:700;
 }
 
-/* مستطیل shimmer روی متن */
-.skeleton::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    #1f1f1f 30%,
-    #2b2b2b 50%,
-    #1f1f1f 70%
-  );
-  background-size: 400%;
-  border-radius: 8px;
-  animation: shimmer 1.6s linear;
-  animation-iteration-count: 3;
-  z-index: 2;
+.hero-text p {
+  margin-top:12px;
+  font-size:16px;
+  opacity:0.85;
 }
 
-.skeleton.loaded::before {
-  display: none;
-}
-
-@keyframes shimmer {
-  from { background-position: 100% 0; }
-  to { background-position: 0 0; }
-}
-
-/* اندازه متن واقعی */
-.hero-title {
-  font-size: 42px;
-  margin-bottom:16px;
-}
-
-.hero-desc {
-  font-size: 18px;
-  margin-bottom:32px;
-}
-
+/* ================= CTA ================= */
 .cta-button {
   background:#FFBE00;
   color:#0d0d0d;
@@ -111,86 +91,34 @@ body {
   font-weight:700;
   padding:12px 28px;
   border-radius:6px;
-  text-decoration:none;
+  margin-top:24px;
   display:inline-block;
+  text-decoration:none;
 }
 
-/* ================= SUGGESTIONS ================= */
-.section {
-  padding:24px 16px;
-  text-align:center;
+/* ================= SKELETON ================= */
+.hero-skeleton {
+  position:absolute;
+  inset:0;
+  background:#1a1a1a;
+  border-radius:12px;
+  overflow:hidden;
+  z-index:10;
 }
 
-.section-title {
-  font-size:18px;
-  font-weight:600;
-  margin-bottom:16px;
+.hero-skeleton::after {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-150%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(110deg, transparent 0%, rgba(255,255,255,.18) 45%, rgba(255,255,255,.28) 50%, rgba(255,255,255,.18) 55%, transparent 100%);
+  animation: skeleton-shine 1.2s linear infinite;
 }
 
-.suggestions {
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.video-card {
-  width:200px;
-}
-
-.thumb {
-  width:100%;
-  aspect-ratio:16/9;
-  border-radius:8px;
-  position: relative;
-}
-
-.thumb.skeleton::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    #1f1f1f 30%,
-    #2b2b2b 50%,
-    #1f1f1f 70%
-  );
-  background-size: 400%;
-  border-radius: 8px;
-  animation: shimmer 1.6s linear;
-  animation-iteration-count: 3;
-  z-index: 2;
-}
-
-.meta {
-  margin-top:8px;
-}
-
-.line {
-  height:14px;
-  margin-bottom:6px;
-  position: relative;
-}
-
-.line.skeleton::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    #1f1f1f 30%,
-    #2b2b2b 50%,
-    #1f1f1f 70%
-  );
-  background-size: 400%;
-  border-radius: 6px;
-  animation: shimmer 1.6s linear;
-  animation-iteration-count: 3;
-  z-index: 2;
-}
-
-.line.small {
-  width:60%;
+@keyframes skeleton-shine {
+  to { left:150%; }
 }
 </style>
 </head>
@@ -200,54 +128,34 @@ body {
 <!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero-header-fixed">
-    <div class="logo">قاب</div>
+    <div class="logo">
+      <span>قاب</span>
+      <div class="logo-box-img"></div>
+    </div>
   </div>
 
   <div class="hero-text">
-    <div class="hero-title skeleton">داستان جهان ویدئو</div>
-    <div class="hero-desc skeleton">جایی برای تجربه و اشتراک ویدئوها</div>
-    <a class="cta-button">داستان خودتو بنویس</a>
+    <h1>داستانت رو پیدا کن</h1>
+    <p>قاب، جایی برای دیدن و کشف ویدئوها</p>
+    <a href="#" class="cta-button">داستان خودتو بنویس</a>
   </div>
-</section>
 
-<!-- ================= SUGGESTIONS ================= -->
-<section class="section">
-  <div class="section-title">پیشنهادها</div>
-
-  <div class="suggestions">
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-  </div>
+  <!-- Skeleton روی کل Hero -->
+  <div class="hero-skeleton"></div>
 </section>
 
 <script>
-document.querySelectorAll('.skeleton').forEach(el => {
-  const duration = 1600 * 3; // ۳ بار انیمیشن
-  setTimeout(() => {
-    el.classList.add('loaded');
-  }, duration);
-});
+const skeleton = document.querySelector('.hero-skeleton');
+let moves = 0;
+
+// 3 بار shimmer بعد حذف Skeleton
+const interval = setInterval(() => {
+  moves++;
+  if(moves >= 3){
+    skeleton.remove();
+    clearInterval(interval);
+  }
+}, 1200); // هر بار حرکت 1.2 ثانیه
 </script>
 
 </body>
