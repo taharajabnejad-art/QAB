@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>۴۰۴ | صفحه پیدا نشد</title>
+  <style>
+    @font-face{
+      font-family:'Ravi';
+      src:url('fonts/Ravi-Regular.woff2') format('woff2');
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
+    }
+    @font-face{
+      font-family:'Ravi';
+      src:url('fonts/Ravi-Bold.woff2') format('woff2');
+      font-weight:700;
+      font-style:normal;
+      font-display:swap;
+    }
+    :root{
+      --bg:#0d0d0d;
+      --card:#121212;
+      --primary:#7c7cff;
+      --secondary:#22d3ee;
+      --text:#f3f4f6;
+      --muted:#9ca3af;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; display:grid; place-items:center;
+      background: radial-gradient(1200px 600px at 10% -10%, #1b1f45, transparent),
+                  radial-gradient(800px 500px at 110% 10%, #0ea5e9, transparent),
+                  var(--bg);
+      color:var(--text); font-family:Ravi, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)) , var(--card);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px; padding:32px; max-width:860px; width:92%;
+      box-shadow:0 30px 80px rgba(0,0,0,.45);
+      display:grid; grid-template-columns:1.1fr .9fr; gap:24px;
+    }
+    @media (max-width:768px){ .card{grid-template-columns:1fr} }.badge{
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(124,124,255,.12); color:#c7c7ff;
+  padding:6px 12px; border-radius:999px; font-weight:600; font-size:12px;
+  border:1px dashed rgba(124,124,255,.35);
+}
+.logo{
+  width:96px;
+  height:96px;
+  object-fit:contain;
+  margin-bottom:8px;
+  filter: drop-shadow(0 10px 25px rgba(124,124,255,.45));
+}
+h1{
+  font-size:56px; line-height:1; margin:16px 0 8px;
+  letter-spacing:-1px;
+}
+h2{ margin:0 0 12px; color:var(--muted); font-weight:500 }
+p{ color:#cbd5e1; margin:0 0 20px }
+
+.actions{ display:flex; gap:12px; flex-wrap:wrap }
+.btn{
+  appearance:none; border:0; cursor:pointer; text-decoration:none;
+  padding:12px 18px; border-radius:14px; font-weight:700;
+  display:inline-flex; align-items:center; gap:10px;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn-primary{
+  background:linear-gradient(135deg, var(--primary), var(--secondary)); color:#081018;
+  box-shadow:0 10px 30px rgba(34,211,238,.35);
+}
+.btn-ghost{
+  background:rgba(255,255,255,.06); color:var(--text);
+  border:1px solid rgba(255,255,255,.12)
+}
+.btn:hover{ transform:translateY(-2px) }
+
+.art{
+  position:relative; border-radius:18px; overflow:hidden;
+  background:radial-gradient(200px 120px at 70% 20%, rgba(124,124,255,.35), transparent),
+             linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+  border:1px solid rgba(255,255,255,.1);
+  min-height:260px;
+}
+.art svg{ width:100%; height:100% }
+.floating{
+  position:absolute; inset:auto 16px 16px auto;
+  background:rgba(15,18,32,.85); border:1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(6px);
+  padding:10px 14px; border-radius:14px; color:#e5e7eb; font-weight:700
+}
+
+.search{
+  margin-top:10px; display:flex; gap:10px
+}
+.search input{
+  flex:1; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.14);
+  background:rgba(0,0,0,.25); color:var(--text)
+}
+
+footer{ margin-top:18px; color:var(--muted); font-size:12px }
+
+  </style>
+</head>
+<body>
+  <main class="card">
+    <section>
+      <video class="logo" src="image/loading.mp4" autoplay loop muted playsinline></video>
+      <span class="badge">خطای ۴۰۴</span>
+      <h1 style="font-weight:700">اوه! گم شدیم</h1>
+      <h2>صفحه‌ای که دنبالش بودی پیدا نشد</h2>
+      <p>
+        ممکنه آدرس اشتباه وارد شده باشه یا صفحه جابه‌جا شده.
+        نگران نباش—از اینجا می‌تونی برگردی یا جستجو کنی.
+      </p><div class="actions">
+    <a class="btn btn-primary" href="/">بازگشت به صفحه اصلی</a>
+    <a class="btn btn-ghost" href="javascript:history.back()">صفحه قبل</a>
+  </div>
+
+  <div class="search">
+    <input type="search" placeholder="جستجو در سایت…" />
+    <button class="btn btn-ghost">جستجو</button>
+  </div>
+
+  <footer>اگر فکر می‌کنی این خطا اشتباهه، با پشتیبانی تماس بگیر.</footer>
+</section>
+
+<section class="art" aria-hidden="true">
+  <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#7c7cff"/>
+        <stop offset="100%" stop-color="#22d3ee"/>
+      </linearGradient>
+    </defs>
+    <rect x="40" y="40" width="520" height="320" rx="28" fill="url(#g)" opacity=".15" />
+    <g fill="none" stroke="url(#g)" stroke-width="10" opacity=".9">
+      <path d="M180 150c0-40 30-70 70-70s70 30 70 70" />
+      <circle cx="220" cy="200" r="10" fill="#fff" />
+      <circle cx="280" cy="200" r="10" fill="#fff" />
+      <path d="M210 240c30 20 70 20 100 0" />
+    </g>
+    <foreignObject x="200" y="260" width="200" height="120">
+      <video src="image/loading.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:contain"></video>
+    </foreignObject>
+  </svg>
+  <div class="floating">هنوز اینجاییم 👀</div>
+</section>
+
+  </main>
+</body>
+</html>
