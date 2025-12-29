@@ -34,8 +34,13 @@ body {
   background:#0d0d0d;
   position:relative;
   text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
+/* ================= HEADER ================= */
 .hero-header-fixed {
   position:fixed;
   top:0; left:0;
@@ -44,7 +49,6 @@ body {
   z-index:2;
   display:flex;
   align-items:center;
-  justify-content:center;
   gap:12px;
 }
 
@@ -58,23 +62,21 @@ body {
 /* ================= HERO TEXT ================= */
 .hero-text {
   margin-top:140px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:8px;
 }
 
 .hero-title {
   font-size:42px;
   font-weight:700;
+  margin-bottom:12px;
 }
 
 .hero-desc {
   font-size:18px;
-  font-weight:400;
   opacity:0.85;
+  margin-bottom:32px;
 }
 
+/* ================= CTA ================= */
 .cta-button {
   background:#FFBE00;
   color:#0d0d0d;
@@ -84,7 +86,6 @@ body {
   border-radius:6px;
   text-decoration:none;
   display:inline-block;
-  margin-top:16px;
 }
 
 /* ================= SKELETON ================= */
@@ -99,17 +100,11 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    100deg,
-    #1f1f1f 30%,
-    #2b2b2b 50%,
-    #1f1f1f 70%
-  );
+  background: linear-gradient(100deg, #1f1f1f 30%, #2b2b2b 50%, #1f1f1f 70%);
   background-size: 400%;
   border-radius: 8px;
   animation: shimmer 1.6s linear;
   animation-iteration-count: 3;
-  z-index: 2;
 }
 
 .skeleton.loaded::before {
@@ -120,84 +115,6 @@ body {
   from { background-position: 100% 0; }
   to { background-position: 0 0; }
 }
-
-/* ================= SUGGESTIONS ================= */
-.section {
-  padding:24px 16px;
-  text-align:center;
-}
-
-.section-title {
-  font-size:18px;
-  font-weight:600;
-  margin-bottom:16px;
-}
-
-.suggestions {
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.video-card {
-  width:200px;
-}
-
-.thumb {
-  width:100%;
-  aspect-ratio:16/9;
-  border-radius:8px;
-  position: relative;
-}
-
-.thumb.skeleton::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    #1f1f1f 30%,
-    #2b2b2b 50%,
-    #1f1f1f 70%
-  );
-  background-size: 400%;
-  border-radius: 8px;
-  animation: shimmer 1.6s linear;
-  animation-iteration-count: 3;
-  z-index: 2;
-}
-
-.meta {
-  margin-top:8px;
-}
-
-.line {
-  height:14px;
-  margin-bottom:6px;
-  position: relative;
-}
-
-.line.skeleton::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    #1f1f1f 30%,
-    #2b2b2b 50%,
-    #1f1f1f 70%
-  );
-  background-size: 400%;
-  border-radius: 6px;
-  animation: shimmer 1.6s linear;
-  animation-iteration-count: 3;
-  z-index: 2;
-}
-
-.line.small {
-  width:60%;
-}
 </style>
 </head>
 
@@ -207,7 +124,7 @@ body {
 <section class="hero">
   <div class="hero-header-fixed">
     <div class="logo">
-      قاب
+      <span>قاب</span>
       <div class="logo-box-img"></div>
     </div>
   </div>
@@ -219,40 +136,9 @@ body {
   </div>
 </section>
 
-<!-- ================= SUGGESTIONS ================= -->
-<section class="section">
-  <div class="section-title">پیشنهادها</div>
-
-  <div class="suggestions">
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-
-    <div class="video-card">
-      <div class="thumb skeleton"></div>
-      <div class="meta">
-        <div class="line skeleton"></div>
-        <div class="line skeleton small"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <script>
 document.querySelectorAll('.skeleton').forEach(el => {
-  const duration = 1600 * 3; // ۳ بار حرکت
+  const duration = 1600 * 3; // ۳ بار انیمیشن
   setTimeout(() => {
     el.classList.add('loaded');
   }, duration);
