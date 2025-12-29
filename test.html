@@ -1,91 +1,118 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="UTF-8">
-<title>Hero Skeleton Overlay</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi Text Skeleton Overlay</title>
 
-<style>
-body {
-  margin: 0;
-  background: #0d0d0d;
-  color: #fff;
-  font-family: sans-serif;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* ===== HERO ===== */
-.hero {
-  position: relative;
-  min-height: 80vh;
-  padding: 32px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0d0d0d;
+      font-family: sans-serif;
+    }
 
-  background:
-    linear-gradient(120deg, #FFBE00 0%, transparent 45%),
-    #0d0d0d;
-}
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+    }
 
-/* محتوای واقعی */
-.hero-content h1 {
-  font-size: 42px;
-  margin-bottom: 12px;
-}
+    /* ===== TEXT WRAPPER ===== */
+    .text-wrap {
+      position: relative;
+      display: inline-block;
+    }
 
-.hero-content p {
-  font-size: 18px;
-  opacity: 0.9;
-}
+    .real-text {
+      font-size: 36px;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      line-height: 1.2;
+    }
 
-/* ===== OVERLAY SKELETON ===== */
-.hero-skeleton {
-  position: absolute;
-  inset: 0;
-  border-radius: 0; /* کل بلوک */
-  background: linear-gradient(
-    110deg,
-    #1a1a1a 30%,
-    #2a2a2a 50%,
-    #1a1a1a 70%
-  );
-  background-size: 400% 100%;
-  animation: shimmer 1.8s linear infinite;
-  z-index: 5;
-  pointer-events: none;
-}
+    .small {
+      font-size: 22px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
 
-@keyframes shimmer {
-  from { background-position: 100% 0; }
-  to   { background-position: -100% 0; }
-}
-</style>
+    /* ===== OVERLAY RECTANGLE ===== */
+    .text-mask {
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      pointer-events: none;
+    }
+
+    /* ===== SHIMMER ===== */
+    .shimmer {
+      background: linear-gradient(
+        100deg,
+        #2a2a2a 30%,
+        #3a3a3a 50%,
+        #2a2a2a 70%
+      );
+      background-size: 400%;
+      animation: shimmer 2s linear infinite;
+    }
+
+    @keyframes shimmer {
+      from {
+        background-position: 100% 0;
+      }
+      to {
+        background-position: 0 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>به سایت ما خوش آمدید</h1>
-    <p>اینجا همه‌چیز دقیق و بدون بهم‌ریختگی لود می‌شود</p>
+  <div class="container">
+
+    <div class="text-wrap">
+      <span class="real-text">به سایت ما خوش آمدید</span>
+      <span class="text-mask shimmer"></span>
+    </div>
+
+    <div class="text-wrap">
+      <span class="real-text small">جدیدترین فیلم‌ها و سریال‌ها</span>
+      <span class="text-mask shimmer"></span>
+    </div>
+
+    <div class="text-wrap">
+      <span class="real-text small">پخش آنلاین با بهترین کیفیت</span>
+      <span class="text-mask shimmer"></span>
+    </div>
+
   </div>
 
-  <!-- مستطیل روی کل بلوک -->
-  <div class="hero-skeleton"></div>
-</section>
+  <script>
+    const masks = document.querySelectorAll(".text-mask");
+    let count = 0;
 
-<script>
-const skeleton = document.querySelector('.hero-skeleton');
-let count = 0;
+    const interval = setInterval(() => {
+      count++;
 
-const loop = setInterval(() => {
-  count++;
-  if (count === 3) {
-    skeleton.remove();   // هم اسکلتون هم مستطیل حذف
-    clearInterval(loop);
-  }
-}, 1800);
-</script>
+      if (count === 3) {
+        masks.forEach(mask => mask.remove());
+        clearInterval(interval);
+      }
+    }, 2000);
+  </script>
 
 </body>
 </html>
