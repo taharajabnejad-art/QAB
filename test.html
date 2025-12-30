@@ -1,21 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<title>Page Title</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f9f9fb;
+  min-height: 100vh;
+  padding: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== HEADER ===== */
+header {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+}
+
+p {
+  color: #555;
+}
+
+/* ===== CONTROLS ===== */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar,
+.filter-button {
+  height: 40px;
+  background: linear-gradient(90deg, #f0f0f0, #e6e6e6);
+  border-radius: 8px;
+  animation: pulse 1.5s infinite alternate;
+}
+
+.search-bar { width: 70%; }
+.filter-button { width: 25%; }
+
+/* ===== GRID ===== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,.05);
+}
+
+.product-image {
+  height: 160px;
+  background: linear-gradient(135deg, #f5f7fa, #e3e6f0);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent);
+  animation: shimmer 2s infinite;
+}
+
+.product-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-title,
+.product-price,
+.product-rating {
+  background: linear-gradient(90deg, #f0f0f0, #e6e6e6);
+  border-radius: 4px;
+  animation: pulse 1.5s infinite alternate;
+}
+
+.product-title { height: 14px; width: 80%; }
+.product-price { height: 16px; width: 40%; }
+.product-rating { height: 12px; width: 60%; }
+
+/* ===== EXACT TEXT SKELETON ===== */
+.skeleton-text {
+  position: relative;
+  color: transparent;
+}
+
+.skeleton-text::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e6e6e6;
+  border-radius: 4px;
+}
+
+.skeleton-text::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.6),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+
+.loaded .skeleton-text {
+  color: inherit;
+}
+
+.loaded .skeleton-text::before,
+.loaded .skeleton-text::after {
+  display: none;
+}
+
+/* ===== LOAD MORE ===== */
+.load-more {
+  height: 50px;
+  width: 200px;
+  margin: 30px auto 0;
+  background: linear-gradient(90deg, #f0f0f0, #e6e6e6);
+  border-radius: 8px;
+  animation: pulse 1.5s infinite alternate;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse {
+  from { opacity: .6; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
 </style>
-<script src=""></script>
+</head>
+
 <body>
 
-<img src="img_la.jpg" alt="LA" style="width:100%">
+<header>
+  <h1 class="skeleton-text">NOVA Marketplace</h1>
+  <p class="skeleton-text">Curated selection of premium products loading shortly...</p>
+</header>
 
-<div class="">
- <h1>This is a Heading</h1>
- <p>This is a paragraph.</p>
- <p>This is another paragraph.</p>
+<div class="controls">
+  <div class="search-bar"></div>
+  <div class="filter-button"></div>
 </div>
+
+<div class="product-grid" id="productGrid"></div>
+
+<div class="load-more"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.getElementById("productGrid");
+  const count = window.innerWidth < 400 ? 6 : window.innerWidth < 600 ? 8 : 12;
+
+  for (let i = 0; i < count; i++) {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <div class="product-image"></div>
+      <div class="product-content">
+        <div class="product-title"></div>
+        <div class="product-price"></div>
+        <div class="product-rating"></div>
+      </div>
+    `;
+    grid.appendChild(card);
+  }
+
+  // شبیه‌سازی لود دیتا
+  setTimeout(() => {
+    document.body.classList.add("loaded");
+  }, 2500);
+});
+</script>
 
 </body>
 </html>
