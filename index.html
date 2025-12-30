@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>قاب — جهان ویدئو</title>
+
 <style>
 /* ================= FONT ================= */
 @font-face {
@@ -38,7 +39,7 @@ body {
   justify-content:center;
   align-items:center;
   text-align:center;
-  box-shadow: inset 0 0 40px #FFBE00, inset 0 0 80px #FFBE00; /* نئون از بغل‌ها */
+  box-shadow: inset 0 0 40px #FFBE00, inset 0 0 80px #FFBE00;
 }
 
 .hero-header-fixed {
@@ -94,95 +95,78 @@ body {
   display:inline-block;
 }
 
-/* ================= SKELETON ================= */
-:root {
-  --primary-color: #2c3e50;
-  --secondary-color: #ecf0f1;
-  --accent-color: #3498db;
-  --shimmer-color: rgba(255, 255, 255, 0.3);
-  --loading-grey: #e2e5e7;
-  --loading-dark-grey: #c8cdd0;
-  --spacing-unit: 16px;
-  --border-radius: 6px;
-  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.container {
-  max-width:1200px;
-  margin:0 auto;
-  padding:24px;
-}
-
-.skeleton-element {
+/* ================= SKELETON TEXT ================= */
+.skeleton-text {
   position: relative;
-  overflow: hidden;
-  background-color: var(--loading-grey);
-  border-radius: var(--border-radius);
-  margin-bottom: var(--spacing-unit);
+  color: transparent;
 }
 
-.skeleton-element::after {
-  content:'';
-  position:absolute;
-  top:0; left:0; right:0; bottom:0;
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, var(--shimmer-color) 50%, rgba(255,255,255,0) 100%);
+.skeleton-text::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #e2e5e7;
+  border-radius: 6px;
+}
+
+.skeleton-text::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+  );
   transform: translateX(-100%);
-  animation: shimmer 2s infinite;
+  animation: shimmer 1.6s infinite;
+}
+
+/* دکمه اسکلتون */
+.skeleton-btn {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.skeleton-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.6),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.6s infinite;
+}
+
+/* بعد از لود */
+.loaded .skeleton-text {
+  color: inherit;
+}
+
+.loaded .skeleton-text::before,
+.loaded .skeleton-text::after,
+.loaded .skeleton-btn::after {
+  display: none;
 }
 
 @keyframes shimmer {
   100% { transform: translateX(100%); }
 }
 
-/* Compact post skeleton */
-.compact-skeleton {
-  display:flex;
-  gap:16px;
-  margin-bottom:16px;
-  padding-bottom:16px;
-  border-bottom:1px solid var(--loading-dark-grey);
-}
-
-.compact-image {
-  width:80px;
-  height:80px;
-  background-color: var(--loading-grey);
-  border-radius: var(--border-radius);
-  position: relative;
-  overflow: hidden;
-}
-
-.compact-content {
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  justify-content:space-between;
-}
-
-.compact-title, .compact-meta, .compact-excerpt {
-  height:12px;
-  border-radius: var(--border-radius);
-  background-color: var(--loading-grey);
-  position:relative;
-  overflow:hidden;
-}
-
-.compact-title { width:100%; }
-.compact-meta { width:70%; }
-.compact-excerpt { width:100%; }
-.compact-excerpt:last-child { width:90%; }
-
 /* ================= RESPONSIVE ================= */
 @media(max-width:600px){
   .hero-title { font-size:32px; }
   .hero-desc { font-size:16px; }
-  .compact-skeleton { flex-direction:column; }
-  .compact-image { width:100%; height:140px; }
 }
-
 </style>
 </head>
+
 <body>
 
 <!-- HEADER FIXED -->
@@ -196,44 +180,18 @@ body {
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <div class="hero-title">داستان جهان ویدئو</div>
-    <div class="hero-desc">جایی برای تجربه و اشتراک ویدئوها</div>
-    <a class="cta-button">داستان خودتو بنویس</a>
+    <div class="hero-title skeleton-text">داستان جهان ویدئو</div>
+    <div class="hero-desc skeleton-text">جایی برای تجربه و اشتراک ویدئوها</div>
+    <a class="cta-button skeleton-btn">داستان خودتو بنویس</a>
   </div>
 </section>
 
-<!-- SKELETON LAYOUT -->
-<div class="container">
-  <div class="compact-skeleton">
-    <div class="compact-image skeleton-element"></div>
-    <div class="compact-content">
-      <div class="compact-title skeleton-element"></div>
-      <div class="compact-meta skeleton-element"></div>
-      <div class="compact-excerpt skeleton-element"></div>
-      <div class="compact-excerpt skeleton-element"></div>
-    </div>
-  </div>
-
-  <div class="compact-skeleton">
-    <div class="compact-image skeleton-element"></div>
-    <div class="compact-content">
-      <div class="compact-title skeleton-element"></div>
-      <div class="compact-meta skeleton-element"></div>
-      <div class="compact-excerpt skeleton-element"></div>
-      <div class="compact-excerpt skeleton-element"></div>
-    </div>
-  </div>
-
-  <div class="compact-skeleton">
-    <div class="compact-image skeleton-element"></div>
-    <div class="compact-content">
-      <div class="compact-title skeleton-element"></div>
-      <div class="compact-meta skeleton-element"></div>
-      <div class="compact-excerpt skeleton-element"></div>
-      <div class="compact-excerpt skeleton-element"></div>
-    </div>
-  </div>
-</div>
+<!-- شبیه‌سازی لود -->
+<script>
+setTimeout(() => {
+  document.body.classList.add('loaded');
+}, 2500);
+</script>
 
 </body>
 </html>
