@@ -6,191 +6,173 @@
 <title>قاب — جهان ویدئو</title>
 
 <style>
-/* ================= FONT ================= */
-@font-face {
-  font-family: "MainFont";
-  src: url("fonts/Ravi-Bold.woff2") format("woff2");
-  font-weight: 700;
-}
-@font-face {
-  font-family: "MainFont";
-  src: url("fonts/Ravi-Regular.woff2") format("woff2");
-  font-weight: 400;
-}
-
-/* ================= RESET ================= */
-* { box-sizing:border-box; margin:0; padding:0; }
-
+/* ================= BASE ================= */
 body {
-  font-family:"MainFont", sans-serif;
+  margin:0;
+  font-family: sans-serif;
   background:#0d0d0d;
   color:#fff;
-  overflow-x:hidden;
 }
 
 /* ================= HERO ================= */
 .hero {
   min-height:80vh;
-  padding:32px 20px;
-  background: linear-gradient(120deg, #FFBE00 0%, transparent 45%), #0d0d0d;
-  position:relative;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  text-align:center;
-  box-shadow: inset 0 0 40px #FFBE00, inset 0 0 80px #FFBE00;
+  position:relative;
+  overflow:hidden;
 }
 
+/* نئون کناری */
+.hero::before,
+.hero::after {
+  content:"";
+  position:absolute;
+  top:0;
+  width:160px;
+  height:100%;
+  filter:blur(80px);
+  opacity:.8;
+}
+
+.hero::before {
+  left:-60px;
+  background:#ffbe00;
+}
+
+.hero::after {
+  right:-60px;
+  background:#ff5c00;
+}
+
+/* ================= HEADER ================= */
 .hero-header-fixed {
   position:fixed;
-  top:0; left:0;
+  top:0; right:0;
   width:100%;
-  padding:10px 20px;
+  padding:12px 20px;
   display:flex;
   align-items:center;
   gap:12px;
   z-index:2;
 }
 
-.logo {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:36px;
-  font-weight:700;
-}
-
 .logo-box-img {
   width:54px;
   height:36px;
-  background:url('image/logo.png') no-repeat center/contain;
-  filter:drop-shadow(0 0 5px #FFBE00);
+  background:url("image/logo.png") no-repeat center/contain;
 }
 
+/* ================= HERO TEXT ================= */
 .hero-text {
-  margin-top:140px;
+  z-index:1;
+  text-align:center;
+  margin-top:80px;
 }
 
+/* ================= SKELETON ================= */
+.skeleton {
+  position:relative;
+  overflow:hidden;
+  background:#1f1f1f;
+  border-radius:8px;
+}
+
+.skeleton::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  transform:translateX(-100%);
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.25),
+    transparent
+  );
+  animation:shimmer 1.6s infinite;
+}
+
+@keyframes shimmer {
+  100% { transform:translateX(100%); }
+}
+
+.skeleton.loaded::after {
+  display:none;
+}
+
+/* ================= TEXT SIZES ================= */
 .hero-title {
-  font-size:42px;
-  font-weight:700;
-  margin-bottom:12px;
+  width:320px;
+  height:42px;
+  margin:0 auto 14px;
 }
 
 .hero-desc {
-  font-size:18px;
-  opacity:0.85;
-  margin-bottom:32px;
+  width:260px;
+  height:20px;
+  margin:0 auto;
 }
 
+/* ================= REAL TEXT ================= */
+.real-text {
+  display:none;
+}
+
+.loaded + .real-text {
+  display:block;
+}
+
+/* ================= CTA ================= */
 .cta-button {
+  margin-top:32px;
   background:#FFBE00;
   color:#0d0d0d;
-  font-size:16px;
   font-weight:700;
   padding:12px 28px;
   border-radius:6px;
   text-decoration:none;
   display:inline-block;
 }
-
-/* ================= SKELETON TEXT ================= */
-.skeleton-text {
-  position: relative;
-  color: transparent;
-}
-
-.skeleton-text::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #e2e5e7;
-  border-radius: 6px;
-}
-
-.skeleton-text::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,0.6),
-    transparent
-  );
-  transform: translateX(-100%);
-  animation: shimmer 1.6s infinite;
-}
-
-/* دکمه اسکلتون */
-.skeleton-btn {
-  position: relative;
-  color: transparent;
-  pointer-events: none;
-}
-
-.skeleton-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,0.6),
-    transparent
-  );
-  transform: translateX(-100%);
-  animation: shimmer 1.6s infinite;
-}
-
-/* بعد از لود */
-.loaded .skeleton-text {
-  color: inherit;
-}
-
-.loaded .skeleton-text::before,
-.loaded .skeleton-text::after,
-.loaded .skeleton-btn::after {
-  display: none;
-}
-
-@keyframes shimmer {
-  100% { transform: translateX(100%); }
-}
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:600px){
-  .hero-title { font-size:32px; }
-  .hero-desc { font-size:16px; }
-}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER FIXED -->
-<div class="hero-header-fixed">
-  <div class="logo">
-    <span>قاب</span>
+<section class="hero">
+
+  <!-- HEADER -->
+  <div class="hero-header-fixed">
+    <strong>قاب</strong>
     <div class="logo-box-img"></div>
   </div>
-</div>
 
-<!-- HERO -->
-<section class="hero">
+  <!-- HERO TEXT -->
   <div class="hero-text">
-    <div class="hero-title skeleton-text">داستان جهان ویدئو</div>
-    <div class="hero-desc skeleton-text">جایی برای تجربه و اشتراک ویدئوها</div>
-    <a class="cta-button skeleton-btn">داستان خودتو بنویس</a>
+
+    <!-- Title Skeleton -->
+    <div class="skeleton hero-title"></div>
+    <h1 class="real-text">داستان جهان ویدئو</h1>
+
+    <!-- Desc Skeleton -->
+    <div class="skeleton hero-desc"></div>
+    <p class="real-text">جایی برای تجربه و اشتراک ویدئوها</p>
+
+    <a class="cta-button">داستان خودتو بنویس</a>
   </div>
+
 </section>
 
-<!-- شبیه‌سازی لود -->
 <script>
+/* حذف اسکلتون بعد از لود */
 setTimeout(() => {
-  document.body.classList.add('loaded');
-}, 2500);
+  document.querySelectorAll('.skeleton').forEach(el => {
+    el.classList.add('loaded');
+    el.style.display = 'none';
+    el.nextElementSibling.style.display = 'block';
+  });
+}, 2200);
 </script>
 
 </body>
