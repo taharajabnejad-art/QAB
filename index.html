@@ -6,195 +6,128 @@
 <title>قاب — جهان ویدئو</title>
 
 <style>
-/* ================= FONT ================= */
+/* ================= FONT (Base64) ================= */
 @font-face {
   font-family: "Ravi";
-  src: url("fonts/Ravi-Bold.woff2") format("woff2");
   font-weight: 700;
+  src: url(data:font/woff2;base64,PUT_RAVI_BOLD_BASE64_HERE) format("woff2");
 }
 @font-face {
   font-family: "Ravi";
-  src: url("fonts/Ravi-Regular.woff2") format("woff2");
   font-weight: 400;
+  src: url(data:font/woff2;base64,PUT_RAVI_REGULAR_BASE64_HERE) format("woff2");
 }
 
 /* ================= RESET ================= */
 * {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family:"Ravi", sans-serif;
-  background:#0d0d0d;
-  color:#fff;
-  overflow-x:hidden;
+  font-family: "Ravi", sans-serif;
+  background: #0d0d0d;
+  color: #fff;
+  overflow-x: hidden;
 }
 
 /* ================= HERO ================= */
 .hero {
-  min-height:100vh;
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px 20px;
-  background:#0d0d0d;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-/* نئون از بغل‌ها */
+/* نئون کناره‌ها */
 .hero::before,
 .hero::after {
-  content:"";
-  position:absolute;
-  top:0;
-  width:160px;
-  height:100%;
-  filter:blur(80px);
-  opacity:.8;
-  pointer-events:none;
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 240px;
+  height: 100%;
+  filter: blur(130px);
+  opacity: 0.35;
 }
 
 .hero::before {
-  left:-80px;
-  background:#ffbe00;
+  left: -120px;
+  background: #ffbe00;
 }
 
 .hero::after {
-  right:-80px;
-  background:#ff6a00;
+  right: -120px;
+  background: #ff006a;
 }
 
-/* ================= HEADER ================= */
-.header {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  padding:14px 24px;
-  display:flex;
-  justify-content:center;
-  z-index:10;
-}
-
-.logo {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:32px;
-  font-weight:700;
-}
-
-.logo-box {
-  width:52px;
-  height:36px;
-  background:url("image/logo.png") no-repeat center/contain;
-  filter:drop-shadow(0 0 8px #ffbe00);
-}
-
-/* ================= TEXT ================= */
+/* ================= HERO CONTENT ================= */
 .hero-text {
-  margin-top:120px;
-  max-width:700px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
 }
 
-/* متن + مستطیل */
-.mask-text {
-  position:relative;
-  display:inline-block;
-  color:#fff;
+/* ================= SKELETON ================= */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #1f1f1f;
+  border-radius: 8px;
 }
 
-.mask-text.title {
-  font-size:42px;
-  font-weight:700;
+/* shimmer حرکتی داخلی */
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.28) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.6s infinite;
 }
 
-.mask-text.desc {
-  display:block;
-  margin-top:16px;
-  font-size:18px;
-  font-weight:400;
-  opacity:.85;
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }
 
-/* مستطیل روی متن */
-.mask-text::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:#1f1f1f;
-  border-radius:10px;
-  animation: maskAnim 1.6s ease-in-out 3;
+/* ================= TEXT SKELETON SIZES ================= */
+.hero-title-skeleton {
+  width: 340px;
+  height: 48px;
+  margin: 0 auto 16px;
 }
 
-/* حذف مستطیل */
-.mask-text.reveal::after {
-  display:none;
-}
-
-/* انیمیشن مستطیل */
-@keyframes maskAnim {
-  0%   { opacity:1; }
-  50%  { opacity:.55; }
-  100% { opacity:1; }
-}
-
-/* ================= CTA ================= */
-.cta {
-  margin-top:36px;
-}
-
-.cta a {
-  background:#ffbe00;
-  color:#0d0d0d;
-  padding:14px 34px;
-  border-radius:8px;
-  font-weight:700;
-  font-size:16px;
-  text-decoration:none;
-  display:inline-block;
-  transition:transform .2s ease;
-}
-
-.cta a:hover {
-  transform:translateY(-2px);
+.hero-desc-skeleton {
+  width: 280px;
+  height: 20px;
+  margin: 0 auto;
+  border-radius: 6px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="logo">
-    <div class="logo-box"></div>
-    <span>قاب</span>
-  </div>
-</header>
-
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero-text">
-    <h1 class="mask-text title">داستان جهان ویدئو</h1>
-    <p class="mask-text desc">جایی برای تجربه و اشتراک ویدئوها</p>
+    <!-- داستان جهان ویدئو -->
+    <div class="skeleton hero-title-skeleton"></div>
 
-    <div class="cta">
-      <a href="#">داستان خودتو بنویس</a>
-    </div>
+    <!-- جایی برای تجربه و اشتراک ویدئوها -->
+    <div class="skeleton hero-desc-skeleton"></div>
   </div>
 </section>
-
-<script>
-document.querySelectorAll('.mask-text').forEach(el => {
-  setTimeout(() => {
-    el.classList.add('reveal');
-  }, 1600 * 3);
-});
-</script>
 
 </body>
 </html>
