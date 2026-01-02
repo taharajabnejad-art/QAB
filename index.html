@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qab – Video</title>
+<title>Qab – Video Skeleton</title>
 
 <style>
-/* ===== FONT (Base64 رو خودت جایگزین کن) ===== */
+/* ===== FONT (Base64) ===== */
 @font-face{
   font-family:Qab;
   src:url(data:font/woff2;base64,XXXX) format("woff2");
@@ -25,12 +25,10 @@ body{
   color:#eaeaea;
 }
 
-/* ===== Skeleton ===== */
+/* ===== Skeleton Overlay ===== */
 .skel{
   position:absolute;
-  top:0; right:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:linear-gradient(
     90deg,
     #1c1c1c 25%,
@@ -40,6 +38,7 @@ body{
   background-size:400% 100%;
   animation:shimmer 1.2s linear 2;
   pointer-events:none;
+  z-index:2; /* بالاتر از متن */
 }
 
 @keyframes shimmer{
@@ -47,7 +46,7 @@ body{
   100%{background-position:-100% 0}
 }
 
-.loaded .skel{display:none}
+.loaded .skel{display:none;}
 
 /* ===== Header ===== */
 .header{
@@ -60,21 +59,19 @@ body{
   border-bottom:1px solid #222;
 }
 
-.logo img{height:24px}
+.logo img{height:24px;}
 
 .search{
   flex:1;
   background:#1f1f1f;
   padding:8px 12px;
   border-radius:10px;
-  font-size:14px;
   font-weight:400;
   color:#aaa;
 }
 
 /* ===== Grid ===== */
-.container{padding:20px}
-
+.container{padding:20px;}
 .videos{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
@@ -86,6 +83,7 @@ body{
   background:#141414;
   border-radius:14px;
   overflow:hidden;
+  position:relative;
 }
 
 /* ===== Thumb ===== */
@@ -100,9 +98,7 @@ body{
   object-fit:cover;
 }
 
-.thumb .skel{
-  border-radius:14px 14px 0 0;
-}
+.thumb .skel{border-radius:14px 14px 0 0;}
 
 .time{
   position:absolute;
@@ -111,9 +107,10 @@ body{
   background:#ffbe00;
   color:#000;
   font-size:12px;
-  font-weight:700;
   padding:2px 6px;
   border-radius:6px;
+  font-weight:700;
+  z-index:3;
 }
 
 /* ===== Info ===== */
@@ -122,43 +119,43 @@ body{
   display:flex;
   flex-direction:column;
   gap:8px;
-}
-
-/* --- title --- */
-.title-wrap{
   position:relative;
-  height:14px;
-  width:90%;
 }
 
+.title-wrap,
+.channel-wrap{
+  position:relative;
+}
+
+/* متن واقعی */
 .title{
   font-size:14px;
   font-weight:700;
-  line-height:14px;
-  position:relative;
+  color:#0f0f0f; /* بی‌رنگ هنگام اسکلت */
   z-index:1;
-}
-
-/* --- channel --- */
-.channel-wrap{
-  position:relative;
-  height:12px;
-  width:60%;
 }
 
 .channel{
   font-size:12px;
+  color:#0f0f0f; /* بی‌رنگ هنگام اسکلت */
   font-weight:400;
-  line-height:12px;
-  color:#999;
-  position:relative;
   z-index:1;
 }
 
-/* اسکلت متن (تیز) */
+/* اسکلت متن */
 .text-skel{
+  position:absolute;
+  inset:0;
   border-radius:0;
+  z-index:2; /* بالاتر از متن */
 }
+
+.title-wrap{height:14px;width:90%;}
+.channel-wrap{height:12px;width:60%;}
+
+/* وقتی اسکلت تموم شد متن رنگ واقعی می‌گیرد */
+.loaded .title{color:#eaeaea;}
+.loaded .channel{color:#999;}
 </style>
 </head>
 
@@ -174,7 +171,7 @@ body{
 <div class="container">
   <div class="videos">
 
-    <!-- CARD -->
+    <!-- CARD 1 -->
     <div class="card">
       <div class="thumb">
         <img src="https://picsum.photos/500/300?1">
@@ -195,7 +192,7 @@ body{
       </div>
     </div>
 
-    <!-- CARD -->
+    <!-- CARD 2 -->
     <div class="card">
       <div class="thumb">
         <img src="https://picsum.photos/500/300?2">
