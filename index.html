@@ -29,22 +29,22 @@ body{
 .skel{
   position:absolute;
   inset:0;
-  background:linear-gradient(
+  background: linear-gradient(
     90deg,
     #1c1c1c 25%,
-    #2a2a2a 37%,
-    #1c1c1c 63%
+    #2a2a2a 50%,
+    #1c1c1c 75%
   );
-  background-size:400% 100%;
-  animation:shimmer 1.2s linear 2;
+  background-size: 200% 100%;  /* 👈 مهم */
+  animation:shimmer 1.2s ease-in-out 1; /* 👈 فقط یک بار */
   pointer-events:none;
-  z-index:2; /* بالاتر از متن */
-  border-radius:6px; /* گوشه‌ها نرم */
+  z-index:2;
+  border-radius:6px;
 }
 
 @keyframes shimmer{
-  0%{background-position:100% 0}
-  100%{background-position:-100% 0}
+  0%{background-position:100% 0;}
+  100%{background-position:-100% 0;}
 }
 
 .loaded .skel{display:none;}
