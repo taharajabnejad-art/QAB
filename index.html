@@ -27,24 +27,23 @@ body{
 
 /* ===== Skeleton Overlay ===== */
 .skel{
-  position:absolute;
+position:absolute;
   inset:0;
+  border-radius:6px;
   background: linear-gradient(
     90deg,
     #1c1c1c 25%,
     #2a2a2a 50%,
     #1c1c1c 75%
   );
-  background-size: 200% 100%;  /* 👈 مهم */
-  animation:shimmer 1.2s ease-in-out 1; /* 👈 فقط یک بار */
-  pointer-events:none;
+  background-size: 200% 100%; /* افزایش اندازه نسبت به کارت */
+  animation: shimmer 1.2s linear 1; /* فقط یک بار، حرکت یکنواخت */
   z-index:2;
-  border-radius:6px;
 }
 
-@keyframes shimmer{
-  0%{background-position:100% 0;}
-  100%{background-position:-100% 0;}
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; } /* تا انتها حرکت می‌کنه و تهی باقی نمی‌مونه */
 }
 
 .loaded .skel{display:none;}
