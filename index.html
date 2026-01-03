@@ -6,7 +6,7 @@
 <title>قاب - جهان ویدیو</title>
 
 <style>
-/* ===== FONT (Base64) ===== */
+/* ===== FONT (Base64 خودت اینجا می‌ذاری) ===== */
 @font-face{
   font-family:Qab;
   src:url(data:font/woff2;base64,XXXX) format("woff2");
@@ -25,22 +25,7 @@ body{
   color:#eaeaea;
 }
 
-/* ===== Skeleton Overlay ===== */
-.skel{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    90deg,
-    #1c1c1c 25%,
-    #2a2a2a 37%,
-    #1c1c1c 63%
-  );
-  background-size:400% 100%;
-  animation:shimmer 1.5s linear 1; /* کندتر */
-  border-radius:4px;
-  pointer-events:none;
-}
-
+/* ===== Shimmer ===== */
 @keyframes shimmer{
   0%{background-position:100% 0}
   100%{background-position:-100% 0}
@@ -56,7 +41,9 @@ body{
   background:#141414;
   border-bottom:1px solid #222;
 }
+
 .logo img{height:24px;}
+
 .search{
   flex:1;
   background:#1f1f1f;
@@ -66,8 +53,27 @@ body{
   color:#aaa;
 }
 
+/* ===== Skeleton Overlay ===== */
+.skel{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    #1c1c1c 25%,
+    #2a2a2a 37%,
+    #1c1c1c 63%
+  );
+  background-size:400% 100%;
+  animation:shimmer 2.5s linear 1;
+  border-radius:4px;
+  pointer-events:none;
+}
+
+.loaded .skel{display:none;}
+
 /* ===== Grid ===== */
 .container{padding:20px;}
+
 .videos{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
@@ -87,11 +93,13 @@ body{
   position:relative;
   height:160px;
 }
+
 .thumb img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
+
 .thumb .skel{border-radius:14px 14px 0 0;}
 
 .time{
@@ -112,30 +120,52 @@ body{
   display:flex;
   flex-direction:column;
   gap:8px;
-  position:relative;
 }
 
-.title-wrap, .channel-wrap{
+.title-wrap,
+.channel-wrap{
   position:relative;
-  height:auto;
 }
 
 /* متن واقعی */
 .title{
   font-size:14px;
   font-weight:700;
-  color:transparent; /* حین اسکلت */
+  position:relative;
+  color:transparent;
 }
+
 .channel{
   font-size:12px;
-  color:transparent; /* حین اسکلت */
+  color:transparent;
   font-weight:400;
+  position:relative;
 }
 
 /* اسکلت متن */
 .text-skel{
   position:absolute;
   inset:0;
+  border-radius:4px;
+}
+
+/* اندازه اسکلت متن */
+.title-wrap{height:14px;width:90%;}
+.channel-wrap{height:12px;width:60%;}
+
+/* ===== دسته بندی / تیتر ===== */
+.category-title{
+  font-size:18px;
+  font-weight:700;
+  color:#fff;
+  padding:16px 20px 8px;
+  position:relative;
+}
+
+.category-title .title-skel{
+  position:absolute;
+  inset:0;
+  border-radius:4px;
   background:linear-gradient(
     90deg,
     #1c1c1c 25%,
@@ -143,28 +173,30 @@ body{
     #1c1c1c 63%
   );
   background-size:400% 100%;
-  animation:shimmer 1.5s linear 1;
-  border-radius:4px;
+  animation:shimmer 2.5s linear 1;
 }
 
-/* اندازه مستطیل اسکلت متن */
-.title-wrap .text-skel{height:14px;width:90%;}
-.channel-wrap .text-skel{height:12px;width:60%;}
-
-.loaded .title,
-.loaded .channel{
-  color:#fff; /* بعد از اسکلت */
+.category-title .title-text{
+  position:relative;
+  color:transparent;
 }
 </style>
 </head>
 
 <body>
+
 <header class="header">
   <div class="logo">
     <img src="image/logo.png">
   </div>
   <div class="search">جستجوی ویدیو</div>
 </header>
+
+<!-- ===== دسته بندی / تیتر با اسکلت ===== -->
+<div class="category-title">
+  <div class="title-skel skel"></div>
+  <span class="title-text">ویژه</span>
+</div>
 
 <div class="container">
   <div class="videos">
@@ -176,14 +208,16 @@ body{
         <span class="time">20:31</span>
         <div class="skel"></div>
       </div>
+
       <div class="info">
         <div class="title-wrap">
           <div class="title">سونیک کالرز آلتیمیت با مود</div>
-          <div class="text-skel"></div>
+          <div class="skel text-skel"></div>
         </div>
+
         <div class="channel-wrap">
           <div class="channel">Neo Charmy · 34 بازدید</div>
-          <div class="text-skel"></div>
+          <div class="skel text-skel"></div>
         </div>
       </div>
     </div>
@@ -195,14 +229,16 @@ body{
         <span class="time">00:09</span>
         <div class="skel"></div>
       </div>
+
       <div class="info">
         <div class="title-wrap">
           <div class="title">رانش زمین در جاده ایذه</div>
-          <div class="text-skel"></div>
+          <div class="skel text-skel"></div>
         </div>
+
         <div class="channel-wrap">
           <div class="channel">عصر ایران · 796 بازدید</div>
-          <div class="text-skel"></div>
+          <div class="skel text-skel"></div>
         </div>
       </div>
     </div>
@@ -214,14 +250,16 @@ body{
         <span class="time">11:26</span>
         <div class="skel"></div>
       </div>
+
       <div class="info">
         <div class="title-wrap">
           <div class="title">ارائه خانم زهرا محمدی</div>
-          <div class="text-skel"></div>
+          <div class="skel text-skel"></div>
         </div>
+
         <div class="channel-wrap">
           <div class="channel">کانال رسمی · 1 بازدید</div>
-          <div class="text-skel"></div>
+          <div class="skel text-skel"></div>
         </div>
       </div>
     </div>
@@ -230,26 +268,18 @@ body{
 </div>
 
 <script>
-document.querySelectorAll('.card').forEach(card=>{
-  const skelThumb = card.querySelector('.thumb .skel');
-  const textSkels = card.querySelectorAll('.text-skel');
-  const title = card.querySelector('.title');
-  const channel = card.querySelector('.channel');
+/* ===== وقتی اسکلت تمام شد متن واقعی نمایان شود ===== */
+const skels = document.querySelectorAll('.skel');
+const titles = document.querySelectorAll('.title, .channel');
+const catSkel = document.querySelector('.category-title .title-skel');
+const catText = document.querySelector('.category-title .title-text');
 
-  // وقتی اسکلت شروع میشه متن بی‌رنگ باشه
-  title.style.color = 'transparent';
-  channel.style.color = 'transparent';
-
-  skelThumb.addEventListener('animationend', ()=>{
-    // پنهان کردن اسکلت تصویر
-    skelThumb.style.display='none';
-    // پنهان کردن اسکلت متن
-    textSkels.forEach(s=>{
-      s.style.display='none';
-    });
-    // ظاهر شدن متن واقعی
-    title.style.color = '#fff';
-    channel.style.color = '#fff';
+skels.forEach(skel=>{
+  skel.addEventListener('animationend', ()=>{
+    skel.style.display='none';
+    const parent = skel.parentElement;
+    const text = parent.querySelector('.title, .channel, .title-text');
+    if(text) text.style.color='#fff';
   });
 });
 </script>
