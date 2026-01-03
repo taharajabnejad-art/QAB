@@ -2,31 +2,52 @@
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
-<title>PWA Version</title>
+<title>PWA مستقیم</title>
 
-<!-- PWA -->
+<!-- Manifest -->
 <link rel="manifest" href="manifest-pwa.json">
 <meta name="theme-color" content="#0d0d0d">
 
-<!-- iOS -->
+<!-- iOS minimal -->
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="PWA App">
+<meta name="apple-mobile-web-app-title" content="">
 <link rel="apple-touch-icon" href="icons/pwa-192.png">
 
+<!-- CSS سبک و بدون لودینگ -->
 <link rel="stylesheet" href="test.css">
+
 </head>
 <body>
 
-<h1>📱 نسخه PWA</h1>
+<h1>📱 نسخه PWA مستقیم</h1>
+<p>وارد شدید بدون هیچ لوگو یا لودینگ اضافی</p>
 
+<!-- دکمه نصب فقط برای Android/Desktop -->
 <button id="installBtn" hidden>نصب اپ</button>
 
 <script src="pwa.js"></script>
 
 <script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./sw-pwa.js");
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw-pwa.js')
+    .then(() => console.log('Service Worker فعال شد'));
 }
+
+// مدیریت نصب PWA (Android/Desktop)
+let deferredPrompt;
+const btn = document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  btn.hidden = false;
+});
+
+btn.addEventListener('click', () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+  }
+});
 </script>
 
 </body>
