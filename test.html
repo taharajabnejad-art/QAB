@@ -1,1 +1,33 @@
-<div id="74098389560"><script type="text/JavaScript" src="https://www.aparat.com/embed/qsgt494?data[rnddiv]=74098389560&data[responsive]=yes&titleShow=true"></script></div>
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<title>PWA Version</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest-pwa.json">
+<meta name="theme-color" content="#0d0d0d">
+
+<!-- iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="PWA App">
+<link rel="apple-touch-icon" href="icons/pwa-192.png">
+
+<link rel="stylesheet" href="pwa.css">
+</head>
+<body>
+
+<h1>📱 نسخه PWA</h1>
+
+<button id="installBtn" hidden>نصب اپ</button>
+
+<script src="pwa.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw-pwa.js");
+}
+</script>
+
+</body>
+</html>
