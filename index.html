@@ -6,8 +6,7 @@
 <title>قاب - جهان ویدیو</title>
 
 <style>
-
-/* ===== FONT (Base64 خودت اینجا بذاری) ===== */
+/* ===== FONT (Base64) ===== */
 @font-face{
   font-family:Qab;
   src:url(data:font/woff2;base64,XXXX) format("woff2");
@@ -26,28 +25,26 @@ body{
   color:#eaeaea;
 }
 
-/* ===== Skeleton Overlay ===== */
+/* ===== Skeleton Animation (کند و روان) ===== */
+@keyframes shimmer{
+  0%{background-position:100% 0;}
+  100%{background-position:-100% 0;}
+}
+
 .skel{
   position:absolute;
   inset:0;
-  background:linear-gradient(
+  background: linear-gradient(
     90deg,
     #1c1c1c 25%,
     #2a2a2a 37%,
     #1c1c1c 63%
   );
   background-size:400% 100%;
-  animation:shimmer 1.2s linear 1;
+  animation:shimmer 2.4s linear 1;
   border-radius:4px;
   pointer-events:none;
 }
-
-@keyframes shimmer{
-  0%{background-position:100% 0}
-  100%{background-position:-100% 0}
-}
-
-.loaded .skel{display:none;}
 
 /* ===== Header ===== */
 .header{
@@ -71,8 +68,37 @@ body{
   color:#aaa;
 }
 
-/* ===== Grid ===== */
-.container{padding:20px;}
+/* ===== Category / Title ===== */
+.category-title{
+  padding:0 20px;
+  margin:20px 0 12px 0;
+}
+
+.category-title .title-wrap{
+  position:relative;
+  height:24px;
+  width:200px;
+}
+
+.title-text{
+  font-size:20px;
+  font-weight:700;
+  color:#eaeaea;
+}
+
+.skel-active .title-text{
+  color:transparent;
+}
+
+.category-title .text-skel{
+  position:absolute;
+  inset:0;
+  border-radius:4px;
+  z-index:2;
+}
+
+/* ===== Videos Grid ===== */
+.container{padding:0 20px 20px;}
 
 .videos{
   display:grid;
@@ -98,7 +124,6 @@ body{
   width:100%;
   height:100%;
   object-fit:cover;
-  border-radius:14px 14px 0 0;
 }
 
 .thumb .skel{border-radius:14px 14px 0 0;}
@@ -128,7 +153,6 @@ body{
   position:relative;
 }
 
-/* متن واقعی */
 .title{
   font-size:14px;
   font-weight:700;
@@ -140,28 +164,36 @@ body{
   font-weight:400;
 }
 
-/* اسکلت متن */
 .text-skel{
   position:absolute;
   inset:0;
   border-radius:4px;
+  pointer-events:none;
 }
-
-/* ارتفاع اسکلت متن */
-.title-wrap{height:14px;width:90%;}
-.channel-wrap{height:12px;width:60%;}
+.skel-active .title,
+.skel-active .channel{
+  color:transparent;
+}
 
 </style>
 </head>
 
-<body>
+<body class="skel-active">
 
 <header class="header">
   <div class="logo">
-    <img src="image/logo.png" alt="قاب">
+    <img src="image/logo.png">
   </div>
   <div class="search">جستجوی ویدیو</div>
 </header>
+
+<!-- ===== Category Title ===== -->
+<div class="category-title">
+  <div class="title-wrap">
+    <span class="title-text">ویژه</span>
+    <div class="text-skel skel"></div>
+  </div>
+</div>
 
 <div class="container">
   <div class="videos">
@@ -177,12 +209,12 @@ body{
       <div class="info">
         <div class="title-wrap">
           <div class="title">سونیک کالرز آلتیمیت با مود</div>
-          <div class="skel text-skel"></div>
+          <div class="text-skel skel"></div>
         </div>
 
         <div class="channel-wrap">
           <div class="channel">Neo Charmy · 34 بازدید</div>
-          <div class="skel text-skel"></div>
+          <div class="text-skel skel"></div>
         </div>
       </div>
     </div>
@@ -197,13 +229,13 @@ body{
 
       <div class="info">
         <div class="title-wrap">
-          <div class="title">ارائه خانم زهرا محمدی</div>
-          <div class="skel text-skel"></div>
+          <div class="title">رانش زمین در جاده ایذه</div>
+          <div class="text-skel skel"></div>
         </div>
 
         <div class="channel-wrap">
-          <div class="channel">کانال رسمی · 1 بازدید</div>
-          <div class="skel text-skel"></div>
+          <div class="channel">عصر ایران · 796 بازدید</div>
+          <div class="text-skel skel"></div>
         </div>
       </div>
     </div>
@@ -212,19 +244,19 @@ body{
     <div class="card">
       <div class="thumb">
         <img src="https://picsum.photos/500/300?3">
-        <span class="time">00:09</span>
+        <span class="time">11:26</span>
         <div class="skel"></div>
       </div>
 
       <div class="info">
         <div class="title-wrap">
-          <div class="title">رانش زمین در جاده ایذه</div>
-          <div class="skel text-skel"></div>
+          <div class="title">ارائه خانم زهرا محمدی</div>
+          <div class="text-skel skel"></div>
         </div>
 
         <div class="channel-wrap">
-          <div class="channel">عصر ایران · 796 بازدید</div>
-          <div class="skel text-skel"></div>
+          <div class="channel">کانال رسمی · 1 بازدید</div>
+          <div class="text-skel skel"></div>
         </div>
       </div>
     </div>
@@ -234,8 +266,8 @@ body{
 
 <script>
 setTimeout(()=>{
-  document.body.classList.add("loaded");
-},1600);
+  document.body.classList.remove("skel-active");
+},2400); /* دقیقاً پایان دور کند اسکلت */
 </script>
 
 </body>
