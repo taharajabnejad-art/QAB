@@ -2,53 +2,199 @@
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
-<title>PWA مستقیم</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube iOS 26 Dark Mode</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
 
-<!-- Manifest -->
-<link rel="manifest" href="manifest-pwa.json">
-<meta name="theme-color" content="#0d0d0d">
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f7f7f7;
+    color: #000;
+    transition: background 0.3s, color 0.3s;
+  }
 
-<!-- iOS minimal -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="">
-<link rel="apple-touch-icon" href="icons/pwa-192.png">
+  /* Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: #0d0d0d;
+      color: #fff;
+    }
+    .top-bar input {
+      background: rgba(20,20,20,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .video-info .channel {
+      color: #ccc;
+    }
+    .tab-bar {
+      background: rgba(25,25,25,0.6);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .tab-bar button {
+      color: #aaa;
+    }
+    .tab-bar button.active {
+      color: #ff0000;
+    }
+  }
 
-<!-- CSS سبک و بدون لودینگ -->
-<link rel="stylesheet" href="test.css">
+  /* Liquid Glass top bar */
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 10px 15px;
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(200,200,200,0.3);
+    display: flex;
+    gap: 10px;
+  }
 
+  .top-bar input {
+    flex: 1;
+    padding: 9px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(15px);
+    font-size: 15px;
+    outline: none;
+  }
+
+  .top-bar button {
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  /* Video feed */
+  .video-list {
+    flex: 1;
+    padding: 12px 0;
+    overflow-y: auto;
+  }
+
+  .video-card {
+    margin-bottom: 22px;
+    padding: 0 15px;
+    cursor: pointer;
+  }
+
+  .video-card img {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+  }
+
+  .video-info {
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .video-info img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+  }
+
+  .video-info .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .video-info .title {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .video-info .channel {
+    font-size: 12px;
+    color: #555;
+  }
+
+  /* Liquid Glass bottom tab bar */
+  .tab-bar {
+    height: 62px;
+    backdrop-filter: blur(22px);
+    background: rgba(255,255,255,0.55);
+    border-top: 1px solid rgba(200,200,200,0.3);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .tab-bar button {
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .tab-bar button.active {
+    color: #ff0000;
+  }
+
+  .tab-bar button span {
+    font-size: 10px;
+    margin-top: 3px;
+  }
+</style>
 </head>
 <body>
 
-<h1>📱 نسخه PWA مستقیم</h1>
-<p>وارد شدید بدون هیچ لوگو یا لودینگ اضافی</p>
+<div class="top-bar">
+  <input placeholder="جستجوی ویدیو ...">
+  <button>🔍</button>
+</div>
 
-<!-- دکمه نصب فقط برای Android/Desktop -->
-<button id="installBtn" hidden>نصب اپ</button>
+<div class="video-list">
+  <div class="video-card">
+    <img src="https://via.placeholder.com/400x225" alt="Thumbnail">
+    <div class="video-info">
+      <img src="https://via.placeholder.com/38" alt="Avatar">
+      <div class="text">
+        <div class="title">ویدیو نمونه با UI شیشه‌ای</div>
+        <div class="channel">کانال طراحی • 2M بازدید</div>
+      </div>
+    </div>
+  </div>
+  <div class="video-card">
+    <img src="https://via.placeholder.com/400x225" alt="Thumbnail">
+    <div class="video-info">
+      <img src="https://via.placeholder.com/38" alt="Avatar">
+      <div class="text">
+        <div class="title">ویدیو دوم با Dark Mode</div>
+        <div class="channel">کانال نمونه • 500K بازدید</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<script src="pwa.js"></script>
-
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw-pwa.js')
-    .then(() => console.log('Service Worker فعال شد'));
-}
-
-// مدیریت نصب PWA (Android/Desktop)
-let deferredPrompt;
-const btn = document.getElementById('installBtn');
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  btn.hidden = false;
-});
-
-btn.addEventListener('click', () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
-  }
-});
-</script>
+<div class="tab-bar">
+  <button class="active">🏠<span>خانه</span></button>
+  <button>🔥<span>ترند</span></button>
+  <button>➕<span>آپلود</span></button>
+  <button>📺<span>اشتراک‌ها</span></button>
+  <button>📚<span>کتابخانه</span></button>
+</div>
 
 </body>
 </html>
