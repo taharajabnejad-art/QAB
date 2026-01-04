@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aparat Dark Skeleton</title>
-
+<title>QAB – Video</title>
 <style>
-/* ===== FONT (Base64 خودت اینجا بزار) ===== */
+/* ===== FONT (Base64 خودت اینجا بذار) ===== */
 @font-face{
   font-family:Qab;
   src:url(data:font/woff2;base64,XXXX) format("woff2");
@@ -35,60 +34,75 @@ body{
     #2a2a2a 37%,
     #1c1c1c 63%
   );
-  background-size:400% 100%;
-  animation:shimmer 1.5s linear 1;
-  border-radius:4px;
+  background-size: 400% 100%;
+  animation: shimmer 1.8s linear 2;
+  border-radius: 8px;
   pointer-events:none;
 }
+
 @keyframes shimmer{
-  0%{background-position:100% 0}
-  100%{background-position:-100% 0}
+  0%{background-position:100% 0;}
+  100%{background-position:-100% 0;}
 }
+
 .loaded .skel{display:none;}
 
 /* ===== Header ===== */
 .header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
   height:64px;
   display:flex;
   align-items:center;
   gap:12px;
   padding:0 16px;
-  background:#141414;
-  border-bottom:1px solid #222;
-  position:fixed;
-  width:100%;
-  top:0;
+  background: linear-gradient(to bottom, #000 100%, transparent 0%);
   z-index:100;
 }
 
+/* لوگو */
 .logo img{
   height:24px;
 }
 
+/* نوار جستجو */
 .search{
   flex:1;
   background:#1f1f1f;
+  border-radius:32px; /* کاملاً گرد */
   padding:8px 12px;
-  border-radius:20px;
   font-weight:400;
   color:#aaa;
+  font-size:14px;
+  position:relative;
 }
 
-.actions{display:flex;gap:10px;}
+/* دکمه‌ها */
+.actions{
+  display:flex;
+  gap:10px;
+}
 .btn{
   border:1px solid #2a2a2a;
   background:#1a1a1a;
   color:#eee;
-  border-radius:10px;
-  padding:6px 10px;
+  border-radius:50%; /* گرد */
+  width:36px;
+  height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   cursor:pointer;
+  font-size:16px;
+  position:relative;
 }
 
-/* ===== Container & Grid ===== */
+/* ===== Videos Grid ===== */
 .container{
-  padding:100px 20px 20px; /* padding-top برای هدر ثابت */
+  padding:84px 20px 20px; /* فاصله از هدر ثابت */
 }
-
 .videos{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
@@ -102,19 +116,15 @@ body{
   overflow:hidden;
   position:relative;
 }
-
 .thumb{
   position:relative;
   height:160px;
 }
-
 .thumb img{
   width:100%;
   height:100%;
   object-fit:cover;
-  display:block;
 }
-
 .time{
   position:absolute;
   bottom:8px;
@@ -127,58 +137,82 @@ body{
   font-weight:700;
 }
 
-/* ===== Info ===== */
+/* Info */
 .info{
   padding:10px;
   display:flex;
   flex-direction:column;
-  gap:6px;
+  gap:8px;
 }
-
-.title-wrap,
-.channel-wrap{
+.title-wrap, .channel-wrap{
   position:relative;
 }
-
 .title{
   font-size:14px;
   font-weight:700;
-  line-height:1.2;
 }
-
 .channel{
   font-size:12px;
-  font-weight:400;
   color:#999;
+  font-weight:400;
 }
 
-/* ===== Skeleton Text Overlay ===== */
+/* Skeleton روی متن */
 .text-skel{
   position:absolute;
   inset:0;
   border-radius:4px;
+  background: linear-gradient(
+    90deg,
+    #1c1c1c 25%,
+    #2a2a2a 37%,
+    #1c1c1c 63%
+  );
+  background-size:400% 100%;
+  animation: shimmer 1.8s linear 2;
 }
-
 .title-wrap{height:14px;width:90%;}
 .channel-wrap{height:12px;width:60%;}
 
+/* Responsive Mobile */
+@media(max-width:600px){
+  .videos{
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  }
+  .header{
+    padding:0 12px;
+  }
+  .search{font-size:12px;}
+}
 </style>
 </head>
-
 <body>
 
+<!-- ===== Header ===== -->
 <header class="header">
   <div class="logo">
-    <img src="image/logo.png">
+    <img src="image/logo.png" alt="QAB Logo">
   </div>
-  <div class="search">جستجوی ویدیو</div>
+
+  <div class="search">
+    <div class="skel"></div>
+    <span class="real-text">جستجوی ویدیو</span>
+  </div>
+
   <div class="actions">
-    <button class="btn">بارگذاری</button>
-    <button class="btn">🔔</button>
-    <button class="btn">☰</button>
+    <div class="btn">
+      <div class="skel"></div>
+    </div>
+    <div class="btn">
+      <div class="skel"></div>
+    </div>
+    <div class="btn">
+      <div class="skel"></div>
+    </div>
   </div>
 </header>
 
+<!-- ===== Videos ===== -->
 <div class="container">
   <div class="videos">
 
@@ -192,11 +226,11 @@ body{
       <div class="info">
         <div class="title-wrap">
           <div class="title">سونیک کالرز آلتیمیت با مود</div>
-          <div class="skel text-skel"></div>
+          <div class="text-skel"></div>
         </div>
         <div class="channel-wrap">
           <div class="channel">Neo Charmy · 34 بازدید</div>
-          <div class="skel text-skel"></div>
+          <div class="text-skel"></div>
         </div>
       </div>
     </div>
@@ -211,30 +245,11 @@ body{
       <div class="info">
         <div class="title-wrap">
           <div class="title">رانش زمین در جاده ایذه</div>
-          <div class="skel text-skel"></div>
+          <div class="text-skel"></div>
         </div>
         <div class="channel-wrap">
           <div class="channel">عصر ایران · 796 بازدید</div>
-          <div class="skel text-skel"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="card">
-      <div class="thumb">
-        <img src="https://picsum.photos/500/300?3">
-        <span class="time">11:26</span>
-        <div class="skel"></div>
-      </div>
-      <div class="info">
-        <div class="title-wrap">
-          <div class="title">ارائه خانم زهرا محمدی</div>
-          <div class="skel text-skel"></div>
-        </div>
-        <div class="channel-wrap">
-          <div class="channel">کانال رسمی · 1 بازدید</div>
-          <div class="skel text-skel"></div>
+          <div class="text-skel"></div>
         </div>
       </div>
     </div>
@@ -243,9 +258,10 @@ body{
 </div>
 
 <script>
+// اسکلتون بعد از 1.6 ثانیه ناپدید شود
 setTimeout(()=>{
   document.body.classList.add("loaded");
-},1800);
+},1600);
 </script>
 
 </body>
