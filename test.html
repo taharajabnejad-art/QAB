@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
   body {
     margin: 0;
@@ -12,19 +11,50 @@
     font-family: sans-serif;
   }
 
-  /* هدر ثابت */
+  /* هدر ثابت ساده */
   .header {
     height: 64px;
     background: #ffffff;
-    border-radius: 18px;
+    border-radius: 18px; /* گوشه‌های نرم */
+    margin-bottom: 20px;
+  }
+
+  /* اسکرول افقی */
+  .scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 10px;
+  }
+
+  /* کارت‌ها */
+  .card {
+    min-width: 120px;
+    height: 160px;
+    background: #ffffff;
+    border-radius: 24px; /* گوشه‌های کاملاً نرم */
+    flex-shrink: 0;
+  }
+
+  /* غیرفعال کردن اسکرول بار ugly برای زیبایی */
+  .scroll-container::-webkit-scrollbar {
+    display: none;
   }
 </style>
 </head>
-
 <body>
 
   <!-- هدر -->
   <header class="header"></header>
+
+  <!-- چی‌کی‌ها / کارت‌ها -->
+  <div class="scroll-container">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
 
 </body>
 </html>
