@@ -7,15 +7,15 @@
   body {
     margin: 0;
     padding: 20px;
-    background: #f2f2f2;
+    background: #0f0f0f; /* رنگ صفحه */
     font-family: sans-serif;
   }
 
-  /* هدر ثابت */
+  /* هدر ثابت کمی روشن‌تر */
   .header {
     height: 64px;
-    background: #ffffff;
-    border-radius: 32px; /* گوشه‌ها کاملاً دایره‌ای */
+    background: #1a1a1a; /* کمی روشن‌تر از پس‌زمینه */
+    border-radius: 32px; /* گوشه‌های دایره‌ای */
     margin-bottom: 20px;
   }
 
@@ -31,13 +31,14 @@
   .card {
     min-width: 120px;
     height: 120px;
-    background: #ffffff;
-    border-radius: 60px; /* نصف ارتفاع → گوشه‌ها دایره‌ای */
+    background: #1a1a1a; /* کارت‌ها هم هم‌رنگ هدر */
+    border-radius: 60px; /* گوشه‌های کاملاً دایره‌ای */
     flex-shrink: 0;
   }
 
+  /* مخفی کردن اسکرول بار */
   .scroll-container::-webkit-scrollbar {
-    display: none; /* مخفی کردن اسکرول بار ugly */
+    display: none;
   }
 </style>
 </head>
@@ -46,7 +47,7 @@
   <!-- هدر -->
   <header class="header"></header>
 
-  <!-- چی‌کی‌ها -->
+  <!-- چی‌کی‌ها / کارت‌ها -->
   <div class="scroll-container">
     <div class="card"></div>
     <div class="card"></div>
