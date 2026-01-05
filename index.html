@@ -48,39 +48,18 @@ body{
 .loaded .skel{display:none;}
 
 /* ===== منو وسط و تیره ===== */
-.liquid-glass {
-  background: #0f0f0f;        /* رنگ تیره ثابت */
-  border-radius: 50px;
-  padding: 1rem 2rem;
-  width: 550px;
+header.header {
+  width: 700px;           /* پهنای هدر */
+  height: 100px;          /* ارتفاع هدر */
+  background: #0f0f0f;    /* رنگ تیره */
+  border-radius: 25px;    /* گوشه‌های نرم */
+  margin: 20px auto 0;    /* فاصله از بالا و وسط صفحه */
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.5); /* عمق منو */
+  align-items: center;    /* وسط چین عمودی محتوا */
+  justify-content: space-between; /* فاصله بین لوگو، سرچ و دکمه‌ها */
+  padding: 0 20px;        /* فاصله داخلی از کناره‌ها */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* کمی عمق */
 }
-
-/* تب‌ها و دکمه‌ها */
-.nav-tab, .search-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 15px;
-  border-radius: 12px;
-  background: #0b0b0b;  /* کمی تیره‌تر */
-  color: #fff;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.nav-tab:hover, .search-btn:hover {
-  background: #1a1a1a;
-  transform: translateY(-2px);
-}
-
-.nav-tab.active {
-  background: #1a1a1a;
 }/* ===== Card ===== */
 .card{
   background:#141414;
