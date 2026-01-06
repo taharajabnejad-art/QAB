@@ -1,129 +1,266 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>قاب - پلتفرم ویدیویی</title>
+<title>قاب – جهان ویدیو</title>
+
 <style>
-  body{
-    margin:0;
-    padding:0;
-    background:#0f0f0f;
-    font-family:sans-serif;
-    color:#fff;
-  }
+/* ===== FONT (Base64) ===== */
+@font-face{
+  font-family:Qab;
+  src:url(data:font/woff2;base64,XXXX) format("woff2");
+  font-weight:400;
+}
+@font-face{
+  font-family:Qab;
+  src:url(data:font/woff2;base64,YYYY) format("woff2");
+  font-weight:700;
+}
 
-  /* ===== هدر ثابت ===== */
+body{
+  margin:0;
+  font-family:Qab,sans-serif;
+  background:#0f0f0f;
+  color:#eaeaea;
+}
+
+/* ===== Header ===== */
+.header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 16px;
+  background:linear-gradient(90deg,#000 0%,#111 50%,#000 100%);
+  border-radius:24px; /* گوشه های گرد */
+  margin:8px;
+  gap:12px;
+}
+
+.logo img{height:28px;}
+
+.search{
+  flex:1;
+  background:#1f1f1f;
+  padding:6px 12px;
+  border-radius:999px;
+  color:#aaa;
+  font-weight:400;
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+}
+
+.btn{
+  border:1px solid #222;
+  background:#1a1a1a;
+  color:#eee;
+  border-radius:12px;
+  padding:6px 10px;
+  cursor:pointer;
+}
+
+/* ===== Category Titles ===== */
+.category-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 16px;
+  font-size:18px;
+  font-weight:700;
+  color:#fff;
+}
+
+/* ===== Videos Grid ===== */
+.container{padding:16px;}
+
+.videos{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:16px;
+}
+
+/* ===== Card ===== */
+.card{
+  background:#141414;
+  border-radius:14px;
+  overflow:hidden;
+  position:relative;
+}
+
+/* ===== Thumb ===== */
+.thumb{
+  position:relative;
+  height:160px;
+}
+
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.time{
+  position:absolute;
+  bottom:8px;
+  left:8px;
+  background:#ffbe00;
+  color:#000;
+  font-size:12px;
+  padding:2px 6px;
+  border-radius:6px;
+  font-weight:700;
+}
+
+/* ===== Info ===== */
+.info{
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  position:relative;
+}
+
+/* متن واقعی */
+.title{
+  font-size:14px;
+  font-weight:700;
+}
+
+.channel{
+  font-size:12px;
+  color:#999;
+  font-weight:400;
+}
+
+/* ===== Skeleton Overlay ===== */
+.skel{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    #1c1c1c 25%,
+    #2a2a2a 37%,
+    #1c1c1c 63%
+  );
+  background-size:400% 100%;
+  animation:shimmer 1.8s linear 2;
+  border-radius:8px;
+  pointer-events:none;
+  z-index:5;
+}
+
+/* اسکلت متن */
+.text-skel{
+  border-radius:4px;
+}
+
+/* ===== Keyframes ===== */
+@keyframes shimmer{
+  0%{background-position:100% 0}
+  100%{background-position:-100% 0}
+}
+
+/* ===== Loaded state ===== */
+.loaded .skel{display:none;}
+
+/* ===== Responsive ===== */
+@media(max-width:600px){
+  .videos{
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  }
   .header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    height:64px;
-    background:#1a1a1a;
-    border-radius:32px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 20px;
+    flex-direction:column;
+    align-items:flex-start;
+    border-radius:16px;
   }
-  .logo{ width:120px; height:auto; background:url('image/logo.png') no-repeat center; background-size:contain; }
-  .search{ flex:1; margin:0 20px; background:#2a2a2a; border-radius:32px; padding:8px 16px; color:#ccc; }
-  .profile{ width:40px; height:40px; background:#2a2a2a; border-radius:50%; }
-
-  .category{ margin:20px 0; }
-  .category-title{ font-weight:bold; font-size:18px; margin-bottom:12px; }
-
-  /* ===== Card ===== */
-  .card{
-    background:#141414;
-    border-radius:14px;
-    overflow:hidden;
-    position:relative;
-    margin-bottom:12px;
-  }
-  .thumb{
-    position:relative;
-    height:160px;
-  }
-  .thumb img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
-  .time{
-    position:absolute;
-    bottom:8px;
-    left:8px;
-    background:#ffbe00;
-    color:#000;
-    font-size:12px;
-    padding:2px 6px;
-    border-radius:6px;
-    font-weight:700;
-  }
-  .info{ padding:6px; }
-  .title{ font-size:14px; line-height:1.3; color:#fff; }
-  .channel{ font-size:12px; color:#aaa; margin-top:2px; }
+}
 </style>
 </head>
+
 <body>
 
-<div class="header">
-  <div class="logo"></div>
-  <input class="search" placeholder="چی میخوای ببینی؟">
-  <div class="profile"></div>
+<!-- ===== Header ===== -->
+<header class="header">
+  <div class="logo">
+    <img src="image/logo.png" alt="Logo">
+  </div>
+  <div class="search">جستجو</div>
+  <div class="actions">
+    <button class="btn">بارگذاری</button>
+    <button class="btn">🔔</button>
+    <button class="btn">☰</button>
+  </div>
+</header>
+
+<!-- ===== Category Title ===== -->
+<div class="category-title">
+  <div class="skel"></div>
+  <span class="title-text">ویژه</span>
 </div>
 
-<div class="categories">
+<!-- ===== Videos ===== -->
+<div class="container">
+  <div class="videos">
 
-<!-- ===== دسته‌ها ===== -->
-<!-- من نمونه ۵ کارت برای هر دسته آماده کردم -->
-<!-- می‌تونی تصاویر را به دلخواه عوض کنی -->
+    <!-- CARD 1 -->
+    <div class="card">
+      <div class="thumb">
+        <img src="https://picsum.photos/500/300?1">
+        <span class="time">20:31</span>
+        <div class="skel"></div>
+      </div>
+      <div class="info">
+        <div class="title">سونیک کالرز آلتیمیت با مود</div>
+        <div class="skel text-skel"></div>
+        <div class="channel">Neo Charmy · 34 بازدید</div>
+        <div class="skel text-skel"></div>
+      </div>
+    </div>
 
-<!-- دسته 1: تازه اومده -->
-<div class="category">
-  <div class="category-title">تازه اومده</div>
-  <div class="container"><div class="videos">
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?1"><span class="time">20:31</span></div><div class="info"><div class="title">سونیک کالرز آلتیمیت با مود</div><div class="channel">Neo Charmy · 34 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?2"><span class="time">15:42</span></div><div class="info"><div class="title">یه تست کوچیک ولی عجیب</div><div class="channel">علی‌نما · 120 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?3"><span class="time">08:15</span></div><div class="info"><div class="title">اینو کسی بهت نگفته</div><div class="channel">قاب‌گرد · 78 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?4"><span class="time">02:45</span></div><div class="info"><div class="title">۲ دقیقه که نظرت عوض میشه</div><div class="channel">یه‌نفر · 215 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?5"><span class="time">10:20</span></div><div class="info"><div class="title">فقط با هدفون ببین</div><div class="channel">سروش‌ویژن · 90 بازدید</div></div></div>
-  </div></div>
+    <!-- CARD 2 -->
+    <div class="card">
+      <div class="thumb">
+        <img src="https://picsum.photos/500/300?2">
+        <span class="time">00:09</span>
+        <div class="skel"></div>
+      </div>
+      <div class="info">
+        <div class="title">رانش زمین در جاده ایذه</div>
+        <div class="skel text-skel"></div>
+        <div class="channel">عصر ایران · 796 بازدید</div>
+        <div class="skel text-skel"></div>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+      <div class="thumb">
+        <img src="https://picsum.photos/500/300?3">
+        <span class="time">11:26</span>
+        <div class="skel"></div>
+      </div>
+      <div class="info">
+        <div class="title">ارائه خانم زهرا محمدی</div>
+        <div class="skel text-skel"></div>
+        <div class="channel">کانال رسمی · 1 بازدید</div>
+        <div class="skel text-skel"></div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<!-- دسته 2: داغِ داغ -->
-<div class="category">
-  <div class="category-title">داغِ داغ</div>
-  <div class="container"><div class="videos">
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?6"><span class="time">12:33</span></div><div class="info"><div class="title">آخرش غافلگیر میشی</div><div class="channel">نادیده‌ها · 300 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?7"><span class="time">05:20</span></div><div class="info"><div class="title">این ویدیو باحال شد</div><div class="channel">FrameLab · 210 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?8"><span class="time">03:10</span></div><div class="info"><div class="title">نکته کوتاه اما مهم</div><div class="channel">موج‌کوتاه · 120 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?9"><span class="time">07:50</span></div><div class="info"><div class="title">یک تجربه جدید</div><div class="channel">Neo Charmy · 95 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?10"><span class="time">01:40</span></div><div class="info"><div class="title">چالش کوتاه</div><div class="channel">علی‌نما · 60 بازدید</div></div></div>
-  </div></div>
-</div>
+<script>
+setTimeout(()=>{
+  document.body.classList.add("loaded");
+},1800);
+</script>
 
-<!-- دسته 3: محبوب‌ها -->
-<div class="category">
-  <div class="category-title">محبوب‌ها</div>
-  <div class="container"><div class="videos">
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?11"><span class="time">09:30</span></div><div class="info"><div class="title">ویدیوی پرطرفدار اول</div><div class="channel">کانال A · 400 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?12"><span class="time">11:15</span></div><div class="info"><div class="title">ویدیوی پرطرفدار دوم</div><div class="channel">کانال B · 320 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?13"><span class="time">04:50</span></div><div class="info"><div class="title">ویدیوی پرطرفدار سوم</div><div class="channel">کانال C · 290 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?14"><span class="time">06:25</span></div><div class="info"><div class="title">ویدیوی پرطرفدار چهارم</div><div class="channel">کانال D · 500 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?15"><span class="time">08:40</span></div><div class="info"><div class="title">ویدیوی پرطرفدار پنجم</div><div class="channel">کانال E · 410 بازدید</div></div></div>
-  </div></div>
-</div>
-
-<!-- دسته 4: پیشنهاد ویژه -->
-<div class="category">
-  <div class="category-title">پیشنهاد ویژه</div>
-  <div class="container"><div class="videos">
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?16"><span class="time">03:15</span></div><div class="info"><div class="title">یک فیلم کوتاه جالب</div><div class="channel">کانال F · 120 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?17"><span class="time">14:22</span></div><div class="info"><div class="title">آموزش سریع کار با قاب</div><div class="channel">کانال G · 230 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?18"><span class="time">06:55</span></div><div class="info"><div class="title">ویدیوی جذاب ۳ دقیقه‌ای</div><div class="channel">کانال H · 150 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?19"><span class="time">08:20</span></div><div class="info"><div class="title">چالش کوتاه ویژه</div><div class="channel">کانال I · 170 بازدید</div></div></div>
-    <div class="card"><div class="thumb"><img src="https://picsum.photos/500/300?20"><span class="time">12:10</span></div><div class="info"><div class="title">تست کیفیت ویدیو</div><div class="channel">کانال J · 190 بازدید</div></div></div>
-  </div></div>
-</div>
+</body>
+</html>
