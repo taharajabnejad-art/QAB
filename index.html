@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>قاب - جهان ویدیو</title>
+<title>قاب</title>
 
 <style>
-/* ===== FONT (Base64) ===== */
+/* ===== FONT BASE64 ===== */
 @font-face {
   font-family: Qab;
   src: url(data:font/woff2;base64,XXXX) format("woff2");
@@ -21,163 +21,67 @@
 body {
   margin:0;
   font-family: Qab, sans-serif;
-  background:#0f0f0f;
-  color:#eaeaea;
+  background:#f7f7f7;
 }
 
-/* ===== Header ===== */
+/* ===== HEADER ===== */
 .header {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:64px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
   padding:0 16px;
-  height:64px;
-  background: linear-gradient(to right, #000 0%, transparent 100%);
-  border-bottom:1px solid #222;
+  gap:12px;
+  background: linear-gradient(90deg, #000000 0%, rgba(0,0,0,0) 100%);
+  z-index:999;
 }
 
-.logo-text {
+.logo {
   display:flex;
   align-items:center;
   gap:8px;
 }
 
-.logo-text img {
+.logo img {
   height:32px;
 }
 
-.logo-text span {
+.logo span {
   font-weight:700;
-  font-size:20px;
-}
-
-/* ===== Actions ===== */
-.actions {
-  display:flex;
-  gap:10px;
-}
-
-.btn {
-  border:1px solid #2a2a2a;
-  background:#1a1a1a;
+  font-size:18px;
   color:#fff;
-  border-radius:6px;
-  padding:6px 10px;
-  cursor:pointer;
 }
 
-/* ===== Videos ===== */
-.container {
-  padding:20px;
-}
-
-.videos {
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:16px;
-}
-
-.card {
-  background:#141414;
-  border-radius:14px;
-  overflow:hidden;
-}
-
-.thumb {
-  position:relative;
-  height:160px;
-}
-
-.thumb img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.time {
-  position:absolute;
-  bottom:8px;
-  left:8px;
-  background:#ffbe00;
-  color:#000;
-  font-size:12px;
-  padding:2px 6px;
-  border-radius:6px;
-  font-weight:700;
-}
-
-.info {
-  padding:10px;
-}
-
-.title {
-  font-size:14px;
-  font-weight:700;
-  margin-bottom:6px;
-}
-
-.channel {
-  font-size:12px;
-  color:#999;
-  font-weight:400;
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .header {
+    padding:0 12px;
+  }
+  .logo span {
+    font-size:16px;
+  }
 }
 </style>
 </head>
-
 <body>
 
-<!-- ===== Header ===== -->
 <header class="header">
-  <div class="logo-text">
+  <div class="logo">
     <img src="image/logo.png" alt="لوگو">
     <span>قاب</span>
   </div>
-
-  <div class="actions">
-    <button class="btn">بارگذاری</button>
-    <button class="btn">🔔</button>
-    <button class="btn">☰</button>
-  </div>
 </header>
 
-<!-- ===== Videos ===== -->
-<div class="container">
-  <div class="videos">
-
-    <div class="card">
-      <div class="thumb">
-        <img src="https://picsum.photos/500/300?1">
-        <span class="time">20:31</span>
-      </div>
-      <div class="info">
-        <div class="title">سونیک کالرز آلتیمیت با مود</div>
-        <div class="channel">Neo Charmy · 34 بازدید</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="thumb">
-        <img src="https://picsum.photos/500/300?2">
-        <span class="time">00:09</span>
-      </div>
-      <div class="info">
-        <div class="title">رانش زمین در جاده ایذه</div>
-        <div class="channel">عصر ایران · 796 بازدید</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="thumb">
-        <img src="https://picsum.photos/500/300?3">
-        <span class="time">11:26</span>
-      </div>
-      <div class="info">
-        <div class="title">ارائه خانم زهرا محمدی</div>
-        <div class="channel">کانال رسمی · 1 بازدید</div>
-      </div>
-    </div>
-
-  </div>
+<!-- محتوا برای تست اسکرول -->
+<div style="margin-top:80px; padding:20px;">
+  <p>این یک متن تست برای مشاهده اسکرول است.</p>
+  <p>تکرار ...</p>
+  <p>تکرار ...</p>
+  <p>تکرار ...</p>
+  <p>تکرار ...</p>
 </div>
 
 </body>
