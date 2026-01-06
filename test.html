@@ -3,58 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قاب</title>
 <style>
+  /* فونت Base64 نمونه (Roboto Bold) */
+  @font-face {
+    font-family: 'CustomFont';
+    src: url(data:font/woff2;base64,d09GMgABAAAAAA...rest-of-base64...) format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   body {
     margin: 0;
     padding: 20px;
-    background: #0f0f0f; /* رنگ صفحه */
-    font-family: sans-serif;
+    background: #0f0f0f;
+    font-family: 'CustomFont', sans-serif;
+    color: #fff;
   }
 
-  /* هدر ثابت کمی روشن‌تر */
+  /* پس‌زمینه پشت هدر */
+  .header-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, #000000, rgba(0,0,0,0));
+    z-index: 0;
+  }
+
+  /* هدر مستطیل نرم */
   .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     height: 64px;
-    background: #1a1a1a; /* کمی روشن‌تر از پس‌زمینه */
-    border-radius: 32px; /* گوشه‌های دایره‌ای */
+    background: #1a1a1a;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
     margin-bottom: 20px;
   }
 
-  /* اسکرول افقی */
+  .logo {
+    width: 120px;
+    height: auto;
+    background: url('path-to-your-logo.png') no-repeat center;
+    background-size: contain;
+  }
+
+  .search { 
+    flex: 1; 
+    margin: 0 20px; 
+    background: #2a2a2a; 
+    border-radius: 32px; 
+    padding: 8px 16px; 
+    color: #ccc; 
+  }
+
+  .profile { 
+    width: 40px; 
+    height: 40px; 
+    background: #2a2a2a; 
+    border-radius: 50%; 
+  }
+
+  /* دسته‌بندی */
+  .category {
+    margin-bottom: 40px;
+  }
+  .category-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
   .scroll-container {
     display: flex;
     overflow-x: auto;
     gap: 16px;
     padding-bottom: 10px;
   }
+  .scroll-container::-webkit-scrollbar { display: none; }
 
-  /* کارت‌ها / چی‌کی‌ها */
+  /* کارت‌ها */
   .card {
-    min-width: 120px;
-    height: 120px;
-    background: #1a1a1a; /* کارت‌ها هم هم‌رنگ هدر */
-    border-radius: 60px; /* گوشه‌های کاملاً دایره‌ای */
+    min-width: 140px;
+    height: 180px;
+    background: #1a1a1a;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
   }
 
-  /* مخفی کردن اسکرول بار */
-  .scroll-container::-webkit-scrollbar {
-    display: none;
+  .card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
   }
+
+  /* تایم روی عکس */
+  .card-time {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #ffbe00;
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .card-name {
+    margin-top: 8px;
+    font-size: 14px;
+    text-align: center;
+    padding: 0 5px;
+  }
+
+  .card-creator {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 2px;
+  }
+
 </style>
 </head>
 <body>
 
-  <!-- هدر -->
-  <header class="header"></header>
+  <div class="header-bg"></div>
 
-  <!-- چی‌کی‌ها / کارت‌ها -->
-  <div class="scroll-container">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+  <div class="header">
+    <div class="logo"></div>
+    <input class="search" placeholder="چی میخوای ببینی؟">
+    <div class="profile"></div>
   </div>
+
+  <script>
+    const categories = [
+      "جدیدترین‌ها","محبوب‌ها","یاد بگیر","سرگرمی سریع","بازی و گیم",
+      "موسیقی گوش بده","فیلم کوتاه","ورزش و انرژی","تکنولوژی و آینده",
+      "داستان بگو","هنر و خلاقیت","طبیعت و سفر","علم و دانش",
+      "کودک و نوجوان","خبر و رویداد"
+    ];
+
+    const container = document.body;
+
+    categories.forEach((cat, i) => {
+      const categoryDiv = document.createElement("div");
+      categoryDiv.className = "category";
+
+      const title = document.createElement("div");
+      title.className = "category-title";
+      title.textContent = cat;
+      categoryDiv.appendChild(title);
+
+      const scroll = document.createElement("div");
+      scroll.className = "scroll-container";
+
+      for(let j=1; j<=5; j++){
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const img = document.createElement("img");
+        img.src = `video${i*5+j}.jpg`;
+        img.alt = `ویدیو ${i*5+j}`;
+
+        const time = document.createElement("div");
+        time.className = "card-time";
+        time.textContent = `${Math.floor(Math.random()*10)+1}:${Math.floor(Math.random()*60).toString().padStart(2,'0')}`; // تایم تصادفی
+
+        const name = document.createElement("div");
+        name.className = "card-name";
+        name.textContent = `ویدیو ${i*5+j}`;
+
+        const creator = document.createElement("div");
+        creator.className = "card-creator";
+        creator.textContent = `سازنده ${i*5+j}`;
+
+        card.appendChild(img);
+        card.appendChild(time);
+        card.appendChild(name);
+        card.appendChild(creator);
+
+        scroll.appendChild(card);
+      }
+
+      categoryDiv.appendChild(scroll);
+      container.appendChild(categoryDiv);
+    });
+  </script>
 
 </body>
 </html>
