@@ -7,48 +7,50 @@
 
 <style>
 /* ===== FONT (Base64) ===== */
-@font-face{
-  font-family:Qab;
-  src:url(data:font/woff2;base64,XXXX) format("woff2");
+@font-face {
+  font-family: 'Qab';
+  src: url(data:font/woff2;base64,PUT_YOUR_BASE64_HERE) format('woff2');
   font-weight:400;
+  font-style:normal;
 }
-@font-face{
-  font-family:Qab;
-  src:url(data:font/woff2;base64,YYYY) format("woff2");
+
+@font-face {
+  font-family: 'Qab';
+  src: url(data:font/woff2;base64,PUT_YOUR_BASE64_BOLD_HERE) format('woff2');
   font-weight:700;
+  font-style:normal;
 }
 
 body{
-  margin:0;
-  font-family:Qab,sans-serif;
-  background:#0f0f0f;
-  color:#eaeaea;
+  font-family: 'Qab', sans-serif;
 }
-
-/* ===== Header ===== */
+</style>
+  
+/* ===== Header (همون قدیمی، ساده) ===== */
 .header{
   position:sticky;
   top:0;
   z-index:100;
+  height:64px;
+  background:#141414;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  padding:8px 16px;
-  background:linear-gradient(90deg,#000 0%,#111 50%,#000 100%);
-  border-radius:24px; /* گوشه های گرد */
-  margin:8px;
   gap:12px;
+  padding:0 12px;
+  border-bottom:1px solid #222;
 }
 
-.logo img{height:28px;}
+.logo img{
+  height:26px;
+}
 
 .search{
   flex:1;
   background:#1f1f1f;
-  padding:6px 12px;
-  border-radius:999px;
+  border-radius:10px;
+  padding:8px 12px;
+  font-size:14px;
   color:#aaa;
-  font-weight:400;
 }
 
 .actions{
@@ -57,32 +59,31 @@ body{
 }
 
 .btn{
-  border:1px solid #222;
   background:#1a1a1a;
+  border:1px solid #2a2a2a;
   color:#eee;
-  border-radius:12px;
+  border-radius:10px;
   padding:6px 10px;
-  cursor:pointer;
+  font-size:13px;
 }
 
-/* ===== Category Titles ===== */
+/* ===== Container ===== */
+.container{
+  padding:16px;
+}
+
+/* ===== Category Title ===== */
 .category-title{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:12px 16px;
   font-size:18px;
   font-weight:700;
-  color:#fff;
+  margin:8px 0 14px;
 }
 
-/* ===== Videos Grid ===== */
-.container{padding:16px;}
-
+/* ===== Grid ===== */
 .videos{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:16px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:14px;
 }
 
 /* ===== Card ===== */
@@ -90,19 +91,20 @@ body{
   background:#141414;
   border-radius:14px;
   overflow:hidden;
-  position:relative;
 }
 
-/* ===== Thumb ===== */
+/* ===== Thumbnail ===== */
 .thumb{
   position:relative;
-  height:160px;
+  aspect-ratio:16/9;
+  background:#000;
 }
 
 .thumb img{
   width:100%;
   height:100%;
   object-fit:cover;
+  display:block;
 }
 
 .time{
@@ -123,61 +125,27 @@ body{
   display:flex;
   flex-direction:column;
   gap:6px;
-  position:relative;
 }
 
-/* متن واقعی */
 .title{
   font-size:14px;
   font-weight:700;
+  line-height:1.4;
 }
 
 .channel{
   font-size:12px;
   color:#999;
-  font-weight:400;
 }
 
-/* ===== Skeleton Overlay ===== */
-.skel{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    90deg,
-    #1c1c1c 25%,
-    #2a2a2a 37%,
-    #1c1c1c 63%
-  );
-  background-size:400% 100%;
-  animation:shimmer 1.8s linear 2;
-  border-radius:8px;
-  pointer-events:none;
-  z-index:5;
-}
-
-/* اسکلت متن */
-.text-skel{
-  border-radius:4px;
-}
-
-/* ===== Keyframes ===== */
-@keyframes shimmer{
-  0%{background-position:100% 0}
-  100%{background-position:-100% 0}
-}
-
-/* ===== Loaded state ===== */
-.loaded .skel{display:none;}
-
-/* ===== Responsive ===== */
-@media(max-width:600px){
+/* ===== Desktop ===== */
+@media(min-width:768px){
   .videos{
-    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
   }
-  .header{
-    flex-direction:column;
-    align-items:flex-start;
-    border-radius:16px;
+
+  .search{
+    max-width:420px;
   }
 }
 </style>
@@ -188,79 +156,62 @@ body{
 <!-- ===== Header ===== -->
 <header class="header">
   <div class="logo">
-    <img src="image/logo.png" alt="Logo">
+    <img src="image/logo.png" alt="QAB">
   </div>
-  <div class="search">جستجو</div>
+
+  <div class="search">جستجوی ویدیو</div>
+
   <div class="actions">
     <button class="btn">بارگذاری</button>
-    <button class="btn">🔔</button>
     <button class="btn">☰</button>
   </div>
 </header>
 
-<!-- ===== Category Title ===== -->
-<div class="category-title">
-  <div class="skel"></div>
-  <span class="title-text">ویژه</span>
-</div>
-
-<!-- ===== Videos ===== -->
+<!-- ===== Content ===== -->
 <div class="container">
+
+  <div class="category-title">ویژه</div>
+
   <div class="videos">
 
-    <!-- CARD 1 -->
+    <!-- Card 1 -->
     <div class="card">
       <div class="thumb">
         <img src="https://picsum.photos/500/300?1">
         <span class="time">20:31</span>
-        <div class="skel"></div>
       </div>
       <div class="info">
         <div class="title">سونیک کالرز آلتیمیت با مود</div>
-        <div class="skel text-skel"></div>
         <div class="channel">Neo Charmy · 34 بازدید</div>
-        <div class="skel text-skel"></div>
       </div>
     </div>
 
-    <!-- CARD 2 -->
+    <!-- Card 2 -->
     <div class="card">
       <div class="thumb">
         <img src="https://picsum.photos/500/300?2">
         <span class="time">00:09</span>
-        <div class="skel"></div>
       </div>
       <div class="info">
         <div class="title">رانش زمین در جاده ایذه</div>
-        <div class="skel text-skel"></div>
         <div class="channel">عصر ایران · 796 بازدید</div>
-        <div class="skel text-skel"></div>
       </div>
     </div>
 
-    <!-- CARD 3 -->
+    <!-- Card 3 -->
     <div class="card">
       <div class="thumb">
         <img src="https://picsum.photos/500/300?3">
         <span class="time">11:26</span>
-        <div class="skel"></div>
       </div>
       <div class="info">
         <div class="title">ارائه خانم زهرا محمدی</div>
-        <div class="skel text-skel"></div>
         <div class="channel">کانال رسمی · 1 بازدید</div>
-        <div class="skel text-skel"></div>
       </div>
     </div>
 
   </div>
 </div>
-
-<script>
-setTimeout(()=>{
-  document.body.classList.add("loaded");
-},1800);
-</script>
 
 </body>
 </html>
