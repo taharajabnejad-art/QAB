@@ -1,19 +1,156 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Responsive Header</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Responsive Gradient Header</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: IRANSans, sans-serif;
+}
+
+/* بک صفحه فقط برای تست */
+body{
+  background:url("https://picsum.photos/1400/900") center/cover no-repeat;
+  min-height:200vh;
+}
+
+/* ===== HEADER ===== */
+.header{
+  position:fixed;
+  top:0;
+  right:0;
+  width:100%;
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  z-index:1000;
+
+  /* حالت اولیه: گرادینت */
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.7) 35%,
+    rgba(0,0,0,0.3) 65%,
+    rgba(0,0,0,0) 100%
+  );
+
+  transition:background 0.3s ease;
+}
+
+/* وقتی اسکرول شد */
+.header.scrolled{
+  background:#000; /* مشکی 100٪ */
+}
+
+/* راست */
+.right{
+  display:flex;
+  align-items:center;
+  gap:32px;
+}
+
+/* لوگو */
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#fff;
+  font-size:20px;
+  font-weight:700;
+}
+
+.logo-mark{
+  width:18px;
+  height:18px;
+  border:2px solid #fff;
+}
+
+/* منو دسکتاپ */
+.menu a{
+  color:#fff;
+  text-decoration:none;
+  margin-left:18px;
+  font-size:14px;
+  opacity:.9;
+}
+
+.menu a:hover{
+  opacity:1;
+}
+
+/* چپ */
+.left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.avatar{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1.5px solid #fff;
+}
+
+.menu-icon{
+  display:none;
+  font-size:22px;
+  color:#fff;
+  cursor:pointer;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:768px){
+  .header{
+    height:64px;
+    padding:0 16px;
+  }
+
+  .menu{
+    display:none;
+  }
+
+  .menu-icon{
+    display:block;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .avatar{
+    width:30px;
+    height:30px;
+  }
+}
+
+/* فاصله محتوا از هدر فیکس */
+.spacer{
+  height:80px;
+}
+
+@media (max-width:768px){
+  .spacer{
+    height:64px;
+  }
+}
+</style>
 </head>
+
 <body>
 
-<header class="header">
-  <!-- راست -->
+<header class="header" id="header">
   <div class="right">
     <div class="logo">
-      <span class="logo-box"></span>
-      <span class="logo-text">فیلیمو</span>
+      <div class="logo-mark"></div>
+      <span>فیلیمو</span>
     </div>
 
     <nav class="menu">
@@ -21,17 +158,28 @@
       <a href="#">سریال</a>
       <a href="#">ایرانی</a>
       <a href="#">خارجی</a>
-      <a href="#">کودک</a>
     </nav>
   </div>
 
-  <!-- چپ -->
   <div class="left">
-    <button class="buy">خرید</button>
     <div class="avatar"></div>
     <div class="menu-icon">☰</div>
   </div>
 </header>
+
+<div class="spacer"></div>
+
+<script>
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 20) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+</script>
 
 </body>
 </html>
