@@ -1,6 +1,6 @@
 {
-  "name": "My PWA",
-  "short_name": "PWA",
+  "name": "QAB | قاب",
+  "short_name": "QAB",
   "start_url": "./test.html",
   "scope": "./",
   "display": "standalone",
