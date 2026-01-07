@@ -2,252 +2,123 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Header Index</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>My PWA</title>
+
+<!-- لینک manifest.json -->
+<link rel="manifest" href="manifest.json">
+
+<!-- رنگ نوار بالا در موبایل -->
+<meta name="theme-color" content="#0d0d0d">
+
+<!-- CSS داخلی -->
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: IRANSans, sans-serif;
-}
-
-/* بک تست */
-body{
-  background:url("https://picsum.photos/1400/900") center/cover no-repeat;
-  min-height:200vh;
-}
-
-/* ===== HEADER ===== */
-.header{
-  position:fixed;
-  top:0;
-  right:0;
-  width:100%;
-  height:80px;
-  padding:0 24px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  z-index:1000;
-  transition:background .3s ease;
-
-  /* دسکتاپ: گرادینت افقی از راست */
-  background:linear-gradient(
-    to left,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,.7) 35%,
-    rgba(0,0,0,.3) 65%,
-    rgba(0,0,0,0) 100%
-  );
-}
-
-.header.scrolled{
-  background:#000;
-}
-
-/* ===== RIGHT: لوگو + منو دسکتاپ ===== */
-.right{
-  display:flex;
-  align-items:center;
-  gap:32px;
-}
-
-/* لوگو */
-.logo{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  color:#fff;
-  font-size:20px;
-  font-weight:700;
-}
-
-.logo-mark{
-  width:18px;
-  height:18px;
-  border:2px solid #fff;
-}
-
-/* منو دسکتاپ */
-.menu{
-  display:flex;
-}
-
-.menu a{
-  color:#fff;
-  text-decoration:none;
-  margin-right:18px;
-  font-size:14px;
-  opacity:.9;
-}
-.menu a:hover{opacity:1}
-
-/* ===== LEFT: پروفایل + منوی موبایل ===== */
-.left{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-/* آواتار پروفایل */
-.profile-avatar{
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  border:1.5px solid #fff;
-}
-
-/* آواتار منو */
-.menu-avatar{
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  border:1.5px solid #fff;
-  position:relative;
-  cursor:pointer;
-  display:none; /* فقط موبایل نمایش داده میشه */
-}
-
-/* سه خط همبرگر داخل آواتار منو */
-.menu-avatar span,
-.menu-avatar span::before,
-.menu-avatar span::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  width:14px;
-  height:2px;
-  background:#fff;
-  transform:translateX(-50%);
-}
-
-.menu-avatar span{top:50%;}
-.menu-avatar span::before{top:-5px;}
-.menu-avatar span::after{top:5px;}
-
-/* ===== MOBILE ===== */
-@media (max-width:768px){
-
-  .header{
-    height:64px;
-    padding:0 16px;
-
-    /* موبایل: گرادینت عمودی */
-    background:linear-gradient(
-      to bottom,
-      rgba(0,0,0,1) 0%,
-      rgba(0,0,0,.6) 45%,
-      rgba(0,0,0,0) 100%
-    );
+  /* کل بدنه */
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #0d0d0d;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
   }
 
-  /* منوی دسکتاپ مخفی */
-  .menu{
-    display:none;
+  /* متن اصلی */
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
   }
 
-  /* لوگو وسط واقعی */
-  .logo{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:18px;
+  /* دکمه نصب */
+  #installBtn {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
   }
 
-  /* آواتار پروفایل کوچیک تر */
-  .profile-avatar{width:30px;height:30px;}
-
-  /* آواتار منو نمایش داده میشه */
-  .menu-avatar{
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  #installBtn:hover {
+    background-color: #fff;
+    color: #0d0d0d;
   }
-}
 
-/* ===== منوی موبایل ===== */
-.mobile-menu{
-  position:fixed;
-  top:0;
-  right:-100%;
-  width:70%;
-  height:100%;
-  background:#000;
-  padding:80px 24px;
-  transition:.3s ease;
-  z-index:999;
-}
+  /* لودینگ ساده */
+  #splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0d0d0d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+  }
 
-.mobile-menu a{
-  display:block;
-  color:#fff;
-  text-decoration:none;
-  margin-bottom:18px;
-  font-size:16px;
-}
+  #splash img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+  }
 
-.mobile-menu.open{
-  right:0;
-}
-
-/* فاصله محتوا */
-.spacer{height:80px;}
-@media (max-width:768px){.spacer{height:64px;}}
+  #splash span {
+    font-size: 1.2rem;
+    color: #ccc;
+  }
 </style>
 </head>
-
 <body>
 
-<header class="header" id="header">
+<!-- Splash Screen -->
+<div id="splash">
+  <img src="image/logo.png" alt="Logo">
+  <span>در حال بارگذاری...</span>
+</div>
 
-  <!-- راست: لوگو + منو دسکتاپ -->
-  <div class="right">
-    <div class="logo">
-      <div class="logo-mark"></div>
-      <span>فیلیمو</span>
-    </div>
+<!-- محتوای اصلی PWA -->
+<h1>سلام، این یک PWA است!</h1>
+<button id="installBtn" style="display:none;">نصب اپ</button>
 
-    <nav class="menu">
-      <a href="#">فیلم</a>
-      <a href="#">سریال</a>
-      <a href="#">ایرانی</a>
-      <a href="#">خارجی</a>
-    </nav>
-  </div>
-
-  <!-- چپ: پروفایل + آواتار منو -->
-  <div class="left">
-    <div class="menu-avatar" id="menuBtn"><span></span></div>
-    <div class="profile-avatar"></div>
-  </div>
-
-</header>
-
-<!-- منوی موبایل -->
-<nav class="mobile-menu" id="mobileMenu">
-  <a href="#">فیلم</a>
-  <a href="#">سریال</a>
-  <a href="#">ایرانی</a>
-  <a href="#">خارجی</a>
-</nav>
-
-<div class="spacer"></div>
-
+<!-- JS داخلی -->
 <script>
-// اسکرول هدر
-const header = document.getElementById("header");
-window.addEventListener("scroll",()=>{
-  header.classList.toggle("scrolled",window.scrollY > 20);
-});
+  // حذف splash بعد از لود
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('splash').style.display = 'none';
+      document.getElementById('installBtn').style.display = 'inline-block';
+    }, 1500); // 1.5 ثانیه لودینگ
+  });
 
-// باز و بسته شدن منو موبایل
-const btn = document.getElementById("menuBtn");
-const menu = document.getElementById("mobileMenu");
-btn.addEventListener("click",()=>{
-  menu.classList.toggle("open");
-});
+  // PWA Install
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'inline-block';
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const choiceResult = await deferredPrompt.userChoice;
+      if (choiceResult.outcome === 'accepted') {
+        console.log('کاربر اپ را نصب کرد.');
+      }
+      deferredPrompt = null;
+    }
+  });
 </script>
 
 </body>
