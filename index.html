@@ -27,27 +27,35 @@ body{
 
 /* ===== Header (گرانیت) ===== */
 .header{
+.header{
   position:fixed;
   top:0;
-  right:0;
   width:100%;
-  height:64px;
+  height:80px;
   display:flex;
+  justify-content:center; /* وسط */
   align-items:center;
-  justify-content:center; /* لوگو وسط */
-  padding:0 16px;
-  z-index:1000;
-  background:linear-gradient(
+  background: linear-gradient(
     to left,
     rgba(0,0,0,1) 0%,
     rgba(0,0,0,.7) 35%,
     rgba(0,0,0,.3) 65%,
     rgba(0,0,0,0) 100%
   );
+  z-index:1000;
 }
 
-.logo img{
-  height:32px;
+.logo-center{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.logo-img{height:32px;}
+.logo-text{
+  font-weight:700;
+  font-size:20px;
+  color:#fff;
 }
 
 /* ===== Container Videos ===== */
@@ -137,9 +145,9 @@ body{
 <body>
 
 <header class="header">
-  <div class="logo-wrapper" style="display:flex;align-items:center;gap:8px;">
-    <img src="image/logo.png" alt="QAB Logo" style="height:32px;">
-    <span class="logo-text" style="font-weight:700;font-size:20px;color:#fff;">قاب</span>
+  <div class="logo-center">
+    <img src="image/logo.png" alt="Logo" class="logo-img">
+    <span class="logo-text">قاب</span>
   </div>
 </header>
 
