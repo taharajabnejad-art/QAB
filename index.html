@@ -34,14 +34,16 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
+  z-index:1000;
+
+  /* گرادینت عمودی: بالا سیاه، پایین شفاف */
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,1) 0%,       /* بالاترین تیره */
-    rgba(0,0,0,0.7) 35%,    /* وسط کمی روشن‌تر */
-    rgba(0,0,0,0.3) 65%,    /* نزدیک پایین روشن‌تر */
-    rgba(0,0,0,0) 100%      /* پایین کاملاً شفاف */
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.7) 35%,
+    rgba(0,0,0,0.3) 65%,
+    rgba(0,0,0,0) 100%
   );
-  z-index:1000;
 }
 
 /* گرانیت */
