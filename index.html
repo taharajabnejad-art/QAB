@@ -5,10 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>قاب – جهان ویدیو</title>
 
-<link rel="icon" href="icons/favicon.png" type="image/png">
-
 <style>
-/* ===== FONT (Base64) ===== */
+/* ===== FONT (Base64 خودت اینجا میذاری) ===== */
 @font-face{
   font-family:Qab;
   src:url(data:font/woff2;base64,XXXX) format("woff2");
@@ -29,117 +27,43 @@ body{
 
 /* ===== HEADER ===== */
 .header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 24px;
-  height:80px;
-  background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.7));
   position:fixed;
-  width:100%;
   top:0;
+  width:100%;
+  height:80px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,.7) 35%,
+    rgba(0,0,0,.3) 65%,
+    rgba(0,0,0,0) 100%
+  );
   z-index:1000;
 }
 
-.header-left,
-.header-right{
+/* گرانیت */
+.header{
+  background: linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 35%, rgba(0, 0, 0, 0.3) 65%, rgba(0, 0, 0, 0) 100%);
+}
+
+.logo-center{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:8px;
 }
 
-.header-center{
-  text-align:center;
-  font-size:22px;
+.logo-center img{height:32px;}
+.logo-center .logo-text{
   font-weight:700;
-}
-
-/* ===== BUTTONS ===== */
-.btn, .upload-btn{
-  padding:6px 12px;
-  border-radius:6px;
-  border:none;
-  cursor:pointer;
-  font-weight:700;
-  background:#333;
+  font-size:20px;
   color:#fff;
-  position:relative;
-  overflow:hidden;
-}
-
-/* بارگذاری یه رنگ جدا */
-.upload-btn{background:#ffbe00;color:#000;}
-
-/* اسکلتون */
-.skel{
-  position:absolute;
-  inset:0;
-  background: linear-gradient(90deg,#1c1c1c 25%,#2a2a2a 37%,#1c1c1c 63%);
-  background-size:400% 100%;
-  animation:shimmer 1.6s linear infinite;
-  border-radius:6px;
-  pointer-events:none;
-}
-
-/* اسکلتون مخصوص آواتار */
-.avatar-skel{
-  border-radius:50%;
-}
-
-@keyframes shimmer{
-  0%{background-position:100% 0;}
-  100%{background-position:-100% 0;}
-}
-
-/* محفظه برای دکمه‌ها */
-.btn-skel-wrap{
-  position:relative;
-  display:flex;
-  align-items:center;
-}
-
-/* محفظه برای آواتار */
-.skel-avatar-wrap{
-  position:relative;
-  display:flex;
-  align-items:center;
-}
-
-/* آواتار */
-.profile-avatar{
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  border:1.5px solid #fff;
-}
-
-/* موبایل */
-@media (max-width:768px){
-  .header{
-    padding:0 12px;
-    height:64px;
-  }
-  .header-center{font-size:18px;}
-  .profile-avatar{width:30px;height:30px;}
 }
 
 /* ===== SPACER ===== */
 .spacer{height:80px;}
-
-/* ===== Section Title ===== */
-.section-title{
-  margin: 10px 0 16px;
-  font-size:18px;
-  font-weight:700;
-  color:#fff;
-}
-
-.section-title span{
-  color:#aaa;
-  font-weight:400;
-  font-size:14px;
-  margin-right:6px;
-}
 
 /* ===== Videos Grid ===== */
 .container{padding:20px;}
@@ -154,67 +78,22 @@ body{
   background:#141414;
   border-radius:14px;
   overflow:hidden;
-  position:relative;
 }
 
-/* ===== Thumb ===== */
 .thumb{
   position:relative;
-  height:160px;
+  height:0;
+  padding-bottom:56.25%; /* 16:9 aspect ratio */
+  overflow:hidden;
 }
 
 .thumb img{
+  position:absolute;
   width:100%;
   height:100%;
   object-fit:cover;
 }
 
-/* ===== Skeleton on Image ===== */
-.thumb::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,#1c1c1c 25%,#2a2a2a 37%,#1c1c1c 63%);
-  background-size:400% 100%;
-  animation:shimmer 1.6s linear 1;
-  pointer-events:none;
-  z-index:2;
-  border-radius:14px 14px 0 0;
-}
-
-/* ===== Info ===== */
-.info{
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  position:relative;
-  z-index:1;
-}
-
-.title-wrap,
-.channel-wrap{
-  position:relative;
-}
-
-/* Skeleton on Text */
-.title-wrap::before,
-.channel-wrap::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,#1c1c1c 25%,#2a2a2a 37%,#1c1c1c 63%);
-  background-size:400% 100%;
-  animation:shimmer 1.6s linear 1;
-  pointer-events:none;
-  border-radius:4px;
-  z-index:2;
-}
-
-.title{font-size:14px;font-weight:700;}
-.channel{font-size:12px;color:#999;font-weight:400;}
-
-/* ===== Time Badge ===== */
 .time{
   position:absolute;
   bottom:8px;
@@ -225,27 +104,63 @@ body{
   padding:2px 6px;
   border-radius:6px;
   font-weight:700;
-  z-index:3;
 }
 
-/* ===== Keyframes ===== */
+/* ===== Info ===== */
+.info{
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.title-wrap,
+.channel-wrap{
+  position:relative;
+}
+
+.title{
+  font-size:14px;
+  font-weight:700;
+}
+
+.channel{
+  font-size:12px;
+  color:#999;
+  font-weight:400;
+}
+
+/* ===== Skeleton Overlay ===== */
+.skel{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    #1c1c1c 25%,
+    #2a2a2a 37%,
+    #1c1c1c 63%
+  );
+  background-size:400% 100%;
+  animation:shimmer 1.6s linear 1;
+  border-radius:4px;
+  pointer-events:none;
+}
+
 @keyframes shimmer{
   0%{background-position:100% 0}
   100%{background-position:-100% 0}
 }
 
-/* ===== Loaded State ===== */
-.loaded .thumb::before,
-.loaded .title-wrap::before,
-.loaded .channel-wrap::before{
-  display:none;
-}
+.loaded .skel{display:none;}
+
+.title-wrap{height:14px;width:90%;}
+.channel-wrap{height:12px;width:60%;}
 
 /* ===== Responsive ===== */
 @media (max-width:768px){
   .header{height:64px;}
   .spacer{height:64px;}
-  .thumb{height:140px;}
+  .thumb{padding-bottom:56.25%;} /* حفظ نسبت 16:9 در موبایل */
 }
 </style>
 </head>
@@ -253,48 +168,15 @@ body{
 <body>
 
 <header class="header">
-  <!-- چپ: دکمه‌ها -->
-  <div class="header-left">
-    <div class="btn-skel-wrap">
-      <button class="btn">فیلم</button>
-      <div class="skel"></div>
-    </div>
-    <div class="btn-skel-wrap">
-      <button class="btn">سریال</button>
-      <div class="skel"></div>
-    </div>
-    <div class="btn-skel-wrap">
-      <button class="btn">ایرانی</button>
-      <div class="skel"></div>
-    </div>
-  </div>
-
-  <!-- وسط: لوگو -->
-  <div class="header-center">
+  <div class="logo-center">
+    <img src="image/logo.png" alt="Logo">
     <span class="logo-text">قاب</span>
-  </div>
-
-  <!-- راست: عکس پروفایل + بارگذاری -->
-  <div class="header-right">
-    <div class="btn-skel-wrap">
-      <button class="upload-btn">بارگذاری ویدیو</button>
-      <div class="skel"></div>
-    </div>
-    <div class="skel-avatar-wrap">
-      <img src="image/profile.png" alt="Profile" class="profile-avatar">
-      <div class="skel avatar-skel"></div>
-    </div>
   </div>
 </header>
 
 <div class="spacer"></div>
 
 <div class="container">
-
-<div class="section-title">
-  جدیدترین ویدیوها
-</div>
-  
   <div class="videos">
 
     <!-- CARD 1 -->
@@ -302,10 +184,17 @@ body{
       <div class="thumb">
         <img src="https://picsum.photos/500/300?1">
         <span class="time">20:31</span>
+        <div class="skel"></div>
       </div>
       <div class="info">
-        <div class="title-wrap"><div class="title">سونیک کالرز آلتیمیت با مود</div></div>
-        <div class="channel-wrap"><div class="channel">Neo Charmy · 34 بازدید</div></div>
+        <div class="title-wrap">
+          <div class="title">سونیک کالرز آلتیمیت با مود</div>
+          <div class="skel"></div>
+        </div>
+        <div class="channel-wrap">
+          <div class="channel">Neo Charmy · 34 بازدید</div>
+          <div class="skel"></div>
+        </div>
       </div>
     </div>
 
@@ -314,10 +203,17 @@ body{
       <div class="thumb">
         <img src="https://picsum.photos/500/300?2">
         <span class="time">00:09</span>
+        <div class="skel"></div>
       </div>
       <div class="info">
-        <div class="title-wrap"><div class="title">رانش زمین در جاده ایذه</div></div>
-        <div class="channel-wrap"><div class="channel">عصر ایران · 796 بازدید</div></div>
+        <div class="title-wrap">
+          <div class="title">رانش زمین در جاده ایذه</div>
+          <div class="skel"></div>
+        </div>
+        <div class="channel-wrap">
+          <div class="channel">عصر ایران · 796 بازدید</div>
+          <div class="skel"></div>
+        </div>
       </div>
     </div>
 
@@ -326,66 +222,24 @@ body{
       <div class="thumb">
         <img src="https://picsum.photos/500/300?3">
         <span class="time">11:26</span>
+        <div class="skel"></div>
       </div>
       <div class="info">
-        <div class="title-wrap"><div class="title">ارائه خانم زهرا محمدی</div></div>
-        <div class="channel-wrap"><div class="channel">کانال رسمی · 1 بازدید</div></div>
+        <div class="title-wrap">
+          <div class="title">ارائه خانم زهرا محمدی</div>
+          <div class="skel"></div>
+        </div>
+        <div class="channel-wrap">
+          <div class="channel">کانال رسمی · 1 بازدید</div>
+          <div class="skel"></div>
+        </div>
       </div>
     </div>
 
   </div>
 </div>
-
-<div class="container">
-
-<div class="section-title">
-  کوتاه
-</div>
-  
-  <div class="videos">
-
-    <!-- CARD 1 -->
-    <div class="card">
-      <div class="thumb">
-        <img src="https://picsum.photos/500/300?1">
-        <span class="time">20:31</span>
-      </div>
-      <div class="info">
-        <div class="title-wrap"><div class="title">سونیک کالرز آلتیمیت با مود</div></div>
-        <div class="channel-wrap"><div class="channel">Neo Charmy · 34 بازدید</div></div>
-      </div>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="card">
-      <div class="thumb">
-        <img src="https://picsum.photos/500/300?2">
-        <span class="time">00:09</span>
-      </div>
-      <div class="info">
-        <div class="title-wrap"><div class="title">رانش زمین در جاده ایذه</div></div>
-        <div class="channel-wrap"><div class="channel">عصر ایران · 796 بازدید</div></div>
-      </div>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="card">
-      <div class="thumb">
-        <img src="https://picsum.photos/500/300?3">
-        <span class="time">11:26</span>
-      </div>
-      <div class="info">
-        <div class="title-wrap"><div class="title">ارائه خانم زهرا محمدی</div></div>
-        <div class="channel-wrap"><div class="channel">کانال رسمی · 1 بازدید</div></div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 
 <script>
-// وقتی اسکلت تموم شد، حذف میشه
 setTimeout(()=>{
   document.body.classList.add("loaded");
 },1600);
