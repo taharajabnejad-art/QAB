@@ -7,7 +7,7 @@
   "theme_color": "#000000",       // نوار مرورگر هم سیاه
   "icons": [
     {
-      "src": "transparent-icon.png",  // آیکون شفاف
+      "src": "image/InShot_20260117_151118014.png",  // آیکون شفاف
       "sizes": "192x192",
       "type": "image/png"
     },
