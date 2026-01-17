@@ -1,7 +1,7 @@
 {
   "name": "WebApp",
   "short_name": "WebApp",
-  "start_url": "/",
+  "start_url": "/test.html",
   "display": "standalone",
   "background_color": "#000000",  // سیاه → متن سیستم عملاً دیده نمیشه
   "theme_color": "#000000",       // نوار مرورگر هم سیاه
