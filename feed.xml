@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Qab - ویدیوهای جدید</title>
+    <link>https://qab.github.io/</link>
+    <description>آخرین ویدیوها و مطالب سایت Qab</description>
+    <language>fa</language>
+
+    <item>
+      <title>عنوان ویدیو ۱</title>
+      <link>https://qab.github.io/video1.html</link>
+      <description>توضیح کوتاه ویدیو ۱</description>
+      <enclosure url="" type="video/mp4"/>
+      <media:thumbnail url="https://qab.github.io/thumbs/video1.jpg"/>
+      <pubDate>Fri, 17 Jan 2026 12:00:00 +0300</pubDate>
+    </item>
+
+    <item>
+      <title>عنوان ویدیو ۲</title>
+      <link>https://qab.github.io/video2.html</link>
+      <description>توضیح کوتاه ویدیو ۲</description>
+      <enclosure url="https://qab.github.io/videos/video2.mp4" type="video/mp4"/>
+      <media:thumbnail url="https://qab.github.io/thumbs/video2.jpg"/>
+      <pubDate>Thu, 16 Jan 2026 14:00:00 +0300</pubDate>
+    </item>
+
+  </channel>
+</rss>
