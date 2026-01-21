@@ -1,125 +1,107 @@
-* {
+html, body {
+  height: 100%;
+  min-height: 500vh;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: IRANSans, sans-serif;
+  font-family: system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
-body {
-  background: #000;
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
 }
 
-/* هدر */
-.header {
-  height: 72px;
-  background: #0b0b0b;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  border-bottom: 1px solid #1c1c1c;
+.bg img {
+  width: 100%;
+  display: block;
 }
 
-/* راست */
-.right {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-}
-
-/* لوگو */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.logo-box {
-  width: 22px;
-  height: 22px;
-  border: 2px solid #f5c518;
-}
-
-/* منو دسکتاپ */
-.menu a {
-  color: #ccc;
-  text-decoration: none;
-  margin-left: 20px;
-  font-size: 14px;
-}
-
-.menu a:hover {
-  color: #fff;
-}
-
-/* چپ */
-.left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-/* دکمه خرید */
-.buy {
-  background: #1db954;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.buy:hover {
-  background: #18a84b;
-}
-
-/* آواتار */
-.avatar {
-  width: 36px;
-  height: 36px;
+.glass {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 20rem;
+  height: 20rem;
   border-radius: 50%;
-  background: #444;
-}
-
-/* آیکن منوی موبایل */
-.menu-icon {
-  display: none;
-  font-size: 22px;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6), 0 16px 32px rgba(0, 0, 0, 0.12);
+  backdrop-filter: url(#frosted);
+  -webkit-backdrop-filter: url(#frosted);
+  display: grid;
+  place-items: center;
   cursor: pointer;
+  outline: 0;
 }
 
-/* ===================== */
-/* 📱 موبایل */
-@media (max-width: 768px) {
-
-  .header {
-    height: 64px;
-    padding: 0 16px;
-  }
-
-  .menu {
-    display: none;
-  }
-
-  .buy {
-    display: none;
-  }
-
-  .avatar {
-    width: 32px;
-    height: 32px;
-  }
-
-  .logo-text {
-    font-size: 18px;
-  }
-
-  .menu-icon {
-    display: block;
-  }
+/* حذف کامل خطوط + */
+.glass::before,
+.glass::after {
+  content: none !important;
+  display: none !important;
 }
+
+/* تصویر داخل دکمه */
+.glass-icon {
+  width: 50%; /* اندازه دلخواه */
+  height: auto;
+}​html, body {
+  height: 100%;
+  min-height: 500vh;
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.bg img {
+  width: 100%;
+  display: block;
+}
+
+.glass {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: url('https://i.ibb.co/your-image.png') center/cover no-repeat; /* لینک تصویر خودت رو بذار */
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 2px rgba(255,255,255,.6), 0 16px 32px rgba(0,0,0,.12);
+  backdrop-filter: url(#frosted);
+  -webkit-backdrop-filter: url(#frosted);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  outline: 0;
+}
+
+/* خطوط + حذف شدن */
+.glass::before,
+.glass::after {
+  content: none;
+}​html,body{height:100%;min-height:500vh;margin:0;font-family:system-ui,sans-serif;overflow-x:hidden}
+.bg{position:absolute;inset:0;z-index:-1}
+.bg img{width:100%;display:block}
+
+.glass{
+  position:fixed;inset:50% auto auto 50%;transform:translate(-50%,-50%);
+  width:20rem;height:20rem;border-radius:50%;
+  background:rgba(255,255,255,.08);border:2px solid transparent;
+  box-shadow:0 0 0 2px rgba(255,255,255,.6),0 16px 32px rgba(0,0,0,.12);
+  backdrop-filter:url(#frosted);-webkit-backdrop-filter:url(#frosted);
+  display:grid;place-items:center;cursor:pointer;outline:0;
+}
+
+.glass::before,
+.glass::after{
+  content:"";position:absolute;width:40%;height:10px;background:#fff;border-radius:10px;
+}
+.glass::after{transform:rotate(90deg)}
