@@ -1,49 +1,28 @@
 <rss xmlns:dc="https://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
 <channel>
 <title>Qab</title>
-<link>https://qab.github.io/</link>
-<description>Qab | آخرین ویدیوهای سایت</description>
+<link>taharajabnejad-github.io/QAB/</link>
+<description>قاب</description>
 <image>
-<url>https://qab.github.io/icons/icon-144x144.png</url>
-<title>Qab</title>
-<link>https://qab.github.io/</link>
+<url>icons/logo.png</url>
+<title>زومجی</title>
+<link>taharajabnejad-github.io/QAB/</link>
 </image>
-<copyright>© 1405 - 1400 تمام حقوق محفوظ است.</copyright>
-<lastBuildDate>Sat, 17 Jan 2026 14:00:00 GMT</lastBuildDate>
-
+<copyright>تکست</copyright>
+<lastBuildDate>Thu, 22 Jan 2026 12:03:06 GMT</lastBuildDate>
 <item>
-<title>معرفی قابلیت‌های جدید Qab</title>
-<pubDate>Sat, 17 Jan 2026 12:00:00 GMT</pubDate>
-<link>https://qab.github.io/videos/video1.html</link>
-<guid>https://qab.github.io/videos/video1.html</guid>
-<description>
-<a href="https://qab.github.io/videos/video1.html" target="_blank">
-<img src="https://qab.github.io/thumbs/video1.jpg" title="معرفی قابلیت‌های جدید Qab"/>
-</a>
-<br/>
-<p>در این ویدیو، امکانات جدید و رابط کاربری Qab معرفی شده است.</p>
-</description>
-<enclosure url="https://qab.github.io/videos/video1.mp4" type="video/mp4"/>
-<media:thumbnail url="https://qab.github.io/thumbs/video1.jpg"/>
-<category>معرفی سایت</category>
+<title>زمان برگزاری امتحانات دانشگاه‌های علوم پزشکی اعلام شد</title>
+<pubDate>Thu, 22 Jan 2026 08:45:00 GMT</pubDate>
+<link>https://taharajabnejad-art.github.io/QAB/icons/logo.png</link>
+<guid>https://taharajabnejad-art.github.io/QAB/icons/logo.png</guid>
+<description><a href="https://taharajabnejad-art.github.io/QAB/pwaandroid=jexpksijkindex.html" target="_blank"><img src="https://taharajabnejad-art.github.io/QAB/icons/logo.png" style="padding: 15px 0" title="تست"/></a><br/><p>تست.</p><br/></description>
+<category>اخبار سایت</category>
 </item>
-
 <item>
-<title>آموزش ثبت‌نام و ایجاد کانال در Qab</title>
-<pubDate>Fri, 16 Jan 2026 14:00:00 GMT</pubDate>
-<link>https://qab.github.io/videos/video2.html</link>
-<guid>https://qab.github.io/videos/video2.html</guid>
-<description>
-<a href="https://qab.github.io/videos/video2.html" target="_blank">
-<img src="https://qab.github.io/thumbs/video2.jpg" title="آموزش ثبت‌نام و ایجاد کانال"/>
-</a>
-<br/>
-<p>این ویدیو نحوه ثبت‌نام و ایجاد کانال در Qab را آموزش می‌دهد.</p>
-</description>
-<enclosure url="https://qab.github.io/videos/video2.mp4" type="video/mp4"/>
-<media:thumbnail url="https://qab.github.io/thumbs/video2.jpg"/>
-<category>آموزش</category>
+<title>زمان ثبت‌نام آزمون کارشناسی ارشد علوم پزشکی ۱۴۰۵ کی اعلام می‌شود؟</title>
+<pubDate>Thu, 22 Jan 2026 07:40:00 GMT</pubDate>
+<link>https://taharajabnejad-art.github.io/QAB/icons/logo.png</link>
+<guid>https://taharajabnejad-art.github.io/QAB/icons/logo.png</guid>
+<description><a href="https://taharajabnejad-art.github.io/QAB/pwaandroid=jexpksijkindex.html" target="_blank"><img src="https://taharajabnejad-art.github.io/QAB/icons/logo.png" style="padding: 15px 0" title="تست"/></a><br/><p>تست.</p><br/></description>
+<category>اخبار سایت</category>
 </item>
-
-</channel>
-</rss>
