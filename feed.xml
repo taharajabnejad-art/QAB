@@ -1,42 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
-  <channel>
-    <title>Qab - آخرین ویدیوها</title>
-    <link>https://taharajabnejad-art.github.io/QAB/</link>
-    <description>آخرین ویدیوهای سایت Qab</description>
-    <language>fa</language>
+<rss xmlns:dc="https://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+<channel>
+<title>Qab</title>
+<link>https://qab.github.io/</link>
+<description>Qab | آخرین ویدیوهای سایت</description>
+<image>
+<url>https://qab.github.io/icons/icon-144x144.png</url>
+<title>Qab</title>
+<link>https://qab.github.io/</link>
+</image>
+<copyright>© 1405 - 1400 تمام حقوق محفوظ است.</copyright>
+<lastBuildDate>Sat, 17 Jan 2026 14:00:00 GMT</lastBuildDate>
 
-    <item>
-      <title>ویدیو معرفی Qab</title>
-      <link>https://qab.github.io/videos/video1.html</link>
-      <guid>https://qab.github.io/videos/video1.html</guid>
-      <description>
-        <p>در این ویدیو، قابلیت‌های جدید سایت Qab معرفی شده است.</p>
-        <a href="https://qab.github.io/videos/video1.mp4" target="_blank">
-          <img src="icons/logo.png" alt="ویدیو معرفی Qab"/>
-        </a>
-      </description>
-      <enclosure url="https://qab.github.io/videos/video1.mp4" type="video/mp4" />
-      <media:thumbnail url="https://qab.github.io/thumbs/video1.jpg" />
-      <pubDate>Fri, 17 Jan 2026 12:00:00 +0330</pubDate>
-      <category>معرفی سایت</category>
-    </item>
+<item>
+<title>معرفی قابلیت‌های جدید Qab</title>
+<pubDate>Sat, 17 Jan 2026 12:00:00 GMT</pubDate>
+<link>https://qab.github.io/videos/video1.html</link>
+<guid>https://qab.github.io/videos/video1.html</guid>
+<description>
+<a href="https://qab.github.io/videos/video1.html" target="_blank">
+<img src="https://qab.github.io/thumbs/video1.jpg" title="معرفی قابلیت‌های جدید Qab"/>
+</a>
+<br/>
+<p>در این ویدیو، امکانات جدید و رابط کاربری Qab معرفی شده است.</p>
+</description>
+<enclosure url="https://qab.github.io/videos/video1.mp4" type="video/mp4"/>
+<media:thumbnail url="https://qab.github.io/thumbs/video1.jpg"/>
+<category>معرفی سایت</category>
+</item>
 
-    <item>
-      <title>آموزش ثبت نام در Qab</title>
-      <link>https://qab.github.io/videos/video2.html</link>
-      <guid>https://qab.github.io/videos/video2.html</guid>
-      <description>
-        <p>این ویدیو نحوه ثبت نام و ایجاد کانال در Qab را آموزش می‌دهد.</p>
-        <a href="https://qab.github.io/videos/video2.mp4" target="_blank">
-          <img src="https://qab.github.io/thumbs/video2.jpg" alt="آموزش ثبت نام"/>
-        </a>
-      </description>
-      <enclosure url="https://qab.github.io/videos/video2.mp4" type="video/mp4" />
-      <media:thumbnail url="https://qab.github.io/thumbs/video2.jpg" />
-      <pubDate>Thu, 16 Jan 2026 14:00:00 +0330</pubDate>
-      <category>آموزش</category>
-    </item>
+<item>
+<title>آموزش ثبت‌نام و ایجاد کانال در Qab</title>
+<pubDate>Fri, 16 Jan 2026 14:00:00 GMT</pubDate>
+<link>https://qab.github.io/videos/video2.html</link>
+<guid>https://qab.github.io/videos/video2.html</guid>
+<description>
+<a href="https://qab.github.io/videos/video2.html" target="_blank">
+<img src="https://qab.github.io/thumbs/video2.jpg" title="آموزش ثبت‌نام و ایجاد کانال"/>
+</a>
+<br/>
+<p>این ویدیو نحوه ثبت‌نام و ایجاد کانال در Qab را آموزش می‌دهد.</p>
+</description>
+<enclosure url="https://qab.github.io/videos/video2.mp4" type="video/mp4"/>
+<media:thumbnail url="https://qab.github.io/thumbs/video2.jpg"/>
+<category>آموزش</category>
+</item>
 
-  </channel>
+</channel>
 </rss>
