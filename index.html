@@ -4,12 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>قاب – جهان ویدیو</title>
-
-<!-- favicon -->
 <link rel="icon" type="image/png" href="icons/favicon.png">
 
 <style>
-/* ===== FONT (Base64 خودت جایگزین کن) ===== */
+/* ===== FONT (Base64 جایگزین کن) ===== */
 @font-face{
   font-family:Qab;
   src:url(data:font/woff2;base64,XXXX) format("woff2");
@@ -22,13 +20,7 @@
 }
 
 *{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Qab,sans-serif;
-  background:#0f0f0f;
-  color:#eaeaea;
-}
+body{margin:0;font-family:Qab,sans-serif;background:#0f0f0f;color:#eaeaea;}
 
 /* ===== HEADER ===== */
 .header{
@@ -36,16 +28,11 @@ body{
   top:0;
   width:100%;
   height:80px;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,.6) 55%,
-    rgba(0,0,0,0) 100%
-  );
+  background:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,.6) 55%, rgba(0,0,0,0) 100%);
   z-index:1000;
 }
 
-/* لوگو دقیقاً وسط */
+/* لوگو دقیق وسط */
 .logo-center{
   position:absolute;
   left:50%;
@@ -56,11 +43,7 @@ body{
   gap:8px;
 }
 .logo-center img{height:32px;}
-.logo-center span{
-  font-size:20px;
-  font-weight:700;
-  color:#fff;
-}
+.logo-center span{font-size:20px;font-weight:700;color:#fff;}
 
 /* آواتار چپ */
 .header-left{
@@ -81,137 +64,52 @@ body{
 .profile-btn img{
   width:20px;
   height:20px;
+  display:block;
 }
 
-/* فاصله محتوا */
-.spacer{height:80px}
+/* ===== SPACER ===== */
+.spacer{height:80px;}
 
-/* ===== PAGE ===== */
-.container{padding:16px}
-
-/* تیتر دسته */
-.section-title{
-  font-size:18px;
-  font-weight:700;
-  margin:8px 0 16px;
-}
+/* ===== CONTAINER ===== */
+.container{padding:16px;}
+.section-title{font-size:18px;font-weight:700;margin:8px 0 16px;}
 
 /* ===== GRID ===== */
-.videos{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:16px;
-}
+.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
 
 /* ===== CARD ===== */
-.card{
-  background:#141414;
-  border-radius:14px;
-  overflow:hidden;
-}
-
-/* 16:9 */
-.thumb{
-  position:relative;
-  aspect-ratio:16/9;
-}
-.thumb img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.time{
-  position:absolute;
-  bottom:8px;
-  left:8px;
-  background:#ffbe00;
-  color:#000;
-  font-size:12px;
-  padding:2px 6px;
-  border-radius:6px;
-  font-weight:700;
-}
-
-/* ===== CARD ===== */
-.cardshorts{
-  background:#141414;
-  border-radius:14px;
-  overflow:hidden;
-}
-
-/* 16:9 */
-.thumb{
-  position:relative;
-  aspect-ratio:9/16;
-}
-.thumb img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.time{
-  position:absolute;
-  bottom:8px;
-  left:8px;
-  background:#ffbe00;
-  color:#000;
-  font-size:12px;
-  padding:2px 6px;
-  border-radius:6px;
-  font-weight:700;
-}
-
+.card{background:#141414;border-radius:14px;overflow:hidden;cursor:pointer;}
+.thumb{position:relative;aspect-ratio:16/9;}
+.thumb img{width:100%;height:100%;object-fit:cover;}
+.time{position:absolute;bottom:8px;left:8px;background:#ffbe00;color:#000;font-size:12px;padding:2px 6px;border-radius:6px;font-weight:700;}
 
 /* ===== INFO ===== */
-.info{
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-
-.title-wrap,
-.channel-wrap{
-  position:relative;
-}
-
-.title{
-  font-size:14px;
-  font-weight:700;
-}
-.channel{
-  font-size:12px;
-  color:#999;
-}
+.info{padding:10px;display:flex;flex-direction:column;gap:8px;}
+.title-wrap,.channel-wrap{position:relative;}
+.title{font-size:14px;font-weight:700;}
+.channel{font-size:12px;color:#999;}
 
 /* ===== SKELETON ===== */
-.skel{
+.skel{position:absolute;inset:0;background:linear-gradient(90deg,#1c1c1c 25%,#2a2a2a 37%,#1c1c1c 63%);background-size:400% 100%;animation:shimmer 1.8s linear infinite;border-radius:6px;}
+@keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+.loaded .skel{display:none}
+
+/* ===== CLICK GRANITE ===== */
+.thumb::after{
+  content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    90deg,
-    #1c1c1c 25%,
-    #2a2a2a 37%,
-    #1c1c1c 63%
-  );
-  background-size:400% 100%;
-  animation:shimmer 1.8s linear infinite;
+  background:linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.35), rgba(0,0,0,0));
+  opacity:0;
   border-radius:6px;
+  transition:opacity 0.3s ease;
 }
-
-@keyframes shimmer{
-  0%{background-position:100% 0}
-  100%{background-position:-100% 0}
-}
-
-.loaded .skel{display:none}
+.card.active .thumb::after{opacity:1;}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width:768px){
-  .header{height:64px}
-  .spacer{height:64px}
+  .header{height:64px;}
+  .spacer{height:64px;}
 }
 </style>
 </head>
@@ -222,7 +120,7 @@ body{
   <!-- آواتار چپ -->
   <div class="header-left">
     <div class="profile-btn">
-      <img src="icons/avatar.png" alt="Profile">
+      <img src="icons/user.svg" alt="Profile">
     </div>
   </div>
 
@@ -241,8 +139,8 @@ body{
 
   <div class="videos">
 
-    <!-- CARD -->
-    <div class="card">
+    <!-- CARD 1 -->
+    <div class="card" onclick="activateCard(this)">
       <div class="thumb">
         <img src="https://picsum.photos/800/450?1">
         <span class="time">20:31</span>
@@ -260,55 +158,20 @@ body{
       </div>
     </div>
 
-    <div class="card">
+    <!-- CARD 2 -->
+    <div class="card" onclick="activateCard(this)">
       <div class="thumb">
-        <img src="https://picsum.photos/800/450?1">
-        <span class="time">20:31</span>
+        <img src="https://picsum.photos/800/450?2">
+        <span class="time">00:09</span>
         <div class="skel"></div>
       </div>
       <div class="info">
         <div class="title-wrap">
-          <div class="title">سونیک کالرز آلتیمیت با مود</div>
+          <div class="title">رانش زمین در جاده ایذه</div>
           <div class="skel"></div>
         </div>
         <div class="channel-wrap">
-          <div class="channel">Neo Charmy · 34 بازدید</div>
-          <div class="skel"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="thumb">
-        <img src="https://picsum.photos/800/450?1">
-        <span class="time">20:31</span>
-        <div class="skel"></div>
-      </div>
-      <div class="info">
-        <div class="title-wrap">
-          <div class="title">سونیک کالرز آلتیمیت با مود</div>
-          <div class="skel"></div>
-        </div>
-        <div class="channel-wrap">
-          <div class="channel">Neo Charmy · 34 بازدید</div>
-          <div class="skel"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="thumb">
-        <img src="https://picsum.photos/800/450?1">
-        <span class="time">20:31</span>
-        <div class="skel"></div>
-      </div>
-      <div class="info">
-        <div class="title-wrap">
-          <div class="title">سونیک کالرز آلتیمیت با مود</div>
-          <div class="skel"></div>
-        </div>
-        <div class="channel-wrap">
-          <div class="channel">Neo Charmy · 34 بازدید</div>
+          <div class="channel">عصر ایران · 796 بازدید</div>
           <div class="skel"></div>
         </div>
       </div>
@@ -317,92 +180,15 @@ body{
   </div>
 </div>
 
-<div class="container">
-
-  <div class="section-title">ویژه</div>
-
-  <div class="videos">
-
-    <!-- CARD -->
-    <div class="cardshrorts">
-      <div class="thumb">
-        <img src="https://picsum.photos/800/450?1">
-        <span class="time">20:31</span>
-        <div class="skel"></div>
-      </div>
-      <div class="info">
-        <div class="title-wrap">
-          <div class="title">سونیک کالرز آلتیمیت با مود</div>
-          <div class="skel"></div>
-        </div>
-        <div class="channel-wrap">
-          <div class="channel">Neo Charmy · 34 بازدید</div>
-          <div class="skel"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cardshorts">
-      <div class="thumb">
-        <img src="https://picsum.photos/800/450?1">
-        <span class="time">20:31</span>
-        <div class="skel"></div>
-      </div>
-      <div class="info">
-        <div class="title-wrap">
-          <div class="title">سونیک کالرز آلتیمیت با مود</div>
-          <div class="skel"></div>
-        </div>
-        <div class="channel-wrap">
-          <div class="channel">Neo Charmy · 34 بازدید</div>
-          <div class="skel"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cardshorts">
-      <div class="thumb">
-        <img src="https://picsum.photos/800/450?1">
-        <span class="time">20:31</span>
-        <div class="skel"></div>
-      </div>
-      <div class="info">
-        <div class="title-wrap">
-          <div class="title">سونیک کالرز آلتیمیت با مود</div>
-          <div class="skel"></div>
-        </div>
-        <div class="channel-wrap">
-          <div class="channel">Neo Charmy · 34 بازدید</div>
-          <div class="skel"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cardshorts">
-      <div class="thumb">
-        <img src="https://picsum.photos/800/450?1">
-        <span class="time">20:31</span>
-        <div class="skel"></div>
-      </div>
-      <div class="info">
-        <div class="title-wrap">
-          <div class="title">سونیک کالرز آلتیمیت با مود</div>
-          <div class="skel"></div>
-        </div>
-        <div class="channel-wrap">
-          <div class="channel">Neo Charmy · 34 بازدید</div>
-          <div class="skel"></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-  
 <script>
-setTimeout(()=>{
-  document.body.classList.add("loaded");
-},2000);
+/* اسکلتون */
+setTimeout(()=>{document.body.classList.add("loaded");},2000);
+
+/* گرانیت فقط روی کارت فعال */
+function activateCard(card){
+  document.querySelectorAll('.card.active').forEach(c=>c.classList.remove('active'));
+  card.classList.add('active');
+}
 </script>
 
 </body>
