@@ -109,21 +109,22 @@ body{margin:0;font-family:Qab,sans-serif;background:#0f0f0f;color:#eaeaea;}
   z-index:1;
 }
 
-/* متن و کانال روی گرانیت */
+/* متن و کانال روی گرانیت سمت راست */
 .info{
   position:absolute;
   bottom:10px;
-  left:10px;
+  right:10px; /* راست‌چین */
   z-index:2;
   display:flex;
   flex-direction:column;
   gap:4px;
   color:#fff;
+  text-align:right; /* متن راست‌چین */
 }
 
 .title{font-size:14px;font-weight:700;}
 .channel{font-size:12px;color:#fff;}
-
+  
 /* ===== RESPONSIVE ===== */
 @media (max-width:768px){
   .header{height:64px;}
