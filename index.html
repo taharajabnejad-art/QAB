@@ -77,47 +77,52 @@ body{margin:0;font-family:Qab,sans-serif;background:#0f0f0f;color:#eaeaea;}
 /* ===== GRID ===== */
 .videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
 
-/* ===== CARD ===== */
+/* ===== CARD کوتاه ===== */
 .card{
-  position:relative; /* مهم برای گرانیت */
-  background:#141414;
+  position:relative;
   border-radius:14px;
   overflow:hidden;
   cursor:pointer;
+  background:#141414;
 }
 
-/* 16:9 */
-.thumb{position:relative;aspect-ratio:16/9;}
-.thumb img{width:100%;height:100%;object-fit:cover;}
-.time{position:absolute;bottom:8px;left:8px;background:#ffbe00;color:#000;font-size:12px;padding:2px 6px;border-radius:6px;font-weight:700;}
-
-/* INFO */
-.info{position:relative; z-index:2; padding:10px; display:flex; flex-direction:column; gap:8px;}
-.title-wrap, .channel-wrap{position:relative;}
-.title{font-size:14px;font-weight:700;}
-.channel{font-size:12px;color:#999;}
-
-/* ===== SKELETON ===== */
-.skel{
-  position:absolute; inset:0;
-  background:linear-gradient(90deg,#1c1c1c 25%,#2a2a2a 37%,#1c1c1c 63%);
-  background-size:400% 100%;
-  animation:shimmer 1.8s linear infinite;
-  border-radius:6px;
+/* تصویر */
+.thumb{
+  position:relative;
+  aspect-ratio:16/9;
+  z-index:0;
 }
-@keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
-.loaded .skel{display:none}
 
-/* ===== GRANITE ثابت روی کارت ===== */
-.card::after{
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* گرانیت ثابت روی عکس */
+.thumb::after{
   content:"";
   position:absolute;
   inset:0;
   background:linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.35), rgba(0,0,0,0));
-  border-radius:14px;
   pointer-events:none;
   z-index:1;
 }
+
+/* متن و کانال روی گرانیت */
+.info{
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  color:#fff;
+}
+
+.title{font-size:14px;font-weight:700;}
+.channel{font-size:12px;color:#fff;}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width:768px){
@@ -156,18 +161,10 @@ body{margin:0;font-family:Qab,sans-serif;background:#0f0f0f;color:#eaeaea;}
     <div class="card">
       <div class="thumb">
         <img src="https://picsum.photos/800/450?1">
-        <span class="time">20:31</span>
-        <div class="skel"></div>
       </div>
       <div class="info">
-        <div class="title-wrap">
-          <div class="title">سونیک کالرز آلتیمیت با مود</div>
-          <div class="skel"></div>
-        </div>
-        <div class="channel-wrap">
-          <div class="channel">Neo Charmy · 34 بازدید</div>
-          <div class="skel"></div>
-        </div>
+        <div class="title">سونیک کالرز آلتیمیت با مود</div>
+        <div class="channel">Neo Charmy · 34 بازدید</div>
       </div>
     </div>
 
@@ -175,28 +172,15 @@ body{margin:0;font-family:Qab,sans-serif;background:#0f0f0f;color:#eaeaea;}
     <div class="card">
       <div class="thumb">
         <img src="https://picsum.photos/800/450?2">
-        <span class="time">00:09</span>
-        <div class="skel"></div>
       </div>
       <div class="info">
-        <div class="title-wrap">
-          <div class="title">رانش زمین در جاده ایذه</div>
-          <div class="skel"></div>
-        </div>
-        <div class="channel-wrap">
-          <div class="channel">عصر ایران · 796 بازدید</div>
-          <div class="skel"></div>
-        </div>
+        <div class="title">رانش زمین در جاده ایذه</div>
+        <div class="channel">عصر ایران · 796 بازدید</div>
       </div>
     </div>
 
   </div>
 </div>
-
-<script>
-/* اسکلتون */
-setTimeout(()=>{document.body.classList.add("loaded");},2000);
-</script>
 
 </body>
 </html>
